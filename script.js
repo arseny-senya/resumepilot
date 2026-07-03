@@ -22,6 +22,7 @@ const TEXT = {
     "Пользователь уже существует": "User already exists",
     "Пользователь не найден": "User not found",
     "Неверный пароль": "Invalid password",
+    "Примите политику конфиденциальности": "Please accept the Privacy Policy",
   },
 };
 let currentUser = null;
@@ -53,6 +54,8 @@ const cv = document.querySelector(".cv");
 const zoom = document.getElementById("zoom");
 const posX = document.getElementById("posX");
 const posY = document.getElementById("posY");
+const policyLabel = document.getElementById("policyLabel");
+const privacyAgree = document.getElementById("privacyAgree");
 
 /* ======================
    STATE
@@ -516,23 +519,6 @@ const showLogin = document.getElementById("showLogin");
 const showRegister = document.getElementById("showRegister");
 const authSubmit = document.querySelector(".auth-submit");
 
-let authMode = "login";
-
-/* modal open/close */
-document.getElementById("loginBtn")?.addEventListener("click", () => {
-  authModal?.classList.add("show");
-});
-
-document.getElementById("closeAuth")?.addEventListener("click", () => {
-  authModal?.classList.remove("show");
-});
-
-authModal?.addEventListener("click", (e) => {
-  if (e.target === authModal) {
-    authModal.classList.remove("show");
-  }
-});
-
 /* toggle login/register */
 showLogin?.addEventListener("click", () => {
   authMode = "login";
@@ -542,10 +528,16 @@ showLogin?.addEventListener("click", () => {
 
   authName.style.display = "none";
 
+  // Скрываем политику
+  policyLabel.style.display = "none";
+  privacyAgree.required = false;
+  privacyAgree.checked = false;
+
   if (authSubmit) {
     authSubmit.textContent = "Sign In";
   }
 });
+
 showRegister?.addEventListener("click", () => {
   authMode = "register";
 
@@ -554,11 +546,14 @@ showRegister?.addEventListener("click", () => {
 
   authName.style.display = "block";
 
+  // Показываем политику
+  policyLabel.style.display = "flex";
+  privacyAgree.required = true;
+
   if (authSubmit) {
     authSubmit.textContent = "Create Account";
   }
 });
-
 /* ======================
    AUTH SUBMIT (FIXED)
 ====================== */
@@ -571,6 +566,12 @@ authForm?.addEventListener("submit", async (e) => {
       authMode === "login"
         ? `${API_URL}/api/auth/login`
         : `${API_URL}/api/auth/register`;
+
+    // Проверяем согласие только при регистрации
+    if (authMode === "register" && !privacyAgree.checked) {
+      showToast(t("Примите политику конфиденциальности"), "info");
+      return;
+    }
 
     const res = await fetch(url, {
       method: "POST",
