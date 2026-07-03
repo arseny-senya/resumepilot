@@ -16,7 +16,7 @@ const TEXT = {
     "Ошибка генерации PDF": "PDF generation error",
   },
 };
-
+let currentUser = null;
 function t(text) {
   if (LANG === "ru") return text;
 
@@ -77,6 +77,7 @@ async function loadUser() {
 
     // Если пользователь не вошёл
     if (!token) {
+      currentUser = null;
       isProUser = false;
 
       document.getElementById("loginBtn").style.display = "block";
@@ -97,11 +98,11 @@ async function loadUser() {
 
     const data = await res.json();
 
+    currentUser = data.user;
     isProUser = !!data.user.isPro;
 
     // Показываем профиль
     document.getElementById("loginBtn").style.display = "none";
-
     document.getElementById("userDropdown").classList.remove("hidden");
 
     document.getElementById("userEmail").textContent =
@@ -110,11 +111,13 @@ async function loadUser() {
     document.getElementById("planBadge").textContent = data.user.isPro
       ? "PRO ⭐"
       : "FREE";
+
     accountName.textContent = data.user.name || data.user.email.split("@")[0];
 
     accountEmail.textContent = data.user.email;
 
     accountPlan.textContent = data.user.isPro ? "⭐ PRO" : "🟢 FREE";
+
     if (data.user.isPro) {
       upgradeAccountBtn.textContent = "✅ PRO Activated";
       upgradeAccountBtn.disabled = true;
@@ -126,11 +129,15 @@ async function loadUser() {
       upgradeAccountBtn.style.opacity = "1";
       upgradeAccountBtn.style.cursor = "pointer";
     }
+
     update();
   } catch (err) {
     console.warn("FREE MODE");
 
+    currentUser = null;
     isProUser = false;
+
+    localStorage.removeItem("token");
 
     document.getElementById("loginBtn").style.display = "block";
     document.getElementById("userDropdown").classList.add("hidden");
