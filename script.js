@@ -455,12 +455,23 @@ loadUser?.();
 ====================== */
 
 async function buyPro() {
+  const token = localStorage.getItem("token");
+
+  // Пользователь не вошёл
+  if (!token) {
+    proModal?.classList.remove("show");
+    authModal?.classList.add("show");
+
+    showToast(t("Сначала войдите в аккаунт"), "info");
+    return;
+  }
+
   try {
     const res = await fetch(`${API_URL}/api/payment/checkout`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token") || ""}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         lang: LANG,
@@ -478,7 +489,7 @@ async function buyPro() {
     }
   } catch (err) {
     console.error(err);
-    showToast(t("Ошибка оплаты, войдите в аккаунт"), "error");
+    showToast(t("Ошибка оплаты"), "error");
   }
 }
 
