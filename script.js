@@ -519,7 +519,41 @@ const authName = document.getElementById("authName");
 const showLogin = document.getElementById("showLogin");
 const showRegister = document.getElementById("showRegister");
 const authSubmit = document.querySelector(".auth-submit");
+const loginBtn = document.getElementById("loginBtn");
+const closeAuth = document.getElementById("closeAuth");
 
+loginBtn?.addEventListener("click", () => {
+  authMode = "login";
+
+  authModal?.classList.add("show");
+
+  showLogin?.classList.add("active");
+  showRegister?.classList.remove("active");
+
+  if (authName) {
+    authName.style.display = "none";
+  }
+
+  if (policyLabel && privacyAgree) {
+    policyLabel.style.display = "none";
+    privacyAgree.required = false;
+    privacyAgree.checked = false;
+  }
+
+  if (authSubmit) {
+    authSubmit.textContent = LANG === "en" ? "Sign In" : "Войти";
+  }
+});
+
+closeAuth?.addEventListener("click", () => {
+  authModal?.classList.remove("show");
+});
+
+authModal?.addEventListener("click", (e) => {
+  if (e.target === authModal) {
+    authModal.classList.remove("show");
+  }
+});
 /* toggle login/register */
 showLogin?.addEventListener("click", () => {
   authMode = "login";
