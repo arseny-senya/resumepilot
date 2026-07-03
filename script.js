@@ -822,3 +822,11 @@ contactModal?.addEventListener("click", (e) => {
     contactModal.classList.remove("show");
   }
 });
+const togglePassword = document.getElementById("togglePassword");
+
+togglePassword?.addEventListener("click", () => {
+  const isPassword = authPassword.type === "password";
+
+  authPassword.type = isPassword ? "text" : "password";
+  togglePassword.textContent = isPassword ? "🙈" : "👁";
+});
