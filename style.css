@@ -100,6 +100,7 @@ body {
   background: white;
   margin: 0 auto;
   overflow: hidden;
+  max-height: 1123px;
 }
 .cv p,
 .cv h1,
@@ -3545,4 +3546,23 @@ body {
     font-size: 10px;
     padding: 3px 6px;
   }
+}
+.template-tech,
+.template-minimal,
+.template-designer,
+.template-dark,
+.template-executive {
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+.tech-layout,
+.minimal-layout,
+.designer-canvas,
+.dark-layout,
+.executive-layout {
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
 }
