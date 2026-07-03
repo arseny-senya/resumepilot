@@ -14,6 +14,7 @@ const TEXT = {
     "⭐ Это PRO-шаблон. Его можно посмотреть, но скачать можно только после покупки PRO.":
       "⭐ This is a PRO template. You can preview it, but downloading requires PRO.",
     "Ошибка генерации PDF": "PDF generation error",
+    "Сначала войдите в аккаунт": "Please sign in to your account first",
   },
 };
 let currentUser = null;
