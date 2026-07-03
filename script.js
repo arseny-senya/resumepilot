@@ -15,6 +15,13 @@ const TEXT = {
       "⭐ This is a PRO template. You can preview it, but downloading requires PRO.",
     "Ошибка генерации PDF": "PDF generation error",
     "Сначала войдите в аккаунт": "Please sign in to your account first",
+    "User not found": "User not found",
+    "Invalid password": "Invalid password",
+    "Auth error": "Authentication error",
+    "Ошибка входа": "Login error",
+    "Пользователь уже существует": "User already exists",
+    "Пользователь не найден": "User not found",
+    "Неверный пароль": "Invalid password",
   },
 };
 let currentUser = null;
@@ -580,7 +587,8 @@ authForm?.addEventListener("submit", async (e) => {
     const data = await res.json();
 
     if (!res.ok) {
-      throw new Error(data.message || "Auth error");
+      showToast(t(data.message || "Ошибка входа"), "error");
+      return;
     }
 
     if (data.token) {

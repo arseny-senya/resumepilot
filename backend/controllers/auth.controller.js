@@ -57,13 +57,13 @@ export const login = async (req, res) => {
     const user = await User.findOne({ email });
 
     if (!user) {
-      return res.status(400).json({ message: "User not found" });
+      return res.status(400).json({ message: "Пользователь не найден" });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-      return res.status(400).json({ message: "Invalid password" });
+      return res.status(400).json({ message: "Неверный пароль" });
     }
 
     const token = generateToken(user._id);
@@ -77,7 +77,7 @@ export const login = async (req, res) => {
       token,
     });
   } catch (err) {
-    res.status(500).json({ message: "Login error" });
+    res.status(500).json({ message: "Ошибка входа" });
   }
 };
 
