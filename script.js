@@ -465,11 +465,6 @@ async function buyPro() {
   const token = localStorage.getItem("token");
 
   if (!token || !currentUser) {
-    localStorage.removeItem("token");
-
-    closePro();
-    authModal?.classList.add("show");
-
     showToast(t("Сначала войдите в аккаунт"), "info");
     return;
   }
