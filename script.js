@@ -270,12 +270,20 @@ posY?.addEventListener("input", (e) => {
 ====================== */
 
 downloadBtn?.addEventListener("click", async () => {
+  const originalText = downloadBtn.textContent;
+
   try {
     if (isLockedTemplate()) {
       openProModal();
       showToast(t("⭐ Для скачивания этого шаблона требуется PRO"), "info");
       return;
     }
+
+    // Loader
+    downloadBtn.disabled = true;
+    downloadBtn.classList.add("loading");
+    downloadBtn.textContent =
+      LANG === "en" ? "Generating PDF..." : "Генерация PDF...";
 
     const token = localStorage.getItem("token");
 
@@ -327,6 +335,11 @@ downloadBtn?.addEventListener("click", async () => {
   } catch (err) {
     console.error(err);
     showToast(t("Ошибка соединения с сервером"), "error");
+  } finally {
+    // Возвращаем кнопку в исходное состояние
+    downloadBtn.disabled = false;
+    downloadBtn.classList.remove("loading");
+    downloadBtn.textContent = originalText;
   }
 });
 /* ======================
