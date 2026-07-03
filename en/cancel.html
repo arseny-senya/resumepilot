@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Оплата отменена | Resume Pilot</title>
+
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(circle at top, #3a2448, #0f1117 55%);
+        font-family: Inter, Arial, sans-serif;
+        color: white;
+      }
+
+      .cancel-card {
+        width: 460px;
+        max-width: 90%;
+        padding: 44px;
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 30px 90px rgba(0, 0, 0, 0.45);
+        text-align: center;
+      }
+
+      .cancel-icon {
+        font-size: 64px;
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 34px;
+      }
+
+      p {
+        color: #b8c0d9;
+        line-height: 1.7;
+        margin: 16px 0 28px;
+      }
+
+      .cancel-actions {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      a {
+        display: inline-block;
+        padding: 14px 20px;
+        border-radius: 14px;
+        color: white;
+        text-decoration: none;
+        font-weight: 700;
+        transition: 0.25s;
+      }
+
+      .primary-link {
+        background: #6c7bff;
+      }
+
+      .secondary-link {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      a:hover {
+        transform: translateY(-2px);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="cancel-card">
+      <div class="cancel-icon">💳</div>
+
+      <h1>Payment Cancelled</h1>
+
+      <p>
+        No worries! You can continue using the free resume templates or upgrade
+        to PRO anytime later.
+      </p>
+
+      <div class="cancel-actions">
+        <a href="./index.html" class="primary-link">Back to Resume Builder</a>
+        <a href="./index.html#templates" class="secondary-link">
+          View Templates
+        </a>
+      </div>
+    </div>
+  </body>
+</html>

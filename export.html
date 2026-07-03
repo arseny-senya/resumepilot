@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Export Resume</title>
+
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: white;
+      }
+
+      .export-page {
+        margin: 0;
+        padding: 0;
+        background: white;
+      }
+
+      .cv {
+        width: 794px !important;
+        min-height: 1123px !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        transform: none !important;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="export-page">
+      <div class="cv" id="preview"></div>
+    </div>
+
+    <script src="templates.js"></script>
+    <script src="export.js"></script>
+  </body>
+</html>

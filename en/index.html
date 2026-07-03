@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-N41DTXBZQ4"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-N41DTXBZQ4");
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3373017148163156"
+      crossorigin="anonymous"
+    ></script>
+    <!-- ===== SEO ===== -->
+    <title>Resume Builder online — create CV and download PDF for free</title>
+
+    <meta
+      name="description"
+      content="Create a professional resume online for free without registration. Fill in the details, select a template, upload a photo and download the finished resume in PDF format."
+    />
+
+    <meta
+      name="keywords"
+      content="resume builder, create resume online, download resume PDF, CV online, resume templates, free resume without registration"
+    />
+
+    <meta name="author" content="Resume builder" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- ===== CANONICAL ===== -->
+    <link rel="canonical" href="https://resumepilotonline.com/en/" />
+
+    <!-- ===== FAVICON ===== -->
+    <link rel="icon" href="/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+    <!-- ===== OPEN GRAPH (соцсети) ===== -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Resume Builder online — for free and without registration"
+    />
+    <meta
+      property="og:description"
+      content="Create a resume online in a few minutes, select a template and download the PDF for free."
+    />
+    <meta property="og:url" content="https://resumepilotonline.com/en/" />
+    <meta
+      property="og:image"
+      content="https://resumepilotonline.com/og-image.jpg"
+    />
+    <meta property="og:site_name" content="Resume builder" />
+
+    <!-- ===== TWITTER ===== -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Resume Builder Online" />
+    <meta
+      name="twitter:description"
+      content="Create a resume and download a PDF for free without registration."
+    />
+    <meta
+      name="twitter:image"
+      content="https://resumepilotonline.com/og-image.jpg"
+    />
+
+    <!-- ===== PRECONNECT (ускорение) ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="alternate"
+      hreflang="ru"
+      href="https://resumepilotonline.com/en/"
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://resumepilotonline.com/en/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://resumepilotonline.com/"
+    />
+    <!-- ===== STYLES ===== -->
+    <link rel="stylesheet" href="../style.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Resume builder",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "url": "https://resumepilotonline.com/en/",
+        "description": "Create professional resumes online and upload them in PDF format."
+      }
+    </script>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="logo">Resume Pilot</div>
+
+      <div class="header-right">
+        <div class="lang-switcher">
+          <a href="/">RU</a>
+          <a href="/en/" class="active">EN</a>
+        </div>
+
+        <div class="user-menu">
+          <button id="loginBtn" class="header-btn">Sign In</button>
+
+          <div id="userDropdown" class="user-dropdown hidden">
+            <button id="userButton" class="user-button">
+              👤 <span id="userEmail"></span>
+              <span id="planBadge">FREE</span>
+            </button>
+
+            <div id="dropdownMenu" class="dropdown-menu">
+              <button id="accountBtn">👤 My Account</button>
+
+              <button id="upgradeAccountBtn">⭐ Upgrade to PRO</button>
+
+              <button id="logoutBtn">🚪 Sign Out</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="auth-modal" id="authModal">
+      <div class="auth-box">
+        <button class="auth-close" id="closeAuth">×</button>
+
+        <h2>Welcome Back</h2>
+
+        <p class="auth-subtitle">Sign in to Resume Pilot</p>
+
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="showLogin">Sign In</button>
+
+          <button class="auth-tab" id="showRegister">Create Account</button>
+        </div>
+
+        <form id="authForm">
+          <input
+            type="text"
+            id="authName"
+            placeholder="Full Name"
+            style="display: none"
+          />
+
+          <input
+            type="email"
+            id="authEmail"
+            placeholder="Email Address"
+            required
+          />
+
+          <input
+            type="password"
+            id="authPassword"
+            placeholder="Password"
+            required
+          />
+
+          <button type="submit" class="auth-submit">Sign In</button>
+        </form>
+      </div>
+    </div>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Create a Professional Resume in Just 5 Minutes</h1>
+
+        <p>
+          Build a polished resume online with a live preview and one-click PDF
+          export. No registration required.
+        </p>
+
+        <div class="hero-buttons">
+          <button class="primary" id="startFreeBtn">Start for Free</button>
+
+          <button class="secondary" id="viewTemplatesBtn">
+            Browse Templates
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="seo-block">
+      <div class="seo-container">
+        <h2>Free Online Resume Builder</h2>
+
+        <p>
+          Create a professional resume online in minutes and download it as a
+          PDF. Simply fill in your information, choose a template, upload your
+          photo, and generate a polished resume ready for job applications.
+        </p>
+
+        <div class="steps">
+          <div class="step">
+            <span>1</span>
+            <h3>Enter Your Information</h3>
+            <p>
+              Add your name, contact details, education, work experience, and
+              skills.
+            </p>
+          </div>
+
+          <div class="step">
+            <span>2</span>
+            <h3>Upload Your Photo</h3>
+            <p>
+              Add a profile photo and adjust its position to fit your resume
+              perfectly.
+            </p>
+          </div>
+
+          <div class="step">
+            <span>3</span>
+            <h3>Download Your PDF</h3>
+            <p>
+              Generate and download your professional PDF resume with a single
+              click.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="roadmap">
+      <div class="roadmap-container">
+        <h2>Always Improving</h2>
+
+        <p>
+          Resume Pilot is constantly evolving. We regularly introduce new resume
+          templates, improve existing designs, and develop new features to make
+          resume creation even easier.
+        </p>
+
+        <ul>
+          <li>New modern resume templates</li>
+          <li>Improved template designs</li>
+          <li>More customization options</li>
+          <li>Enhanced PDF export and personalization features</li>
+        </ul>
+      </div>
+    </section>
+    <!-- BUILDER -->
+    <div class="page">
+      <div class="app" id="builder">
+        <!-- LEFT: FORM -->
+        <div class="form">
+          <h2>Create Your Resume</h2>
+
+          <label>Photo</label>
+          <input id="photo" type="file" accept="image/*" />
+
+          <label>Photo Scale</label>
+          <input id="zoom" type="range" min="1" max="3" step="0.1" value="1" />
+
+          <label>Horizontal Position</label>
+          <input id="posX" type="range" min="-50" max="50" value="0" />
+
+          <label>Vertical Position</label>
+          <input id="posY" type="range" min="-50" max="50" value="0" />
+
+          <input id="name" type="text" placeholder="First Name" />
+
+          <input id="surname" type="text" placeholder="Last Name" />
+
+          <input
+            id="contact"
+            type="text"
+            placeholder="Contact Information (Phone, Email, LinkedIn)"
+          />
+
+          <input id="skills" type="text" placeholder="Key Skills" />
+
+          <textarea id="experience" placeholder="Work Experience"></textarea>
+
+          <textarea id="education" placeholder="Education"></textarea>
+
+          <textarea id="qualities" placeholder="Personal Qualities"></textarea>
+
+          <textarea id="about" placeholder="Additional Information"></textarea>
+
+          <label class="template-label">Resume Templates</label>
+
+          <div class="template-gallery" id="templates">
+            <div class="template-item" data-template="modern">
+              <div class="template-thumb modern-thumb">
+                <div class="mini-header"></div>
+                <div class="mini-line"></div>
+                <div class="mini-line short"></div>
+                <div class="mini-line"></div>
+              </div>
+              <span>Modern</span>
+            </div>
+
+            <div class="template-item" data-template="sidebar">
+              <div class="template-thumb sidebar-thumb"></div>
+              <span>Sidebar</span>
+            </div>
+
+            <div class="template-item" data-template="corporate">
+              <div class="template-thumb corporate-thumb">
+                <div class="corp-top"></div>
+
+                <div class="corp-content">
+                  <div class="mini-header"></div>
+                  <div class="mini-line"></div>
+                  <div class="mini-line"></div>
+                  <div class="mini-line short"></div>
+                </div>
+              </div>
+
+              <span>Corporate</span>
+            </div>
+
+            <div class="template-item" data-template="creative">
+              <div class="template-thumb creative-thumb">
+                <div class="creative-banner"></div>
+
+                <div class="creative-content">
+                  <div class="mini-header"></div>
+                  <div class="mini-line"></div>
+                  <div class="mini-line short"></div>
+                  <div class="mini-line"></div>
+                </div>
+              </div>
+
+              <span>Creative</span>
+            </div>
+
+            <div class="template-item" data-template="elegant">
+              <div class="template-thumb elegant-thumb">
+                <div class="elegant-line"></div>
+
+                <div class="elegant-content">
+                  <div class="mini-header elegant-header"></div>
+                  <div class="mini-line"></div>
+                  <div class="mini-line short"></div>
+                  <div class="mini-line"></div>
+                </div>
+              </div>
+
+              <span>Elegant</span>
+            </div>
+          </div>
+
+          <h3 class="template-group pro-title">PRO Templates ✨</h3>
+
+          <div class="template-gallery pro-gallery">
+            <div class="template-item pro-template" data-template="executive">
+              <div class="pro-badge">PRO</div>
+              <div class="template-thumb executive-thumb"></div>
+              <span>Executive</span>
+            </div>
+
+            <div class="template-item pro-template" data-template="tech">
+              <div class="pro-badge">PRO</div>
+              <div class="template-thumb tech-thumb"></div>
+              <span>Tech Resume</span>
+            </div>
+
+            <div class="template-item pro-template" data-template="minimal">
+              <div class="pro-badge">PRO</div>
+              <div class="template-thumb minimal-thumb"></div>
+              <span>Minimal Pro</span>
+            </div>
+
+            <div class="template-item pro-template" data-template="designer">
+              <div class="pro-badge">PRO</div>
+              <div class="template-thumb designer-thumb"></div>
+              <span>Designer</span>
+            </div>
+
+            <div class="template-item pro-template" data-template="dark">
+              <div class="pro-badge">PRO</div>
+              <div class="template-thumb dark-thumb"></div>
+              <span>Dark Premium</span>
+            </div>
+          </div>
+
+          <button class="unlock-pro" id="unlockProBtn">
+            🔓 Unlock PRO Templates
+          </button>
+
+          <button id="download">Download PDF</button>
+        </div>
+
+        <!-- RIGHT: PREVIEW -->
+        <div class="preview">
+          <div class="cv" id="preview"></div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-left">
+          <div class="footer-logo">Resume Pilot</div>
+          <p>Free Online Resume Builder</p>
+        </div>
+
+        <div class="footer-links">
+          <a href="/en/privacy.html">Privacy Policy</a>
+          <a href="/en/about.html">About</a>
+          <a href="#" id="contactLink">Contact</a>
+        </div>
+
+        <div class="footer-right">© 2026 All rights reserved</div>
+      </div>
+    </footer>
+
+    <div id="pdfClone" style="position: absolute; left: -9999px; top: 0">
+      <div class="cv" id="previewClone"></div>
+    </div>
+
+    <div class="modal" id="contactModal">
+      <div class="modal-content">
+        <span class="modal-close" id="closeModal">×</span>
+
+        <h2>Contact</h2>
+
+        <p>For questions, feedback or support:</p>
+
+        <a href="mailto:arsendobr@gmail.com" class="email">
+          arsendobr@gmail.com
+        </a>
+      </div>
+    </div>
+
+    <!-- ACCOUNT MODAL -->
+
+    <div class="account-modal" id="accountModal">
+      <div class="account-box">
+        <button class="account-close" id="closeAccount">×</button>
+
+        <div class="account-avatar">👤</div>
+
+        <h2 id="accountName">User</h2>
+
+        <p id="accountEmail">email@email.com</p>
+
+        <div class="account-plan">
+          <span>Your Plan</span>
+
+          <strong id="accountPlan">FREE</strong>
+        </div>
+
+        <button id="accountUpgradeBtn" class="account-action">
+          ⭐ Upgrade to PRO
+        </button>
+
+        <button id="logoutAccountBtn" class="account-action danger">
+          🚪 Sign Out
+        </button>
+      </div>
+    </div>
+
+    <!-- ======================
+     PRO MODAL
+====================== -->
+
+    <div class="pro-modal" id="proModal">
+      <div class="pro-box">
+        <button class="pro-close" id="closeProModal">×</button>
+
+        <div class="pro-icon">⭐</div>
+
+        <h2>Resume Pilot PRO</h2>
+
+        <p class="pro-subtitle">
+          Unlock every feature and build professional resumes without limits.
+        </p>
+
+        <div class="pro-features">
+          <div class="pro-feature">✅ Premium resume templates</div>
+
+          <div class="pro-feature">✅ Unlimited PDF exports</div>
+
+          <div class="pro-feature">
+            ✅ AI-powered resume assistant (coming soon)
+          </div>
+
+          <div class="pro-feature">✅ Lifetime access</div>
+        </div>
+
+        <div class="pro-price">
+          <span class="price">€5</span>
+
+          <span class="lifetime">One-time payment</span>
+        </div>
+
+        <button class="pro-upgrade-btn" id="upgradeNowBtn">
+          Upgrade to PRO
+        </button>
+      </div>
+    </div>
+    <div class="toast-container" id="toastContainer"></div>
+    <!-- PDF LIB -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="../templates.js"></script>
+    <script src="../script.js"></script>
+  </body>
+</html>

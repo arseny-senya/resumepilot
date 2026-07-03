@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-N41DTXBZQ4"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-N41DTXBZQ4");
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3373017148163156"
+      crossorigin="anonymous"
+    ></script>
+    <!-- ===== SEO ===== -->
+    <title>
+      Конструктор резюме онлайн — создать CV и скачать PDF бесплатно
+    </title>
+
+    <meta
+      name="description"
+      content="Создайте профессиональное резюме онлайн бесплатно без регистрации. Заполните данные, выберите шаблон, загрузите фото и скачайте готовое резюме в PDF формате."
+    />
+
+    <meta
+      name="keywords"
+      content="конструктор резюме, создать резюме онлайн, скачать резюме PDF, CV онлайн, шаблоны резюме, бесплатное резюме без регистрации"
+    />
+
+    <meta name="author" content="Конструктор резюме" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- ===== CANONICAL ===== -->
+    <link rel="canonical" href="https://resumepilotonline.com/" />
+
+    <!-- ===== FAVICON ===== -->
+    <link rel="icon" href="/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+    <!-- ===== OPEN GRAPH (соцсети) ===== -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Конструктор резюме онлайн — бесплатно и без регистрации"
+    />
+    <meta
+      property="og:description"
+      content="Создайте резюме онлайн за несколько минут, выберите шаблон и скачайте PDF бесплатно."
+    />
+    <meta property="og:url" content="https://resumepilotonline.com/" />
+    <meta
+      property="og:image"
+      content="https://resumepilotonline.com/og-image.jpg"
+    />
+    <meta property="og:site_name" content="Конструктор резюме" />
+
+    <!-- ===== TWITTER ===== -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Конструктор резюме онлайн" />
+    <meta
+      name="twitter:description"
+      content="Создайте резюме и скачайте PDF бесплатно без регистрации."
+    />
+    <meta
+      name="twitter:image"
+      content="https://resumepilotonline.com/og-image.jpg"
+    />
+
+    <!-- ===== PRECONNECT (ускорение) ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="alternate" hreflang="ru" href="https://resumepilotonline.com/" />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://resumepilotonline.com/en/"
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://resumepilotonline.com/"
+    />
+    <!-- ===== STYLES ===== -->
+    <link rel="stylesheet" href="style.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Конструктор резюме",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "url": "https://resumepilotonline.com/",
+        "description": "Создавайте профессиональные резюме онлайн и загружайте их в формате PDF."
+      }
+    </script>
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="logo">Resume Pilot</div>
+
+      <div class="header-right">
+        <div class="lang-switcher">
+          <a href="/" class="active">RU</a>
+          <a href="/en/">EN</a>
+        </div>
+
+        <div class="user-menu">
+          <button id="loginBtn" class="header-btn">Войти</button>
+
+          <div id="userDropdown" class="user-dropdown hidden">
+            <button id="userButton" class="user-button">
+              👤 <span id="userEmail"></span>
+              <span id="planBadge">FREE</span>
+            </button>
+
+            <div id="dropdownMenu" class="dropdown-menu">
+              <button id="accountBtn">👤 Мой аккаунт</button>
+
+              <button id="upgradeAccountBtn" id="unlockProBtn">
+                ⭐ Обновить до PRO
+              </button>
+
+              <button id="logoutBtn">🚪 Выход</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="auth-modal" id="authModal">
+      <div class="auth-box">
+        <button class="auth-close" id="closeAuth">×</button>
+
+        <h2>С возвращением</h2>
+
+        <p class="auth-subtitle">Войти в Resume Pilot</p>
+
+        <div class="auth-tabs">
+          <button class="auth-tab active" id="showLogin">Войти</button>
+
+          <button class="auth-tab" id="showRegister">Зарегистрироваться</button>
+        </div>
+
+        <form id="authForm">
+          <input
+            type="text"
+            id="authName"
+            placeholder="Your name"
+            style="display: none"
+          />
+
+          <input type="email" id="authEmail" placeholder="Email" required />
+
+          <input
+            type="password"
+            id="authPassword"
+            placeholder="Password"
+            required
+          />
+
+          <button type="submit" class="auth-submit">Войти</button>
+        </form>
+      </div>
+    </div>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Создай профессиональное резюме за 5 минут</h1>
+
+        <p>
+          Онлайн-конструктор резюме с живым предпросмотром и экспортом в PDF.
+          Без регистрации и лишних шагов.
+        </p>
+
+        <div class="hero-buttons">
+          <button class="primary" id="startFreeBtn">Начать бесплатно</button>
+          <button class="secondary" id="viewTemplatesBtn">
+            Смотреть шаблоны
+          </button>
+        </div>
+      </div>
+    </section>
+    <section class="seo-block">
+      <div class="seo-container">
+        <h2>Конструктор резюме онлайн без регистрации</h2>
+
+        <p>
+          Создайте профессиональное резюме онлайн бесплатно и скачайте его в
+          PDF. Наш конструктор резюме позволяет быстро заполнить информацию,
+          выбрать шаблон и получить готовый документ всего за несколько минут.
+        </p>
+
+        <div class="steps">
+          <div class="step">
+            <span>1</span>
+            <h3>Заполните информацию</h3>
+            <p>Укажите имя, контакты, образование, опыт работы и навыки.</p>
+          </div>
+
+          <div class="step">
+            <span>2</span>
+            <h3>Загрузите фото</h3>
+            <p>Добавьте фотографию и настройте её положение в резюме.</p>
+          </div>
+
+          <div class="step">
+            <span>3</span>
+            <h3>Скачайте PDF</h3>
+            <p>Получите готовое резюме в формате PDF одним нажатием.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="roadmap">
+      <div class="roadmap-container">
+        <h2>Проект развивается</h2>
+
+        <p>
+          Конструктор резюме постоянно улучшается. Мы регулярно добавляем новые
+          шаблоны, дорабатываем существующие дизайны и работаем над новыми
+          возможностями для создания профессиональных резюме.
+        </p>
+
+        <ul>
+          <li>Новые современные шаблоны резюме</li>
+          <li>Улучшение существующих дизайнов</li>
+          <li>Дополнительные настройки оформления</li>
+          <li>Новые функции экспорта и персонализации</li>
+        </ul>
+      </div>
+    </section>
+    <!-- BUILDER -->
+    <div class="page">
+      <div class="app" id="builder">
+        <!-- LEFT: FORM -->
+        <div class="form">
+          <h2>Создать резюме</h2>
+          <label>Фото</label>
+          <input id="photo" type="file" accept="image/*" />
+
+          <label>Масштаб фото</label>
+          <input id="zoom" type="range" min="1" max="3" step="0.1" value="1" />
+
+          <label>Сдвиг по X</label>
+          <input id="posX" type="range" min="-50" max="50" value="0" />
+
+          <label>Сдвиг по Y</label>
+          <input id="posY" type="range" min="-50" max="50" value="0" />
+
+          <input id="name" type="text" placeholder="Имя" />
+          <input id="surname" type="text" placeholder="Фамилия" />
+
+          <input
+            id="contact"
+            type="text"
+            placeholder="Контакты (телефон, email, telegram)"
+          />
+
+          <input id="skills" type="text" placeholder="Ключевые навыки" />
+
+          <textarea id="experience" placeholder="Опыт работы"></textarea>
+
+          <textarea id="education" placeholder="Образование"></textarea>
+
+          <textarea id="qualities" placeholder="Личные качества"></textarea>
+
+          <textarea id="about" placeholder="Дополнительно"></textarea>
+
+          <!-- PHOTO CONTROLS -->
+
+          <label class="template-label">Шаблон резюме</label>
+
+          <div class="template-gallery" id="templates">
+            <div class="template-item" data-template="modern">
+              <div class="template-thumb modern-thumb">
+                <div class="mini-header"></div>
+                <div class="mini-line"></div>
+                <div class="mini-line short"></div>
+                <div class="mini-line"></div>
+              </div>
+              <span>Modern</span>
+            </div>
+
+            <div class="template-item" data-template="sidebar">
+              <div class="template-thumb sidebar-thumb"></div>
+              <span>Sidebar</span>
+            </div>
+
+            <div class="template-item" data-template="corporate">
+              <div class="template-thumb corporate-thumb">
+                <div class="corp-top"></div>
+
+                <div class="corp-content">
+                  <div class="mini-header"></div>
+                  <div class="mini-line"></div>
+                  <div class="mini-line"></div>
+                  <div class="mini-line short"></div>
+                </div>
+              </div>
+
+              <span>Corporate</span>
+            </div>
+
+            <div class="template-item" data-template="creative">
+              <div class="template-thumb creative-thumb">
+                <div class="creative-banner"></div>
+
+                <div class="creative-content">
+                  <div class="mini-header"></div>
+                  <div class="mini-line"></div>
+                  <div class="mini-line short"></div>
+                  <div class="mini-line"></div>
+                </div>
+              </div>
+
+              <span>Creative</span>
+            </div>
+            <div class="template-item" data-template="elegant">
+              <div class="template-thumb elegant-thumb">
+                <div class="elegant-line"></div>
+
+                <div class="elegant-content">
+                  <div class="mini-header elegant-header"></div>
+                  <div class="mini-line"></div>
+                  <div class="mini-line short"></div>
+                  <div class="mini-line"></div>
+                </div>
+              </div>
+
+              <span>Elegant</span>
+            </div>
+          </div>
+          <h3 class="template-group pro-title">PRO шаблоны ✨</h3>
+
+          <div class="template-gallery pro-gallery">
+            <div class="template-item pro-template" data-template="executive">
+              <div class="pro-badge">PRO</div>
+              <div class="template-thumb executive-thumb"></div>
+              <span>Executive</span>
+            </div>
+
+            <div class="template-item pro-template" data-template="tech">
+              <div class="pro-badge">PRO</div>
+              <div class="template-thumb tech-thumb"></div>
+              <span>Tech Resume</span>
+            </div>
+
+            <div class="template-item pro-template" data-template="minimal">
+              <div class="pro-badge">PRO</div>
+              <div class="template-thumb minimal-thumb"></div>
+              <span>Minimal Pro</span>
+            </div>
+
+            <div class="template-item pro-template" data-template="designer">
+              <div class="pro-badge">PRO</div>
+              <div class="template-thumb designer-thumb"></div>
+              <span>Designer</span>
+            </div>
+
+            <div class="template-item pro-template" data-template="dark">
+              <div class="pro-badge">PRO</div>
+              <div class="template-thumb dark-thumb"></div>
+              <span>Dark Premium</span>
+            </div>
+          </div>
+
+          <button class="unlock-pro" id="unlockProBtn">
+            🔓 Разблокировать PRO шаблоны
+          </button>
+          <button id="download">Скачать PDF</button>
+        </div>
+
+        <!-- RIGHT: PREVIEW -->
+        <div class="preview">
+          <div class="cv" id="preview"></div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-left">
+          <div class="footer-logo">Resume Pilot</div>
+          <p>Создание резюме онлайн без регистрации</p>
+        </div>
+
+        <div class="footer-links">
+          <a href="/privacy.html">Политика конфиденциальности</a>
+          <a href="/about.html">О проекте</a>
+          <a href="#" id="contactLink">Контакты</a>
+        </div>
+
+        <div class="footer-right">© 2026 All rights reserved</div>
+      </div>
+    </footer>
+    <div id="pdfClone" style="position: absolute; left: -9999px; top: 0">
+      <div class="cv" id="previewClone"></div>
+    </div>
+    <div class="modal" id="contactModal">
+      <div class="modal-content">
+        <span class="modal-close" id="closeModal">×</span>
+
+        <h2>Контакты</h2>
+
+        <p>По вопросам и предложениям:</p>
+
+        <a href="mailto:arsendobr@gmail.com" class="email">
+          arsendobr@gmail.com
+        </a>
+      </div>
+    </div>
+    <!-- ACCOUNT MODAL -->
+
+    <div class="account-modal" id="accountModal">
+      <div class="account-box">
+        <button class="account-close" id="closeAccount">×</button>
+
+        <div class="account-avatar">👤</div>
+
+        <h2 id="accountName">User</h2>
+
+        <p id="accountEmail">email@email.com</p>
+
+        <div class="account-plan">
+          <span>Ваш план</span>
+
+          <strong id="accountPlan"> FREE </strong>
+        </div>
+
+        <button id="accountUpgradeBtn" class="account-action">
+          ⭐ Обновить до PRO
+        </button>
+
+        <button id="logoutAccountBtn" class="account-action danger">
+          🚪 Выход
+        </button>
+      </div>
+    </div>
+    <!-- ======================
+     PRO MODAL
+====================== -->
+
+    <div class="pro-modal" id="proModal">
+      <div class="pro-box">
+        <button class="pro-close" id="closeProModal">×</button>
+
+        <div class="pro-icon">⭐</div>
+
+        <h2>Resume Pilot PRO</h2>
+
+        <p class="pro-subtitle">
+          Открывайте все и создавайте резюме без ограничений.
+        </p>
+
+        <div class="pro-features">
+          <div class="pro-feature">✅ Шаблоны резюме премиум-класса</div>
+
+          <div class="pro-feature">✅ Неограниченный экспорт PDF-файлов</div>
+
+          <div class="pro-feature">
+            ✅ Будущий помощник по составлению резюме с использованием
+            искусственного интеллекта
+          </div>
+
+          <div class="pro-feature">✅ Пожизненный доступ</div>
+        </div>
+
+        <div class="pro-price">
+          <span class="price">€5</span>
+
+          <span class="lifetime">Единовременный платеж</span>
+        </div>
+
+        <button class="pro-upgrade-btn" id="upgradeNowBtn">
+          обновить до PRO
+        </button>
+      </div>
+    </div>
+    <div class="toast-container" id="toastContainer"></div>
+    <!-- PDF LIB -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="templates.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
