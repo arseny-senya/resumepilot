@@ -457,9 +457,10 @@ loadUser?.();
 async function buyPro() {
   const token = localStorage.getItem("token");
 
-  // Пользователь не вошёл
-  if (!token) {
-    proModal?.classList.remove("show");
+  if (!token || !currentUser) {
+    localStorage.removeItem("token");
+
+    closePro();
     authModal?.classList.add("show");
 
     showToast(t("Сначала войдите в аккаунт"), "info");
@@ -492,7 +493,6 @@ async function buyPro() {
     showToast(t("Ошибка оплаты"), "error");
   }
 }
-
 /* ======================
    AUTH MODAL
 ====================== */
