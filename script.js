@@ -568,7 +568,7 @@ authForm?.addEventListener("submit", async (e) => {
         : `${API_URL}/api/auth/register`;
 
     // Проверяем согласие только при регистрации
-    if (authMode === "register" && !privacyAgree.checked) {
+    if (authMode === "register" && privacyAgree && !privacyAgree.checked) {
       showToast(t("Примите политику конфиденциальности"), "info");
       return;
     }
@@ -601,6 +601,14 @@ authForm?.addEventListener("submit", async (e) => {
     authModal?.classList.remove("show");
 
     authForm.reset();
+
+    if (policyLabel && privacyAgree) {
+      policyLabel.style.display = "none";
+      privacyAgree.checked = false;
+      privacyAgree.required = false;
+    }
+
+    authMode = "login";
   } catch (err) {
     console.error(err);
     showToast(t("❌ Ошибка соединения"), "error");
