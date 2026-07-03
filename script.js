@@ -23,6 +23,7 @@ const TEXT = {
     "Пользователь не найден": "User not found",
     "Неверный пароль": "Invalid password",
     "Примите политику конфиденциальности": "Please accept the Privacy Policy",
+    "Пользователь уже существует": "User already exists",
   },
 };
 let currentUser = null;
