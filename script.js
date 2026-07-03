@@ -154,30 +154,7 @@ async function loadUser() {
     document.getElementById("userDropdown").classList.add("hidden");
   }
 }
-const loginBtn = document.getElementById("loginBtn");
 
-loginBtn?.addEventListener("click", () => {
-  authMode = "login";
-
-  authModal?.classList.add("show");
-
-  showLogin?.classList.add("active");
-  showRegister?.classList.remove("active");
-
-  if (authName) {
-    authName.style.display = "none";
-  }
-
-  if (policyLabel && privacyAgree) {
-    policyLabel.style.display = "none";
-    privacyAgree.required = false;
-    privacyAgree.checked = false;
-  }
-
-  if (authSubmit) {
-    authSubmit.textContent = LANG === "en" ? "Sign In" : "Войти";
-  }
-});
 /* ======================
    USER DROPDOWN
 ====================== */
