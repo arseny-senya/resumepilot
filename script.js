@@ -383,7 +383,7 @@ load();
    TEMPLATE SWITCH
 ====================== */
 
-const API_URL = "http://localhost:3000";
+const API_URL = "https://resumepilot-w360.onrender.com";
 
 /* ======================
    TEMPLATE SYSTEM

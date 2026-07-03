@@ -22,7 +22,15 @@ const app = express();
    MIDDLEWARE
 ====================== */
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "https://resumepilotonline.com",
+      "https://www.resumepilotonline.com",
+    ],
+    credentials: true,
+  }),
+);
 
 /* Stripe webhook ДОЛЖЕН идти ДО express.json() */
 app.use("/api/payment/webhook", express.raw({ type: "application/json" }));
