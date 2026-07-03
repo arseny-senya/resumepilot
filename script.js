@@ -527,15 +527,18 @@ showLogin?.addEventListener("click", () => {
   showLogin.classList.add("active");
   showRegister?.classList.remove("active");
 
-  authName.style.display = "none";
+  if (authName) {
+    authName.style.display = "none";
+  }
 
-  // Скрываем политику
-  policyLabel.style.display = "none";
-  privacyAgree.required = false;
-  privacyAgree.checked = false;
+  if (policyLabel && privacyAgree) {
+    policyLabel.style.display = "none";
+    privacyAgree.required = false;
+    privacyAgree.checked = false;
+  }
 
   if (authSubmit) {
-    authSubmit.textContent = "Sign In";
+    authSubmit.textContent = LANG === "en" ? "Sign In" : "Войти";
   }
 });
 
@@ -545,18 +548,23 @@ showRegister?.addEventListener("click", () => {
   showRegister.classList.add("active");
   showLogin?.classList.remove("active");
 
-  authName.style.display = "block";
+  if (authName) {
+    authName.style.display = "block";
+  }
 
-  // Показываем политику
-  policyLabel.style.display = "flex";
-  privacyAgree.required = true;
+  if (policyLabel && privacyAgree) {
+    policyLabel.style.display = "flex";
+    privacyAgree.required = true;
+  }
 
   if (authSubmit) {
-    authSubmit.textContent = "Create Account";
+    authSubmit.textContent =
+      LANG === "en" ? "Create Account" : "Зарегистрироваться";
   }
 });
+
 /* ======================
-   AUTH SUBMIT (FIXED)
+   AUTH SUBMIT
 ====================== */
 
 authForm?.addEventListener("submit", async (e) => {
@@ -568,7 +576,6 @@ authForm?.addEventListener("submit", async (e) => {
         ? `${API_URL}/api/auth/login`
         : `${API_URL}/api/auth/register`;
 
-    // Проверяем согласие только при регистрации
     if (authMode === "register" && privacyAgree && !privacyAgree.checked) {
       showToast(t("Примите политику конфиденциальности"), "info");
       return;
