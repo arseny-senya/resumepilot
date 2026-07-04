@@ -449,9 +449,15 @@ function applyTemplate(template) {
 
   document.querySelectorAll(".template-item").forEach((card) => {
     card.addEventListener("click", () => {
+      document.querySelectorAll(".template-item").forEach((item) => {
+        item.classList.remove("active");
+      });
+
+      card.classList.add("active");
+
       applyTemplate(card.dataset.template);
 
-      document.querySelector(".preview")?.scrollIntoView({
+      document.querySelector(".cv")?.scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
