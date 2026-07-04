@@ -3829,6 +3829,13 @@ body {
   );
   opacity: 0.35;
 }
+.template-editorial p {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #444;
+  white-space: pre-line;
+}
 /* =========================
    PRO TEMPLATE: FASHION
 ========================= */
@@ -3981,4 +3988,12 @@ body {
 
 .fashion-sidebar {
   width: 260px;
+}
+.template-fashion p {
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #5b452c;
+  font-weight: 400;
+  white-space: pre-line;
 }
