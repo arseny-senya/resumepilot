@@ -3941,3 +3941,32 @@ body {
   color: #fff;
   font-weight: 800;
 }
+.fashion-thumb {
+  background: linear-gradient(90deg, #ead6ba 0 35%, #fbf7ee 35% 100%);
+  border: 1px solid #d4bd99;
+  position: relative;
+  overflow: hidden;
+}
+
+.fashion-thumb::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 35%;
+  height: 35%;
+  background: #c9ad82;
+}
+
+.fashion-thumb::after {
+  content: "";
+  position: absolute;
+  left: 42%;
+  right: 10%;
+  top: 42%;
+  height: 18px;
+  background: #7a562d;
+  box-shadow:
+    0 42px 0 #7a562d,
+    -88px 120px 0 #ead6ba;
+}
