@@ -89,6 +89,7 @@ const PRO_TEMPLATES = [
   "designer",
   "dark",
   "editorial",
+  "fashion",
 ];
 
 /* ======================

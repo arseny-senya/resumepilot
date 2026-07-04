@@ -679,4 +679,60 @@ ${L.resume}
 
 </div>
 `,
+  fashion: () => `
+<div class="template-fashion">
+
+  <aside class="fashion-sidebar">
+
+    <div class="fashion-photo">
+      <img class="js-photo">
+    </div>
+
+    <div class="fashion-name-block">
+      <h1 class="js-name"></h1>
+    </div>
+
+    <section class="fashion-side-section">
+      <h3>${L.about}</h3>
+      <p class="js-about"></p>
+    </section>
+
+    <section class="fashion-side-section">
+      <h3>${L.skills}</h3>
+      <p class="js-skills"></p>
+    </section>
+
+    <section class="fashion-side-section">
+      <h3>${L.qualities}</h3>
+      <p class="js-qualities"></p>
+    </section>
+
+  </aside>
+
+  <main class="fashion-main">
+
+    <div class="fashion-contact">
+      <p class="js-contact"></p>
+    </div>
+
+    <section class="fashion-main-section">
+      <div class="fashion-heading">
+        <span></span>
+        <h3>${L.experience}</h3>
+      </div>
+      <p class="js-experience"></p>
+    </section>
+
+    <section class="fashion-main-section">
+      <div class="fashion-heading">
+        <span></span>
+        <h3>${L.education}</h3>
+      </div>
+      <p class="js-education"></p>
+    </section>
+
+  </main>
+
+</div>
+`,
 };

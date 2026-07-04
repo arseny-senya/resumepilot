@@ -3829,3 +3829,170 @@ body {
   );
   opacity: 0.35;
 }
+/* =========================
+   PRO TEMPLATE: FASHION
+========================= */
+
+.template-fashion {
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  background: #fbf7ee;
+  color: #5b452c;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+.template-fashion * {
+  box-sizing: border-box;
+}
+
+.fashion-sidebar {
+  background: #ead6ba;
+  border-right: 1px solid #8a6538;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.fashion-photo {
+  width: 100%;
+  height: 250px;
+  background: #d8c1a0;
+  overflow: hidden;
+}
+
+.fashion-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.fashion-name-block {
+  padding: 34px 30px 26px;
+  border-bottom: 1px solid #8a6538;
+}
+
+.fashion-name-block h1 {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.08;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #7a562d;
+  font-weight: 800;
+}
+
+.fashion-side-section {
+  padding: 24px 30px;
+  border-bottom: 1px solid #8a6538;
+}
+
+.fashion-side-section h3 {
+  margin: 0 0 16px;
+  font-size: 18px;
+  color: #7a562d;
+  font-weight: 800;
+}
+
+.fashion-side-section p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.55;
+  color: #6a563e;
+  white-space: pre-line;
+}
+
+.fashion-main {
+  padding: 44px 46px;
+  overflow: hidden;
+}
+
+.fashion-contact {
+  min-height: 110px;
+  padding-left: 46px;
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+
+.fashion-contact::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 24px;
+  color: #7a562d;
+}
+
+.fashion-contact p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.45;
+  color: #6a563e;
+  white-space: pre-line;
+}
+
+.fashion-main-section {
+  margin-top: 26px;
+}
+
+.fashion-heading {
+  height: 54px;
+  background: #7a562d;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 28px;
+  margin: 0 -46px 28px;
+}
+
+.fashion-heading h3 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.fashion-main-section p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.58;
+  color: #5b452c;
+  font-weight: 600;
+  white-space: pre-line;
+}
+
+/* Preview card */
+.fashion-thumb {
+  background: linear-gradient(90deg, #ead6ba 0 35%, #fbf7ee 35% 100%);
+  border: 1px solid #d4bd99;
+  position: relative;
+  overflow: hidden;
+}
+
+.fashion-thumb::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 35%;
+  height: 35%;
+  background: #c9ad82;
+}
+
+.fashion-thumb::after {
+  content: "";
+  position: absolute;
+  left: 42%;
+  right: 10%;
+  top: 42%;
+  height: 18px;
+  background: #7a562d;
+  box-shadow:
+    0 42px 0 #7a562d,
+    -88px 120px 0 #ead6ba;
+}
