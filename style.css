@@ -3843,7 +3843,9 @@ body {
   box-sizing: border-box;
   font-family: Arial, sans-serif;
 }
-
+.template-fashion p {
+  font-size: 13px;
+}
 .template-fashion * {
   box-sizing: border-box;
 }
