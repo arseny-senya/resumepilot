@@ -20,6 +20,7 @@
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.7.3",
     "puppeteer": "^25.2.1",
+    "resend": "^6.17.1",
     "stripe": "^22.3.0"
   },
   "devDependencies": {

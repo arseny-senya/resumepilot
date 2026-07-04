@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import User from "../models/User.js";
 import { generateToken } from "../utils/generateToken.js";
+import { sendWelcomeEmail } from "../services/email.service.js";
 
 /* ======================
    REGISTER
@@ -27,7 +28,12 @@ export const register = async (req, res) => {
     });
 
     const token = generateToken(user._id);
-
+    sendWelcomeEmail({
+      email: user.email,
+      name: user.name,
+    }).catch((err) => {
+      console.error("Welcome email error:", err);
+    });
     res.json({
       user: {
         id: user._id,
