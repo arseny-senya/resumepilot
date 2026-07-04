@@ -447,10 +447,16 @@ function applyTemplate(template) {
 
   update?.();
 
-  document.querySelectorAll(".template-item").forEach((item) => {
-    item.classList.remove("active");
-  });
+  document.querySelectorAll(".template-item").forEach((card) => {
+    card.addEventListener("click", () => {
+      applyTemplate(card.dataset.template);
 
+      document.querySelector(".preview")?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    });
+  });
   document
     .querySelector(`[data-template="${template}"]`)
     ?.classList.add("active");
