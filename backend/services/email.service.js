@@ -193,3 +193,61 @@ color:#999;
 `,
   });
 }
+export async function sendResetPasswordEmail({ email, name, resetUrl, lang }) {
+  const isRu = lang === "ru";
+
+  return resend.emails.send({
+    from: process.env.EMAIL_FROM,
+    to: email,
+    subject: isRu
+      ? "Восстановление пароля | Resume Pilot"
+      : "Reset your password | Resume Pilot",
+
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 560px; margin: 0 auto; padding: 24px;">
+        <h1 style="color:#111;">
+          ${isRu ? "Восстановление пароля" : "Reset your password"}
+        </h1>
+
+        <p>
+          ${isRu ? `Здравствуйте${name ? `, ${name}` : ""}!` : `Hi${name ? `, ${name}` : ""}!`}
+        </p>
+
+        <p>
+          ${
+            isRu
+              ? "Мы получили запрос на восстановление пароля для вашего аккаунта Resume Pilot."
+              : "We received a request to reset the password for your Resume Pilot account."
+          }
+        </p>
+
+        <p>
+          ${
+            isRu
+              ? "Нажмите на кнопку ниже, чтобы создать новый пароль. Ссылка будет действительна ограниченное время."
+              : "Click the button below to create a new password. This link will be valid for a limited time."
+          }
+        </p>
+
+        <p style="text-align:center; margin: 30px 0;">
+          <a href="${resetUrl}"
+            style="display:inline-block; padding:14px 22px; background:#6c7bff; color:#fff; text-decoration:none; border-radius:10px; font-weight:bold;">
+            ${isRu ? "Сбросить пароль" : "Reset password"}
+          </a>
+        </p>
+
+        <p style="color:#666; font-size:14px;">
+          ${
+            isRu
+              ? "Если вы не запрашивали восстановление пароля, просто проигнорируйте это письмо."
+              : "If you did not request a password reset, you can safely ignore this email."
+          }
+        </p>
+
+        <p style="color:#999; font-size:13px; margin-top:30px;">
+          Resume Pilot
+        </p>
+      </div>
+    `,
+  });
+}

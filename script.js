@@ -26,6 +26,9 @@ const TEXT = {
     "Пользователь уже существует": "User already exists",
     "Вход...": "Signing in...",
     "Создание аккаунта...": "Creating account...",
+    "Ошибка восстановления пароля": "Password recovery error",
+    "Если аккаунт существует, ссылка отправлена на email":
+      "If the account exists, a reset link has been sent to your email",
   },
 };
 let currentUser = null;
@@ -841,4 +844,71 @@ togglePassword?.addEventListener("click", () => {
 
   authPassword.type = isPassword ? "text" : "password";
   togglePassword.textContent = isPassword ? "🙈" : "👁";
+});
+const forgotPasswordBtn = document.getElementById("forgotPasswordBtn");
+const forgotModal = document.getElementById("forgotModal");
+const closeForgot = document.getElementById("closeForgot");
+const forgotForm = document.getElementById("forgotForm");
+const forgotEmail = document.getElementById("forgotEmail");
+const forgotSubmit = document.getElementById("forgotSubmit");
+
+forgotPasswordBtn?.addEventListener("click", () => {
+  authModal?.classList.remove("show");
+  forgotModal?.classList.add("show");
+
+  if (forgotEmail && authEmail?.value) {
+    forgotEmail.value = authEmail.value;
+  }
+});
+
+closeForgot?.addEventListener("click", () => {
+  forgotModal?.classList.remove("show");
+});
+
+forgotModal?.addEventListener("click", (e) => {
+  if (e.target === forgotModal) {
+    forgotModal.classList.remove("show");
+  }
+});
+
+forgotForm?.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const originalText = forgotSubmit.textContent;
+
+  try {
+    forgotSubmit.disabled = true;
+    forgotSubmit.classList.add("loading");
+    forgotSubmit.textContent = LANG === "en" ? "Sending..." : "Отправка...";
+
+    const res = await fetch(`${API_URL}/api/auth/forgot-password`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: forgotEmail.value.trim(),
+        lang: LANG,
+      }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      showToast(t(data.message || "Ошибка восстановления пароля"), "error");
+      return;
+    }
+
+    showToast(t(data.message), "success");
+
+    forgotForm.reset();
+    forgotModal?.classList.remove("show");
+  } catch (err) {
+    console.error(err);
+    showToast(t("❌ Ошибка соединения"), "error");
+  } finally {
+    forgotSubmit.disabled = false;
+    forgotSubmit.classList.remove("loading");
+    forgotSubmit.textContent = originalText;
+  }
 });
