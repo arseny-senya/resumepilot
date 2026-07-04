@@ -3970,3 +3970,15 @@ body {
     0 42px 0 #7a562d,
     -88px 120px 0 #ead6ba;
 }
+.template-fashion {
+  display: flex;
+  padding: 0;
+}
+
+.fashion-main {
+  padding: 40px;
+}
+
+.fashion-sidebar {
+  width: 260px;
+}
