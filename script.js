@@ -24,6 +24,8 @@ const TEXT = {
     "Неверный пароль": "Invalid password",
     "Примите политику конфиденциальности": "Please accept the Privacy Policy",
     "Пользователь уже существует": "User already exists",
+    "Вход...": "Signing in...",
+    "Создание аккаунта...": "Creating account...",
   },
 };
 let currentUser = null;
@@ -605,7 +607,14 @@ showRegister?.addEventListener("click", () => {
 authForm?.addEventListener("submit", async (e) => {
   e.preventDefault();
 
+  const originalText = authSubmit.textContent;
+
   try {
+    authSubmit.disabled = true;
+    authSubmit.classList.add("loading");
+    authSubmit.textContent =
+      authMode === "login" ? t("Вход...") : t("Создание аккаунта...");
+
     const url =
       authMode === "login"
         ? `${API_URL}/api/auth/login`
@@ -642,7 +651,6 @@ authForm?.addEventListener("submit", async (e) => {
     await loadUser();
 
     authModal?.classList.remove("show");
-
     authForm.reset();
 
     if (policyLabel && privacyAgree) {
@@ -655,6 +663,10 @@ authForm?.addEventListener("submit", async (e) => {
   } catch (err) {
     console.error(err);
     showToast(t("❌ Ошибка соединения"), "error");
+  } finally {
+    authSubmit.disabled = false;
+    authSubmit.classList.remove("loading");
+    authSubmit.textContent = originalText;
   }
 });
 /* ======================
