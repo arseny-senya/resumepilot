@@ -131,8 +131,13 @@ export const forgotPassword = async (req, res) => {
 
     const resetToken = crypto.randomBytes(32).toString("hex");
 
-    user.resetPasswordToken = resetToken;
-    user.resetPasswordExpires = Date.now() + 30 * 60 * 1000; // 30 минут
+    const hashedToken = crypto
+      .createHash("sha256")
+      .update(resetToken)
+      .digest("hex");
+
+    user.resetPasswordToken = hashedToken;
+    user.resetPasswordExpires = Date.now() + 30 * 60 * 1000;
 
     await user.save();
 
@@ -182,11 +187,12 @@ export const resetPassword = async (req, res) => {
       });
     }
 
+    const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
+
     const user = await User.findOne({
-      resetPasswordToken: token,
+      resetPasswordToken: hashedToken,
       resetPasswordExpires: { $gt: Date.now() },
     });
-
     if (!user) {
       return res.status(400).json({
         message: "Ссылка недействительна или устарела",
