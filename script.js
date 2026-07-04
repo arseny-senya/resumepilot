@@ -457,10 +457,17 @@ function applyTemplate(template) {
 
       applyTemplate(card.dataset.template);
 
-      document.querySelector(".cv")?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+      const cv = document.querySelector(".cv");
+
+      if (cv) {
+        const headerOffset = 110;
+        const cvTop = cv.getBoundingClientRect().top + window.scrollY;
+
+        window.scrollTo({
+          top: cvTop - headerOffset,
+          behavior: "smooth",
+        });
+      }
     });
   });
   document
