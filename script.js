@@ -82,7 +82,14 @@ let isProUser = false;
    PRO TEMPLATES
 ====================== */
 
-const PRO_TEMPLATES = ["executive", "tech", "minimal", "designer", "dark"];
+const PRO_TEMPLATES = [
+  "executive",
+  "tech",
+  "minimal",
+  "designer",
+  "dark",
+  "editorial",
+];
 
 /* ======================
    LOAD USER
