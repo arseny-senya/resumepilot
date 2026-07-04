@@ -693,11 +693,6 @@ ${L.resume}
     </div>
 
     <section class="fashion-side-section">
-      <h3>${L.about}</h3>
-      <p class="js-about"></p>
-    </section>
-
-    <section class="fashion-side-section">
       <h3>${L.skills}</h3>
       <p class="js-skills"></p>
     </section>
@@ -711,24 +706,33 @@ ${L.resume}
 
   <main class="fashion-main">
 
-    <div class="fashion-contact">
+    <section class="fashion-contact">
+      <h3>${L.contact}</h3>
       <p class="js-contact"></p>
-    </div>
+    </section>
 
     <section class="fashion-main-section">
       <div class="fashion-heading">
-        <span></span>
         <h3>${L.experience}</h3>
       </div>
+
       <p class="js-experience"></p>
     </section>
 
     <section class="fashion-main-section">
       <div class="fashion-heading">
-        <span></span>
         <h3>${L.education}</h3>
       </div>
+
       <p class="js-education"></p>
+    </section>
+
+    <section class="fashion-main-section">
+      <div class="fashion-heading">
+        <h3>${L.about}</h3>
+      </div>
+
+      <p class="js-about"></p>
     </section>
 
   </main>
