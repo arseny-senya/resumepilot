@@ -649,11 +649,11 @@ ${L.resume}
   </header>
 
   <div class="editorial-divider"></div>
-
-  <section class="editorial-section editorial-about">
-    <h3>${L.about}</h3>
-    <p class="js-about"></p>
+ <section class="editorial-section editorial-qualities">
+    <h3>${L.qualities}</h3>
+    <p class="js-qualities"></p>
   </section>
+ 
 
   <section class="editorial-section editorial-experience">
     <h3>${L.experience}</h3>
@@ -671,11 +671,11 @@ ${L.resume}
       <p class="js-skills"></p>
     </section>
   </div>
-
-  <section class="editorial-section editorial-qualities">
-    <h3>${L.qualities}</h3>
-    <p class="js-qualities"></p>
+ <section class="editorial-section editorial-about">
+    <h3>${L.about}</h3>
+    <p class="js-about"></p>
   </section>
+ 
 
 </div>
 `,
