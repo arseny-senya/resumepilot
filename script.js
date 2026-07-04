@@ -535,7 +535,7 @@ loginBtn?.addEventListener("click", () => {
 
   showLogin?.classList.add("active");
   showRegister?.classList.remove("active");
-
+  forgotPasswordBtn?.classList.remove("hidden");
   if (authName) {
     authName.style.display = "none";
   }
@@ -566,7 +566,7 @@ showLogin?.addEventListener("click", () => {
 
   showLogin.classList.add("active");
   showRegister?.classList.remove("active");
-
+  forgotPasswordBtn?.classList.remove("hidden");
   if (authName) {
     authName.style.display = "none";
   }
@@ -587,7 +587,7 @@ showRegister?.addEventListener("click", () => {
 
   showRegister.classList.add("active");
   showLogin?.classList.remove("active");
-
+  forgotPasswordBtn?.classList.add("hidden");
   if (authName) {
     authName.style.display = "block";
   }
