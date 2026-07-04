@@ -683,7 +683,6 @@ ${L.resume}
 <div class="template-fashion">
 
   <aside class="fashion-sidebar">
-
     <div class="fashion-photo">
       <img class="js-photo">
     </div>
@@ -701,11 +700,9 @@ ${L.resume}
       <h3>${L.qualities}</h3>
       <p class="js-qualities"></p>
     </section>
-
   </aside>
 
   <main class="fashion-main">
-
     <section class="fashion-contact">
       <h3>${L.contact}</h3>
       <p class="js-contact"></p>
@@ -715,7 +712,6 @@ ${L.resume}
       <div class="fashion-heading">
         <h3>${L.experience}</h3>
       </div>
-
       <p class="js-experience"></p>
     </section>
 
@@ -723,7 +719,6 @@ ${L.resume}
       <div class="fashion-heading">
         <h3>${L.education}</h3>
       </div>
-
       <p class="js-education"></p>
     </section>
 
@@ -731,10 +726,8 @@ ${L.resume}
       <div class="fashion-heading">
         <h3>${L.about}</h3>
       </div>
-
       <p class="js-about"></p>
     </section>
-
   </main>
 
 </div>
