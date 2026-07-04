@@ -3997,3 +3997,72 @@ body {
   font-weight: 400;
   white-space: pre-line;
 }
+@media (max-width: 600px) {
+  .pro-modal {
+    padding: 16px;
+    align-items: flex-start;
+    overflow-y: auto;
+  }
+
+  .pro-box {
+    width: 100%;
+    max-width: 420px;
+    margin: 24px auto;
+    padding: 28px 20px 22px;
+    max-height: calc(100vh - 48px);
+    overflow-y: auto;
+    border-radius: 20px;
+  }
+
+  .pro-close {
+    right: 14px;
+    top: 12px;
+    font-size: 26px;
+  }
+
+  .pro-icon {
+    font-size: 44px;
+    margin-bottom: 8px;
+  }
+
+  .pro-box h2 {
+    font-size: 24px;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  .pro-subtitle {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .pro-features {
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .pro-feature {
+    padding: 12px 14px;
+    font-size: 14px;
+    border-radius: 10px;
+  }
+
+  .pro-price {
+    margin-bottom: 20px;
+  }
+
+  .price {
+    font-size: 36px;
+  }
+
+  .lifetime {
+    font-size: 14px;
+  }
+
+  .pro-upgrade-btn {
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 10px;
+  }
+}
