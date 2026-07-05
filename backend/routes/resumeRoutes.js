@@ -7,7 +7,10 @@ const router = express.Router();
 /* Получить все резюме пользователя */
 router.get("/", authMiddleware, async (req, res) => {
   try {
-    const resumes = await Resume.find({ userId: req.user._id }).sort({
+    const resumes = await Resume.find({
+      userId: req.user._id,
+      isEdited: true,
+    }).sort({
       updatedAt: -1,
     });
 
@@ -66,6 +69,7 @@ router.put("/:id", authMiddleware, async (req, res) => {
         title: req.body.title,
         template: req.body.template,
         data: req.body.data,
+        isEdited: true,
       },
       { new: true },
     );
