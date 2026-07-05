@@ -223,7 +223,13 @@ function renderResume() {
   };
 
   setText(".js-name", `${nameInput.value} ${surnameInput.value}`.trim());
-  setText(".js-contact", contactInput.value);
+  const formattedContact = contactInput.value
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .join("\n");
+
+  setText(".js-contact", formattedContact);
   setText(".js-skills", skillsInput.value);
   setText(".js-experience", experienceInput.value);
   setText(".js-education", educationInput.value);
@@ -246,11 +252,7 @@ function renderResume() {
 
   cv.classList.toggle("watermark", isLockedTemplate());
 }
-const formattedContacts = contact.value.split(/\s+/).filter(Boolean).join("\n");
 
-document.querySelectorAll(".js-contact").forEach((el) => {
-  el.textContent = formattedContacts;
-});
 /* ======================
    UPDATE
 ====================== */
