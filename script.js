@@ -224,8 +224,8 @@ function renderResume() {
 
   setText(".js-name", `${nameInput.value} ${surnameInput.value}`.trim());
   const formattedContact = contactInput.value
-    .trim()
-    .split(/\s+/)
+    .split(/[,;\n]+/)
+    .map((item) => item.trim())
     .filter(Boolean)
     .join("\n");
 
