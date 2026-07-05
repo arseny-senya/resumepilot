@@ -481,3 +481,81 @@ h1 {
     font-size: 26px;
   }
 }
+@media (max-width: 768px) {
+  .dashboard {
+    display: block;
+  }
+
+  .sidebar {
+    height: auto;
+    position: static;
+    padding: 18px;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .logo {
+    margin: 0;
+    font-size: 24px;
+  }
+
+  .sidebar-nav {
+    display: none;
+  }
+
+  .logout-btn,
+  .home-btn {
+    width: auto;
+    margin: 0;
+    padding: 10px 14px;
+    white-space: nowrap;
+  }
+
+  .main {
+    padding: 20px 16px;
+  }
+
+  .topbar {
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .eyebrow {
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+
+  h1 {
+    font-size: 30px;
+    margin-bottom: 18px;
+  }
+
+  .primary-btn {
+    width: 100%;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .stat-card {
+    border-radius: 18px;
+    padding: 18px;
+  }
+
+  .resume-section {
+    border-radius: 20px;
+    padding: 18px;
+  }
+
+  .resume-grid {
+    grid-template-columns: 1fr;
+  }
+}
