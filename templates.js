@@ -741,11 +741,6 @@ ${L.resume}
   </header>
 
   <section class="ats-section">
-    <h3>${L.about}</h3>
-    <p class="js-about"></p>
-  </section>
-
-  <section class="ats-section">
     <h3>${L.experience}</h3>
     <p class="js-experience"></p>
   </section>
@@ -763,6 +758,11 @@ ${L.resume}
   <section class="ats-section">
     <h3>${L.qualities}</h3>
     <p class="js-qualities"></p>
+  </section>
+  
+  <section class="ats-section">
+    <h3>${L.about}</h3>
+    <p class="js-about"></p>
   </section>
 
 </div>
