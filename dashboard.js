@@ -4,6 +4,7 @@ const resumeGrid = document.getElementById("resumeGrid");
 const emptyState = document.getElementById("emptyState");
 
 const newResumeBtn = document.getElementById("newResumeBtn");
+const bottomAction = document.querySelector(".dashboard-bottom-action");
 const emptyCreateBtn = document.getElementById("emptyCreateBtn");
 const homeBtn = document.getElementById("homeBtn");
 
@@ -53,10 +54,12 @@ function renderResumes(resumes) {
 
   if (!resumes.length) {
     emptyState.classList.add("show");
+    bottomAction?.classList.add("hidden");
     return;
   }
 
   emptyState.classList.remove("show");
+  bottomAction?.classList.remove("hidden");
 
   resumes.forEach((resume) => {
     const card = document.createElement("article");

@@ -568,3 +568,6 @@ h1 {
 .dashboard-bottom-action .primary-btn {
   min-width: 240px;
 }
+.hidden {
+  display: none !important;
+}
