@@ -1,3 +1,4 @@
+const API_URL = "https://resumepilot-w360.onrender.com";
 const LANG = location.pathname.startsWith("/en") ? "en" : "ru";
 
 const TEXT = {
@@ -522,8 +523,6 @@ load();
 /* ======================
    TEMPLATE SWITCH
 ====================== */
-
-const API_URL = "https://resumepilot-w360.onrender.com";
 
 /* ======================
    TEMPLATE SYSTEM
