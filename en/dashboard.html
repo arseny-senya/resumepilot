@@ -19,7 +19,7 @@
 
         <nav class="sidebar-nav"></nav>
 
-        <button class="logout-btn" id="homeBtn">Home</button>
+        <button class="logout-btn" id="homeBtn">🏠 Home</button>
       </aside>
 
       <main class="main">
@@ -28,42 +28,30 @@
             <p class="eyebrow">Dashboard</p>
             <h1>My Resumes</h1>
           </div>
-
-          <button class="primary-btn" id="newResumeBtn">+ Create Resume</button>
         </header>
-
-        <section class="stats">
-          <div class="stat-card">
-            <span>Total Resumes</span>
-            <strong id="totalResumes">0</strong>
-          </div>
-
-          <div class="stat-card">
-            <span>Free Templates</span>
-            <strong>6</strong>
-          </div>
-
-          <div class="stat-card pro">
-            <span>PRO Templates</span>
-            <strong>9</strong>
-          </div>
-        </section>
 
         <section class="resume-section">
           <div class="section-head">
             <h2>Saved Resumes</h2>
             <p>Create, edit, and manage all your resumes in one place.</p>
           </div>
+
           <div class="resume-grid" id="resumeGrid">
             <div class="resume-skeleton"></div>
             <div class="resume-skeleton"></div>
             <div class="resume-skeleton"></div>
           </div>
 
+          <div class="dashboard-bottom-action">
+            <button class="primary-btn" id="newResumeBtn">
+              + Create New Resume
+            </button>
+          </div>
+
           <div class="empty-state" id="emptyState">
             <div class="empty-icon">📄</div>
 
-            <h3>No resumes yet</h3>
+            <h3>You don't have any resumes yet</h3>
 
             <p>
               Create your first resume and take the next step toward your dream
