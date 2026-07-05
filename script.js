@@ -74,12 +74,15 @@ let photoState = {
   y: 0,
 };
 function clampPhotoPosition() {
-  const zoom = photoState.zoom || 1;
+  const scale = photoState.scale || 1;
 
-  const maxOffset = Math.max(0, (zoom - 1) * 50);
+  const maxOffset = Math.max(0, (scale - 1) * 50);
 
   photoState.x = Math.min(maxOffset, Math.max(-maxOffset, photoState.x || 0));
   photoState.y = Math.min(maxOffset, Math.max(-maxOffset, photoState.y || 0));
+
+  if (posX) posX.value = photoState.x;
+  if (posY) posY.value = photoState.y;
 }
 let isExportingPDF = false;
 let currentTemplate = "modern";
