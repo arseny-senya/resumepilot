@@ -10,7 +10,7 @@ const homeBtn = document.getElementById("homeBtn");
 const token = localStorage.getItem("token");
 
 if (!token) {
-  window.location.href = "login.html";
+  window.location.href = "login";
 }
 
 async function apiRequest(url, options = {}) {
@@ -25,7 +25,7 @@ async function apiRequest(url, options = {}) {
 
   if (res.status === 401) {
     localStorage.removeItem("token");
-    window.location.href = "login.html";
+    window.location.href = "login";
     return;
   }
 
@@ -119,7 +119,7 @@ async function createResume() {
       }),
     });
 
-    window.location.href = `index.html?id=${resume._id}#builder`;
+    window.location.href = `/?id=${resume._id}#builder`;
   } catch (err) {
     console.error(err);
     alert("Failed to create resume");
@@ -144,7 +144,7 @@ async function deleteResume(id) {
 }
 
 function openResume(id) {
-  window.location.href = `index.html?id=${id}#builder`;
+  window.location.href = `/?id=${id}#builder`;
 }
 function escapeHTML(value) {
   return String(value)
@@ -159,7 +159,7 @@ newResumeBtn?.addEventListener("click", createResume);
 emptyCreateBtn?.addEventListener("click", createResume);
 
 homeBtn?.addEventListener("click", () => {
-  window.location.href = "index.html";
+  window.location.href = "/";
 });
 
 loadResumes();

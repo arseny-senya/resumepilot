@@ -1022,5 +1022,5 @@ forgotForm?.addEventListener("submit", async (e) => {
   }
 });
 document.getElementById("dashboardBtn")?.addEventListener("click", () => {
-  window.location.href = "dashboard.html";
+  window.location.href = "dashboard";
 });
