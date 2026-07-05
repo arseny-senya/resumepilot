@@ -414,14 +414,19 @@ async function save() {
     photoState,
   };
 
+  // Сначала ВСЕГДА сохраняем локально
   try {
     localStorage.setItem("resumeData", JSON.stringify(resumeData));
-  } catch (e) {}
+  } catch (e) {
+    console.error("Local save failed:", e);
+  }
 
+  // Если это не резюме из Dashboard — MongoDB не трогаем
   if (!resumeId || !token) return;
 
+  // Потом сохраняем в MongoDB
   try {
-    await fetch(`${API_URL}/api/resumes/${resumeId}`, {
+    const res = await fetch(`${API_URL}/api/resumes/${resumeId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -431,15 +436,19 @@ async function save() {
         title:
           `${nameInput.value || ""} ${surnameInput.value || ""}`.trim() ||
           "Untitled Resume",
-        template: currentTemplate,
+        template: currentTemplate || "modern",
         data: resumeData,
       }),
     });
+
+    if (!res.ok) {
+      const err = await res.json();
+      console.error("Mongo save failed:", err);
+    }
   } catch (err) {
     console.error("Resume autosave failed:", err);
   }
 }
-
 async function load() {
   if (resumeId && token) {
     try {
