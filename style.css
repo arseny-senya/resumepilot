@@ -4332,37 +4332,3 @@ body {
 .template-highlight .js-contact {
   margin-top: 20px;
 }
-.live-thumb {
-  position: relative;
-  height: 170px;
-  background: #eef0f5;
-  border: 1px solid #e1e5ee;
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-.live-thumb::before {
-  content: "";
-  position: absolute;
-  inset: 12px 18px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.12);
-}
-.ats-preview::after {
-  content: "";
-  position: absolute;
-  left: 42px;
-  right: 42px;
-  top: 34px;
-  height: 8px;
-  background: #111827;
-  box-shadow:
-    0 18px 0 #9ca3af,
-    0 44px 0 #111827,
-    0 62px 0 #d1d5db,
-    0 80px 0 #d1d5db,
-    0 108px 0 #111827,
-    0 126px 0 #d1d5db;
-  z-index: 2;
-}
