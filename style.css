@@ -3078,7 +3078,7 @@ body {
 .template-dark .dark-content {
   display: flex;
   flex-direction: column;
-  gap: 38px;
+  gap: 15px;
   position: relative;
   z-index: 2;
 }
