@@ -163,7 +163,14 @@ emptyCreateBtn?.addEventListener("click", createResume);
 
 logoutBtn?.addEventListener("click", () => {
   localStorage.removeItem("token");
-  window.location.href = "login.html";
+
+  // Если открыта английская версия
+  if (window.location.pathname.includes("/en/")) {
+    window.location.href = "index.html";
+  } else {
+    // Русская версия
+    window.location.href = "index.html";
+  }
 });
 
 loadResumes();
