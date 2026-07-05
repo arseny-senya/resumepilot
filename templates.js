@@ -771,21 +771,21 @@ ${L.resume}
 <div class="template-highlight">
 
   <header class="highlight-hero">
+
     <div class="highlight-photo">
       <img class="js-photo">
     </div>
 
     <h1 class="js-name"></h1>
 
-
     <p class="highlight-contact js-contact"></p>
 
-    <p class="highlight-about js-about"></p>
   </header>
 
   <div class="highlight-body">
 
     <aside class="highlight-left">
+
       <section>
         <h3>${L.skills}</h3>
         <p class="js-skills"></p>
@@ -800,13 +800,21 @@ ${L.resume}
         <h3>${L.qualities}</h3>
         <p class="js-qualities"></p>
       </section>
+
     </aside>
 
     <main class="highlight-right">
+
       <section>
         <h3>${L.experience}</h3>
         <p class="js-experience"></p>
       </section>
+
+      <section class="highlight-about-section">
+        <h3>${L.about}</h3>
+        <p class="js-about"></p>
+      </section>
+
     </main>
 
   </div>
