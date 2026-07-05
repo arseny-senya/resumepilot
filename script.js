@@ -453,7 +453,18 @@ async function load() {
         const data = resume.data || {};
 
         currentTemplate = resume.template || "modern";
+        cv.className = "cv";
+        cv.classList.add(`template-${currentTemplate}`);
 
+        document.querySelectorAll(".template-item").forEach((item) => {
+          item.classList.remove("active");
+        });
+
+        document
+          .querySelector(`[data-template="${currentTemplate}"]`)
+          ?.classList.add("active");
+
+        localStorage.setItem("selectedTemplate", currentTemplate);
         nameInput.value = data.name || "";
         surnameInput.value = data.surname || "";
         skillsInput.value = data.skills || "";
