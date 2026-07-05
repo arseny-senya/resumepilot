@@ -2,7 +2,6 @@ const API_URL = "https://resumepilot-w360.onrender.com/api";
 
 const resumeGrid = document.getElementById("resumeGrid");
 const emptyState = document.getElementById("emptyState");
-const totalResumes = document.getElementById("totalResumes");
 
 const newResumeBtn = document.getElementById("newResumeBtn");
 const emptyCreateBtn = document.getElementById("emptyCreateBtn");
@@ -51,8 +50,6 @@ function formatDate(dateString) {
 
 function renderResumes(resumes) {
   resumeGrid.innerHTML = "";
-
-  totalResumes.textContent = resumes.length;
 
   if (!resumes.length) {
     emptyState.classList.add("show");

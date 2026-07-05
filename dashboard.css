@@ -559,3 +559,12 @@ h1 {
     grid-template-columns: 1fr;
   }
 }
+.dashboard-bottom-action {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+.dashboard-bottom-action .primary-btn {
+  min-width: 240px;
+}
