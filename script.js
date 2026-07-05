@@ -1021,3 +1021,6 @@ forgotForm?.addEventListener("submit", async (e) => {
     forgotSubmit.textContent = originalText;
   }
 });
+document.getElementById("dashboardBtn")?.addEventListener("click", () => {
+  window.location.href = "dashboard.html";
+});
