@@ -4172,10 +4172,3 @@ body {
 .cv .js-contact {
   white-space: pre-line;
 }
-.js-contact {
-  max-width: 320px; /* подбери значение */
-  overflow-wrap: break-word;
-  word-break: break-word;
-  white-space: pre-line;
-  line-height: 1.5;
-}

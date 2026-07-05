@@ -246,7 +246,11 @@ function renderResume() {
 
   cv.classList.toggle("watermark", isLockedTemplate());
 }
+const formattedContacts = contact.value.split(/\s+/).filter(Boolean).join("\n");
 
+document.querySelectorAll(".js-contact").forEach((el) => {
+  el.textContent = formattedContacts;
+});
 /* ======================
    UPDATE
 ====================== */
