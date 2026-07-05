@@ -9,7 +9,7 @@ import connectDB from "./config/db.js";
 import authRoutes from "./routes/auth.routes.js";
 import paymentRoutes from "./routes/payment.routes.js";
 import pdfRoutes from "./routes/pdf.routes.js";
-
+import resumeRoutes from "./routes/resumeRoutes.js";
 /* ======================
    DEBUG ENV
 ====================== */
@@ -51,6 +51,7 @@ connectDB();
 app.use("/api/auth", authRoutes);
 app.use("/api/payment", paymentRoutes);
 app.use("/api/pdf", pdfRoutes);
+app.use("/api/resumes", resumeRoutes);
 
 /* ======================
    TEST ROUTE

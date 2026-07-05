@@ -178,7 +178,9 @@ async function loadUser() {
     document.getElementById("userDropdown").classList.add("hidden");
   }
 }
-
+const params = new URLSearchParams(window.location.search);
+const resumeId = params.get("id");
+const token = localStorage.getItem("token");
 /* ======================
    USER DROPDOWN
 ====================== */
@@ -398,26 +400,87 @@ downloadBtn?.addEventListener("click", async () => {
    SAVE / LOAD
 ====================== */
 
-function save() {
+async function save() {
+  const resumeData = {
+    name: nameInput.value,
+    surname: surnameInput.value,
+    skills: skillsInput.value,
+    about: aboutInput.value,
+    contact: contactInput.value,
+    experience: experienceInput.value,
+    education: educationInput.value,
+    qualities: qualitiesInput.value,
+    photoState,
+  };
+
   try {
-    localStorage.setItem(
-      "resumeData",
-      JSON.stringify({
-        name: nameInput.value,
-        surname: surnameInput.value,
-        skills: skillsInput.value,
-        about: aboutInput.value,
-        contact: contactInput.value,
-        experience: experienceInput.value,
-        education: educationInput.value,
-        qualities: qualitiesInput.value, // FIXED
-        photoState,
-      }),
-    );
+    localStorage.setItem("resumeData", JSON.stringify(resumeData));
   } catch (e) {}
+
+  if (!resumeId || !token) return;
+
+  try {
+    await fetch(`${API_URL}/api/resumes/${resumeId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        title:
+          `${nameInput.value || ""} ${surnameInput.value || ""}`.trim() ||
+          "Untitled Resume",
+        template: currentTemplate,
+        data: resumeData,
+      }),
+    });
+  } catch (err) {
+    console.error("Resume autosave failed:", err);
+  }
 }
 
-function load() {
+async function load() {
+  if (resumeId && token) {
+    try {
+      const res = await fetch(`${API_URL}/api/resumes/${resumeId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (res.ok) {
+        const resume = await res.json();
+        const data = resume.data || {};
+
+        currentTemplate = resume.template || "modern";
+
+        nameInput.value = data.name || "";
+        surnameInput.value = data.surname || "";
+        skillsInput.value = data.skills || "";
+        aboutInput.value = data.about || "";
+        contactInput.value = data.contact || "";
+        experienceInput.value = data.experience || "";
+        educationInput.value = data.education || "";
+        qualitiesInput.value = data.qualities || "";
+
+        if (data.photoState) {
+          photoState = data.photoState;
+
+          zoom.value = photoState.scale;
+          posX.value = photoState.x;
+          posY.value = photoState.y;
+        }
+
+        clampPhotoPosition();
+        update();
+
+        return;
+      }
+    } catch (err) {
+      console.error("Resume load failed:", err);
+    }
+  }
+
   const data = JSON.parse(localStorage.getItem("resumeData") || "null");
   if (!data) return;
 
@@ -425,7 +488,6 @@ function load() {
   surnameInput.value = data.surname || "";
   skillsInput.value = data.skills || "";
   aboutInput.value = data.about || "";
-
   contactInput.value = data.contact || "";
   experienceInput.value = data.experience || "";
   educationInput.value = data.education || "";
@@ -438,6 +500,7 @@ function load() {
     posX.value = photoState.x;
     posY.value = photoState.y;
   }
+
   clampPhotoPosition();
   update();
 }
