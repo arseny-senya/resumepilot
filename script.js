@@ -453,6 +453,7 @@ async function load() {
         const data = resume.data || {};
 
         currentTemplate = resume.template || "modern";
+        applyTemplate(currentTemplate);
         cv.className = "cv";
         cv.classList.add(`template-${currentTemplate}`);
 
@@ -585,9 +586,10 @@ document.querySelectorAll(".template-item")?.forEach((card) => {
     }
   });
 });
-const savedTemplate = localStorage.getItem("selectedTemplate") || "modern";
-
-applyTemplate(savedTemplate);
+if (!resumeId) {
+  const savedTemplate = localStorage.getItem("selectedTemplate") || "modern";
+  applyTemplate(savedTemplate);
+}
 
 /* ======================
    INIT
