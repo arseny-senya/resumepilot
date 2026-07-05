@@ -821,4 +821,51 @@ ${L.resume}
 
 </div>
 `,
+  grid: () => `
+<div class="template-grid">
+
+  <header class="grid-header">
+    <div class="grid-title">
+      <h1 class="js-name"></h1>
+    </div>
+
+    <div class="grid-photo">
+      <img class="js-photo">
+    </div>
+  </header>
+
+  <main class="grid-layout">
+
+    <section class="grid-panel grid-blue">
+      <h3>${L.contact}</h3>
+      <p class="js-contact"></p>
+    </section>
+
+    <section class="grid-panel">
+      <h3>${L.experience}</h3>
+      <p class="js-experience"></p>
+    </section>
+
+    <section class="grid-panel">
+      <h3>${L.skills}</h3>
+      <p class="js-skills"></p>
+    </section>
+
+    <section class="grid-panel">
+      <h3>${L.education}</h3>
+      <p class="js-education"></p>
+
+      <h3 class="grid-second-title">${L.qualities}</h3>
+      <p class="js-qualities"></p>
+    </section>
+
+    <section class="grid-panel grid-about">
+      <h3>${L.about}</h3>
+      <p class="js-about"></p>
+    </section>
+
+  </main>
+
+</div>
+`,
 };

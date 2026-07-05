@@ -4305,3 +4305,126 @@ body {
     0 72px 0 #111827,
     0 96px 0 #d1d5db;
 }
+/* =========================
+   FREE TEMPLATE: GRID
+========================= */
+
+.template-grid {
+  width: 100%;
+  height: 100%;
+  max-height: 100%;
+  background: #f7f7f5;
+  color: #111;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  border: 8px solid #222;
+}
+
+.template-grid * {
+  box-sizing: border-box;
+}
+
+.grid-header {
+  height: 190px;
+  display: grid;
+  grid-template-columns: 1fr 160px;
+  align-items: center;
+  padding: 34px 42px;
+  background: #fff;
+  border-bottom: 4px solid #222;
+}
+
+.grid-title h1 {
+  margin: 0;
+  max-width: 460px;
+  font-size: 46px;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: #ff6842;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+}
+
+.grid-photo {
+  width: 112px;
+  height: 112px;
+  justify-self: center;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #eee;
+  border: 4px solid #222;
+}
+
+.grid-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.grid-layout {
+  height: calc(100% - 190px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: minmax(0, auto);
+}
+
+.grid-panel {
+  padding: 30px 34px;
+  background: #fff;
+  border-right: 4px solid #222;
+  border-bottom: 4px solid #222;
+  overflow: hidden;
+}
+
+.grid-panel:nth-child(even) {
+  border-right: none;
+}
+
+.grid-blue {
+  background: #5272ff;
+  color: #fff;
+}
+
+.grid-blue h3,
+.grid-blue p {
+  color: #fff;
+}
+
+.grid-panel h3 {
+  margin: 0 0 14px;
+  font-size: 22px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #5272ff;
+  font-weight: 900;
+  letter-spacing: 0.03em;
+}
+
+.grid-panel p {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.48;
+  color: #111;
+  white-space: pre-line;
+}
+
+.grid-panel strong,
+.grid-panel b {
+  color: #ff6842;
+}
+
+.grid-second-title {
+  margin-top: 28px !important;
+}
+
+.grid-about {
+  grid-column: 1 / -1;
+  border-right: none;
+  border-bottom: none;
+  padding-top: 24px;
+}
+
+.grid-about p {
+  max-width: 650px;
+}
