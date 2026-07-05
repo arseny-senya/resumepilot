@@ -4169,3 +4169,6 @@ body {
   );
   opacity: 0.35;
 }
+.cv .js-contact {
+  white-space: pre-line;
+}
