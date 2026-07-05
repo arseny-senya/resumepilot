@@ -4332,3 +4332,36 @@ body {
 .template-highlight .js-contact {
   margin-top: 20px;
 }
+.live-thumb {
+  position: relative;
+  height: 170px;
+  border-radius: 18px;
+  overflow: hidden;
+  background: #eef0f5;
+  border: 1px solid #e2e6ef;
+}
+
+.live-thumb::before {
+  content: "";
+  position: absolute;
+  inset: 14px 22px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.14);
+}
+
+.live-thumb::after {
+  content: "";
+  position: absolute;
+  left: 48px;
+  right: 48px;
+  top: 42px;
+  height: 10px;
+  border-radius: 20px;
+  background: #111827;
+  box-shadow:
+    0 24px 0 #d1d5db,
+    0 42px 0 #d1d5db,
+    0 72px 0 #111827,
+    0 96px 0 #d1d5db;
+}
