@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Dashboard | Resume Pilot</title>
+
+    <link rel="icon" href="../img/favicon.ico" />
+    <link rel="apple-touch-icon" href="../img/apple-touch-icon.png" />
+
+    <link rel="stylesheet" href="../dashboard.css" />
+  </head>
+
+  <body>
+    <div class="dashboard">
+      <aside class="sidebar">
+        <a href="dashboard.html" class="logo"> <span>Resume</span>Pilot </a>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="active">My Resumes</a>
+          <a href="index.html">Create Resume</a>
+          <a href="account.html">Account</a>
+        </nav>
+
+        <button class="logout-btn" id="logoutBtn">Log Out</button>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Dashboard</p>
+            <h1>My Resumes</h1>
+          </div>
+
+          <button class="primary-btn" id="newResumeBtn">+ Create Resume</button>
+        </header>
+
+        <section class="stats">
+          <div class="stat-card">
+            <span>Total Resumes</span>
+            <strong id="totalResumes">0</strong>
+          </div>
+
+          <div class="stat-card">
+            <span>Free Templates</span>
+            <strong>6</strong>
+          </div>
+
+          <div class="stat-card pro">
+            <span>PRO Templates</span>
+            <strong>9</strong>
+          </div>
+        </section>
+
+        <section class="resume-section">
+          <div class="section-head">
+            <h2>Saved Resumes</h2>
+            <p>Create, edit, and manage all your resumes in one place.</p>
+          </div>
+
+          <div class="resume-grid" id="resumeGrid">
+            <!-- Cards are rendered by dashboard.js -->
+          </div>
+
+          <div class="empty-state" id="emptyState">
+            <div class="empty-icon">📄</div>
+
+            <h3>No resumes yet</h3>
+
+            <p>
+              Create your first resume and take the next step toward your dream
+              job.
+            </p>
+
+            <button class="primary-btn" id="emptyCreateBtn">
+              Create Resume
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="../dashboard.js"></script>
+  </body>
+</html>
