@@ -6,7 +6,7 @@ const totalResumes = document.getElementById("totalResumes");
 
 const newResumeBtn = document.getElementById("newResumeBtn");
 const emptyCreateBtn = document.getElementById("emptyCreateBtn");
-const logoutBtn = document.getElementById("logoutBtn");
+const homeBtn = document.getElementById("homeBtn");
 
 const token = localStorage.getItem("token");
 
@@ -161,16 +161,8 @@ function escapeHTML(value) {
 newResumeBtn?.addEventListener("click", createResume);
 emptyCreateBtn?.addEventListener("click", createResume);
 
-logoutBtn?.addEventListener("click", () => {
-  localStorage.removeItem("token");
-
-  // Если открыта английская версия
-  if (window.location.pathname.includes("/en/")) {
-    window.location.href = "index.html";
-  } else {
-    // Русская версия
-    window.location.href = "index.html";
-  }
+homeBtn?.addEventListener("click", () => {
+  window.location.href = "index.html";
 });
 
 loadResumes();
