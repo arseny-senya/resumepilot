@@ -732,4 +732,39 @@ ${L.resume}
 
 </div>
 `,
+  ats: () => `
+<div class="template-ats">
+
+  <header class="ats-header">
+    <h1 class="js-name"></h1>
+    <p class="ats-contact js-contact"></p>
+  </header>
+
+  <section class="ats-section">
+    <h3>${L.about}</h3>
+    <p class="js-about"></p>
+  </section>
+
+  <section class="ats-section">
+    <h3>${L.experience}</h3>
+    <p class="js-experience"></p>
+  </section>
+
+  <section class="ats-section">
+    <h3>${L.education}</h3>
+    <p class="js-education"></p>
+  </section>
+
+  <section class="ats-section">
+    <h3>${L.skills}</h3>
+    <p class="js-skills"></p>
+  </section>
+
+  <section class="ats-section">
+    <h3>${L.qualities}</h3>
+    <p class="js-qualities"></p>
+  </section>
+
+</div>
+`,
 };
