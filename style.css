@@ -4329,3 +4329,6 @@ body {
     -4px 88px 0 rgba(255, 235, 80, 0.7),
     130px 88px 0 rgba(255, 235, 80, 0.7);
 }
+.template-highlight .js-contact {
+  margin-top: 10px;
+}
