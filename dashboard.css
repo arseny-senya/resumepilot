@@ -571,3 +571,22 @@ h1 {
 .hidden {
   display: none !important;
 }
+.resume-skeleton {
+  height: 300px;
+  border-radius: 22px;
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+
+  background-size: 300% 100%;
+
+  animation: skeletonLoading 1.3s infinite;
+}
+
+@keyframes skeletonLoading {
+  0% {
+    background-position: 100% 0;
+  }
+
+  100% {
+    background-position: -100% 0;
+  }
+}

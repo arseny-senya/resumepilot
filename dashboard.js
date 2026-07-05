@@ -102,8 +102,15 @@ function renderResumes(resumes) {
 }
 
 async function loadResumes() {
+  resumeGrid.innerHTML = `
+    <div class="resume-skeleton"></div>
+    <div class="resume-skeleton"></div>
+    <div class="resume-skeleton"></div>
+  `;
+
   try {
     const resumes = await apiRequest("/resumes");
+
     renderResumes(resumes);
   } catch (err) {
     console.error(err);
