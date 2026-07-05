@@ -453,7 +453,7 @@ async function load() {
         const data = resume.data || {};
 
         currentTemplate = resume.template || "modern";
-        applyTemplate(currentTemplate);
+        applyTemplate(currentTemplate, false);
         cv.className = "cv";
         cv.classList.add(`template-${currentTemplate}`);
 
@@ -529,7 +529,7 @@ const API_URL = "https://resumepilot-w360.onrender.com";
    TEMPLATE SYSTEM
 ====================== */
 
-function applyTemplate(template) {
+function applyTemplate(template, shouldSave = true) {
   if (!template) return;
 
   currentTemplate = template;
@@ -539,42 +539,28 @@ function applyTemplate(template) {
     cv.classList.add(`template-${template}`);
   }
 
-  update?.();
-
-  document.querySelectorAll(".template-item").forEach((card) => {
-    card.addEventListener("click", () => {
-      document.querySelectorAll(".template-item").forEach((item) => {
-        item.classList.remove("active");
-      });
-
-      card.classList.add("active");
-
-      applyTemplate(card.dataset.template);
-
-      const cv = document.querySelector(".cv");
-
-      if (cv) {
-        const headerOffset = 110;
-        const cvTop = cv.getBoundingClientRect().top + window.scrollY;
-
-        window.scrollTo({
-          top: cvTop - headerOffset,
-          behavior: "smooth",
-        });
-      }
-    });
+  document.querySelectorAll(".template-item").forEach((item) => {
+    item.classList.remove("active");
   });
+
   document
     .querySelector(`[data-template="${template}"]`)
     ?.classList.add("active");
 
   localStorage.setItem("selectedTemplate", template);
+
+  update?.();
+
+  if (shouldSave) {
+    save();
+  }
 }
-document.querySelectorAll(".template-item")?.forEach((card) => {
+
+document.querySelectorAll(".template-item").forEach((card) => {
   card.addEventListener("click", () => {
     const template = card.dataset.template;
 
-    applyTemplate(template);
+    applyTemplate(template, true);
 
     if (PRO_TEMPLATES.includes(template) && !isProUser) {
       showToast(
@@ -584,13 +570,23 @@ document.querySelectorAll(".template-item")?.forEach((card) => {
         "info",
       );
     }
+
+    if (cv) {
+      const headerOffset = 110;
+      const cvTop = cv.getBoundingClientRect().top + window.scrollY;
+
+      window.scrollTo({
+        top: cvTop - headerOffset,
+        behavior: "smooth",
+      });
+    }
   });
 });
+
 if (!resumeId) {
   const savedTemplate = localStorage.getItem("selectedTemplate") || "modern";
-  applyTemplate(savedTemplate);
+  applyTemplate(savedTemplate, false);
 }
-
 /* ======================
    INIT
 ====================== */
