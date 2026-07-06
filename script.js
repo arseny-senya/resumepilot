@@ -41,6 +41,10 @@ let sectionOrder = [
   "contact",
   "about",
 ];
+let sectionLayout = {
+  left: ["skills", "qualities"],
+  right: ["experience", "education", "about"],
+};
 let currentUser = null;
 function t(text) {
   if (LANG === "ru") return text;
@@ -310,11 +314,6 @@ function renderSection(section) {
 }
 
 function renderModernV2() {
-  const leftSections = ["skills", "qualities"];
-  const rightSections = sectionOrder.filter(
-    (section) => !leftSections.includes(section) && section !== "contact",
-  );
-
   cv.innerHTML = `
     <div class="modern-header">
       <div class="photo-frame">
@@ -331,11 +330,11 @@ function renderModernV2() {
 
     <div class="modern-grid">
       <div class="modern-left" data-layout-column="left">
-        ${leftSections.map(renderSection).join("")}
+        ${(sectionLayout.left || []).map(renderSection).join("")}
       </div>
 
-   <div class="modern-right" data-layout-column="right">
-        ${rightSections.map(renderSection).join("")}
+      <div class="modern-right" data-layout-column="right">
+        ${(sectionLayout.right || []).map(renderSection).join("")}
       </div>
     </div>
   `;
@@ -572,6 +571,7 @@ function getResumeData() {
     about: aboutInput.value,
     sectionOrder,
     photoState,
+    sectionLayout,
   };
 }
 
@@ -652,11 +652,20 @@ function initSectionSortable() {
     ghostClass: "sortable-ghost",
 
     onEnd: () => {
-      sectionOrder = [...list.querySelectorAll(".section-order-item")].map(
-        (item) => item.dataset.section,
-      );
+      const leftColumn = cv.querySelector('[data-layout-column="left"]');
+      const rightColumn = cv.querySelector('[data-layout-column="right"]');
 
-      update();
+      sectionLayout = {
+        left: [...leftColumn.querySelectorAll("section[data-section]")].map(
+          (section) => section.dataset.section,
+        ),
+        right: [...rightColumn.querySelectorAll("section[data-section]")].map(
+          (section) => section.dataset.section,
+        ),
+      };
+
+      sectionOrder = [...sectionLayout.left, ...sectionLayout.right];
+
       save();
     },
   });
@@ -683,6 +692,9 @@ function fillForm(data = {}) {
   if (Array.isArray(data.sectionOrder)) {
     sectionOrder = data.sectionOrder;
     renderSectionOrderList();
+  }
+  if (data.sectionLayout) {
+    sectionLayout = data.sectionLayout;
   }
   clampPhotoPosition();
   update();
