@@ -401,8 +401,10 @@ downloadBtn?.addEventListener("click", async () => {
    SAVE / LOAD
 ====================== */
 
-async function save() {
-  const resumeData = {
+let saveTimer;
+
+function getResumeData() {
+  return {
     name: nameInput.value,
     surname: surnameInput.value,
     skills: skillsInput.value,
@@ -413,99 +415,48 @@ async function save() {
     qualities: qualitiesInput.value,
     photoState,
   };
-
-  // Сначала ВСЕГДА сохраняем локально
-  try {
-    localStorage.setItem("resumeData", JSON.stringify(resumeData));
-  } catch (e) {
-    console.error("Local save failed:", e);
-  }
-
-  // Если это не резюме из Dashboard — MongoDB не трогаем
-  if (!resumeId || !token) return;
-
-  // Потом сохраняем в MongoDB
-  try {
-    const res = await fetch(`${API_URL}/api/resumes/${resumeId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        title:
-          `${nameInput.value || ""} ${surnameInput.value || ""}`.trim() ||
-          "Untitled Resume",
-        template: currentTemplate || "modern",
-        data: resumeData,
-      }),
-    });
-
-    if (!res.ok) {
-      const err = await res.json();
-      console.error("Mongo save failed:", err);
-    }
-  } catch (err) {
-    console.error("Resume autosave failed:", err);
-  }
 }
-async function load() {
-  if (resumeId && token) {
-    try {
-      const res = await fetch(`${API_URL}/api/resumes/${resumeId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
 
-      if (res.ok) {
-        const resume = await res.json();
-        const data = resume.data || {};
+function save() {
+  clearTimeout(saveTimer);
 
-        currentTemplate = resume.template || "modern";
-        applyTemplate(currentTemplate, false);
-        cv.className = "cv";
-        cv.classList.add(`template-${currentTemplate}`);
+  saveTimer = setTimeout(async () => {
+    const resumeData = getResumeData();
 
-        document.querySelectorAll(".template-item").forEach((item) => {
-          item.classList.remove("active");
+    // Если резюме открыто из Dashboard
+    if (resumeId && token) {
+      try {
+        await fetch(`${API_URL}/api/resumes/${resumeId}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            title:
+              `${nameInput.value || ""} ${surnameInput.value || ""}`.trim() ||
+              "Untitled Resume",
+            template: currentTemplate,
+            data: resumeData,
+          }),
         });
+      } catch (err) {
+        console.error("Autosave failed:", err);
 
-        document
-          .querySelector(`[data-template="${currentTemplate}"]`)
-          ?.classList.add("active");
-
-        localStorage.setItem("selectedTemplate", currentTemplate);
-        nameInput.value = data.name || "";
-        surnameInput.value = data.surname || "";
-        skillsInput.value = data.skills || "";
-        aboutInput.value = data.about || "";
-        contactInput.value = data.contact || "";
-        experienceInput.value = data.experience || "";
-        educationInput.value = data.education || "";
-        qualitiesInput.value = data.qualities || "";
-
-        if (data.photoState) {
-          photoState = data.photoState;
-
-          zoom.value = photoState.scale;
-          posX.value = photoState.x;
-          posY.value = photoState.y;
-        }
-
-        clampPhotoPosition();
-        update();
-
-        return;
+        localStorage.setItem(
+          `resumeDraft_${resumeId}`,
+          JSON.stringify(resumeData),
+        );
       }
-    } catch (err) {
-      console.error("Resume load failed:", err);
+
+      return;
     }
-  }
 
-  const data = JSON.parse(localStorage.getItem("resumeData") || "null");
-  if (!data) return;
-
+    // Для гостя без аккаунта
+    localStorage.setItem("guestResumeDraft", JSON.stringify(resumeData));
+  }, 800);
+}
+function fillForm(data) {
   nameInput.value = data.name || "";
   surnameInput.value = data.surname || "";
   skillsInput.value = data.skills || "";
@@ -527,6 +478,51 @@ async function load() {
   update();
 }
 
+async function load() {
+  // Если открыли резюме из Dashboard
+  if (resumeId && token) {
+    try {
+      const res = await fetch(`${API_URL}/api/resumes/${resumeId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!res.ok) {
+        throw new Error("Failed to load resume");
+      }
+
+      const resume = await res.json();
+      const data = resume.data || {};
+
+      currentTemplate = resume.template || "modern";
+
+      fillForm(data);
+      return;
+    } catch (err) {
+      console.error("Resume load failed:", err);
+
+      const localDraft = JSON.parse(
+        localStorage.getItem(`resumeDraft_${resumeId}`) || "null",
+      );
+
+      if (localDraft) {
+        fillForm(localDraft);
+      }
+
+      return;
+    }
+  }
+
+  // Если человек без аккаунта
+  const guestDraft = JSON.parse(
+    localStorage.getItem("guestResumeDraft") || "null",
+  );
+
+  if (guestDraft) {
+    fillForm(guestDraft);
+  }
+}
 load();
 
 /* ======================
