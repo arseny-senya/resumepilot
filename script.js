@@ -327,11 +327,11 @@ function renderModernV2() {
     </div>
 
     <div class="modern-grid">
-      <div class="modern-left">
+      <div class="modern-left" data-layout-column="left">
         ${leftSections.map(renderSection).join("")}
       </div>
 
-      <div class="modern-right">
+   <div class="modern-right" data-layout-column="right">
         ${rightSections.map(renderSection).join("")}
       </div>
     </div>
