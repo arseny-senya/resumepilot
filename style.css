@@ -1531,8 +1531,8 @@ body {
 .pro::after {
   content: "PRO";
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: 5px;
+  right: 6px;
 
   background: #ffb300;
   color: white;
