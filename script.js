@@ -335,30 +335,33 @@ function destroyCvSortables() {
   cvSortables.forEach((sortable) => sortable.destroy());
   cvSortables = [];
 }
-function collectCurrentSectionLayout() {
-  const columns = cv.querySelectorAll("[data-layout-column]");
 
-  if (!columns.length) return;
+function getLayoutColumns() {
+  let columns = [...cv.querySelectorAll("[data-layout-column]")];
 
-  const newLayout = {};
+  if (columns.length) return columns;
 
-  columns.forEach((column) => {
-    const columnName = column.dataset.layoutColumn;
+  const sections = [...cv.querySelectorAll("section[data-section]")];
+  const parents = [
+    ...new Set(sections.map((section) => section.parentElement)),
+  ];
 
-    newLayout[columnName] = [
-      ...column.querySelectorAll(":scope > section[data-section]"),
-    ].map((section) => section.dataset.section);
+  parents.forEach((parent, index) => {
+    parent.setAttribute(
+      "data-layout-column",
+      index === 0 ? "main" : `column-${index}`,
+    );
   });
 
-  sectionLayouts[currentTemplate] = newLayout;
-  sectionOrder = Object.values(newLayout).flat();
+  return [...cv.querySelectorAll("[data-layout-column]")];
 }
+
 function initCvDragLayout() {
   destroyCvSortables();
 
   if (!isLayoutEditing || typeof Sortable === "undefined") return;
 
-  const columns = cv.querySelectorAll("[data-layout-column]");
+  const columns = getLayoutColumns();
 
   if (!columns.length) {
     console.warn("No layout columns found");
@@ -472,7 +475,7 @@ function applySavedSectionLayout() {
   });
 }
 function collectCurrentSectionLayout() {
-  const columns = cv.querySelectorAll("[data-layout-column]");
+  const columns = getLayoutColumns();
 
   if (!columns.length) return;
 
@@ -493,35 +496,24 @@ function destroyCvSortables() {
   cvSortables.forEach((sortable) => sortable.destroy());
   cvSortables = [];
 }
-function initCvDragLayout() {
-  destroyCvSortables();
+function getLayoutColumns() {
+  let columns = [...cv.querySelectorAll("[data-layout-column]")];
 
-  if (!isLayoutEditing || typeof Sortable === "undefined") return;
+  if (columns.length) return columns;
 
-  const columns = cv.querySelectorAll("[data-layout-column]");
+  const sections = [...cv.querySelectorAll("section[data-section]")];
+  const parents = [
+    ...new Set(sections.map((section) => section.parentElement)),
+  ];
 
-  if (!columns.length) {
-    console.warn("No layout columns found");
-    return;
-  }
-
-  columns.forEach((column) => {
-    const sortable = new Sortable(column, {
-      group: "cv-layout",
-      animation: 180,
-      draggable: "section[data-section]",
-      ghostClass: "sortable-ghost",
-      chosenClass: "sortable-chosen",
-      dragClass: "sortable-drag",
-
-      onEnd: () => {
-        collectCurrentSectionLayout();
-        save();
-      },
-    });
-
-    cvSortables.push(sortable);
+  parents.forEach((parent, index) => {
+    parent.setAttribute(
+      "data-layout-column",
+      index === 0 ? "main" : `column-${index}`,
+    );
   });
+
+  return [...cv.querySelectorAll("[data-layout-column]")];
 }
 
 function renderResume() {
