@@ -30,7 +30,9 @@ window.renderExportResume = function (data) {
 
   cv.innerHTML = templateLayouts[template]();
 
-  applyExportSectionLayout(data.sectionLayout);
+  const currentLayout = data.sectionLayouts?.[template] || data.sectionLayout;
+
+  applyExportSectionLayout(currentLayout);
 
   const setText = (selector, value) => {
     const el = cv.querySelector(selector);

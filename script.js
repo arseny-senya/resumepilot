@@ -41,10 +41,103 @@ let sectionOrder = [
   "contact",
   "about",
 ];
-let sectionLayout = {
-  left: ["skills", "qualities"],
-  right: ["experience", "education", "about"],
-};
+let sectionLayouts = {};
+
+function getDefaultSectionLayout(template) {
+  const twoColumnLeft = ["contact", "skills", "qualities"];
+  const twoColumnRight = ["experience", "education", "about"];
+
+  const oneColumn = [
+    "contact",
+    "experience",
+    "skills",
+    "education",
+    "qualities",
+    "about",
+  ];
+
+  const defaults = {
+    modern: {
+      left: ["skills", "qualities"],
+      right: ["experience", "education", "about"],
+    },
+
+    sidebar: {
+      left: ["contact", "skills", "qualities"],
+      right: ["experience", "education", "about"],
+    },
+
+    corporate: {
+      main: ["experience", "education", "skills", "qualities", "about"],
+    },
+
+    creative: {
+      left: twoColumnLeft,
+      right: twoColumnRight,
+    },
+
+    elegant: {
+      left: twoColumnLeft,
+      right: twoColumnRight,
+    },
+
+    executive: {
+      left: ["experience"],
+      right: ["skills", "education", "qualities", "about"],
+    },
+
+    tech: {
+      left: ["skills", "qualities"],
+      right: ["experience", "education", "about"],
+    },
+
+    minimal: {
+      left: twoColumnLeft,
+      right: twoColumnRight,
+    },
+
+    designer: {
+      main: ["experience", "skills", "education", "qualities", "about"],
+    },
+
+    dark: {
+      main: ["skills", "experience", "education", "qualities", "about"],
+    },
+
+    editorial: {
+      main: ["qualities", "experience", "about"],
+      grid: ["education", "skills"],
+    },
+
+    fashion: {
+      left: ["skills", "qualities"],
+      right: ["contact", "experience", "education", "about"],
+    },
+
+    ats: {
+      main: ["experience", "education", "skills", "qualities", "about"],
+    },
+
+    highlight: {
+      left: ["skills", "education", "qualities"],
+      right: ["experience", "about"],
+    },
+
+    grid: {
+      main: oneColumn,
+    },
+  };
+
+  return structuredClone(defaults[template] || { main: oneColumn });
+}
+
+function getCurrentSectionLayout() {
+  if (!sectionLayouts[currentTemplate]) {
+    sectionLayouts[currentTemplate] = getDefaultSectionLayout(currentTemplate);
+  }
+
+  return sectionLayouts[currentTemplate];
+}
 let currentUser = null;
 function t(text) {
   if (LANG === "ru") return text;
@@ -257,9 +350,9 @@ function collectCurrentSectionLayout() {
     ].map((section) => section.dataset.section);
   });
 
-  sectionLayout = newLayout;
+  sectionLayouts[currentTemplate] = newLayout;
 
-  sectionOrder = Object.values(sectionLayout).flat();
+  sectionOrder = Object.values(newLayout).flat();
 }
 function initCvDragLayout() {
   destroyCvSortables();
@@ -356,9 +449,11 @@ function renderModernV2() {
 }
 
 function applySavedSectionLayout() {
-  if (!sectionLayout) return;
+  const currentLayout = getCurrentSectionLayout();
 
-  Object.entries(sectionLayout).forEach(([columnName, sections]) => {
+  if (!currentLayout) return;
+
+  Object.entries(currentLayout).forEach(([columnName, sections]) => {
     const column = cv.querySelector(`[data-layout-column="${columnName}"]`);
 
     if (!column || !Array.isArray(sections)) return;
@@ -366,15 +461,12 @@ function applySavedSectionLayout() {
     sections.forEach((sectionName) => {
       const section = cv.querySelector(`[data-section="${sectionName}"]`);
 
-      if (section && section.parentElement !== column) {
-        column.appendChild(section);
-      } else if (section) {
+      if (section) {
         column.appendChild(section);
       }
     });
   });
 }
-
 function collectCurrentSectionLayout() {
   const columns = cv.querySelectorAll("[data-layout-column]");
 
@@ -390,9 +482,9 @@ function collectCurrentSectionLayout() {
     ].map((section) => section.dataset.section);
   });
 
-  sectionLayout = newLayout;
+  sectionLayouts[currentTemplate] = newLayout;
 
-  sectionOrder = Object.values(sectionLayout).flat();
+  sectionOrder = Object.values(newLayout).flat();
 }
 
 function destroyCvSortables() {
@@ -599,7 +691,8 @@ downloadBtn?.addEventListener("click", async () => {
       photoState,
 
       sectionOrder,
-      sectionLayout,
+      sectionLayout: getCurrentSectionLayout(),
+      sectionLayouts,
     };
 
     const res = await fetch(`${API_URL}/api/pdf/export`, {
@@ -658,7 +751,7 @@ function getResumeData() {
     about: aboutInput.value,
     sectionOrder,
     photoState,
-    sectionLayout,
+    sectionLayouts,
   };
 }
 
@@ -780,9 +873,13 @@ function fillForm(data = {}) {
     sectionOrder = data.sectionOrder;
     renderSectionOrderList();
   }
-  if (data.sectionLayout) {
-    sectionLayout = data.sectionLayout;
+  if (data.sectionLayouts) {
+    sectionLayouts = data.sectionLayouts;
+  } else if (data.sectionLayout) {
+    // поддержка старых резюме, где был один общий layout
+    sectionLayouts[currentTemplate] = data.sectionLayout;
   }
+  ы;
   clampPhotoPosition();
   update();
 
