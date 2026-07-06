@@ -72,7 +72,7 @@ const posX = document.getElementById("posX");
 const posY = document.getElementById("posY");
 const policyLabel = document.getElementById("policyLabel");
 const privacyAgree = document.getElementById("privacyAgree");
-const layoutEditBtn = document.getElementById("layoutEditBtn");
+let layoutEditBtn;
 let isLayoutEditing = false;
 let cvSortables = [];
 /* ======================
@@ -264,18 +264,6 @@ function initCvDragLayout() {
     cvSortables.push(sortable);
   });
 }
-
-layoutEditBtn?.addEventListener("click", () => {
-  isLayoutEditing = !isLayoutEditing;
-
-  cv.classList.toggle("layout-editing", isLayoutEditing);
-
-  layoutEditBtn.textContent = isLayoutEditing
-    ? "✓ Готово"
-    : "⚙ Редактировать макет";
-
-  renderResume();
-});
 
 function renderSection(section) {
   const sections = {
@@ -1297,3 +1285,20 @@ function setSaveStatus(type) {
 }
 renderSectionOrderList();
 initSectionSortable();
+document.addEventListener("DOMContentLoaded", () => {
+  layoutEditBtn = document.getElementById("layoutEditBtn");
+
+  layoutEditBtn?.addEventListener("click", () => {
+    isLayoutEditing = !isLayoutEditing;
+
+    console.log("Layout editing:", isLayoutEditing);
+
+    cv.classList.toggle("layout-editing", isLayoutEditing);
+
+    layoutEditBtn.textContent = isLayoutEditing
+      ? "✓ Готово"
+      : "⚙ Редактировать макет";
+
+    renderResume();
+  });
+});
