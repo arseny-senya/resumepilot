@@ -274,8 +274,9 @@ layoutEditBtn?.addEventListener("click", () => {
     ? "✓ Готово"
     : "⚙ Редактировать макет";
 
-  initCvDragLayout();
+  renderResume();
 });
+
 function renderSection(section) {
   const sections = {
     skills: `
