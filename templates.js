@@ -141,48 +141,36 @@ const templateLayouts = {
 
 </header>
 
-<section>
+<div class="corporate-sections" data-layout-column="main">
 
-<h3>${L.experience}</h3>
+    <section class="section-experience" data-section="experience">
+        <h3>${L.experience}</h3>
+        <p class="js-experience"></p>
+    </section>
 
-<p class="js-experience"></p>
+    <section class="section-education" data-section="education">
+        <h3>${L.education}</h3>
+        <p class="js-education"></p>
+    </section>
 
-</section>
+    <section class="section-skills" data-section="skills">
+        <h3>${L.skills}</h3>
+        <p class="js-skills"></p>
+    </section>
 
-<section>
+    <section class="section-qualities" data-section="qualities">
+        <h3>${L.qualities}</h3>
+        <p class="js-qualities"></p>
+    </section>
 
-<h3>${L.education}</h3>
+    <section class="section-about" data-section="about">
+        <h3>${L.about}</h3>
+        <p class="js-about"></p>
+    </section>
 
-<p class="js-education"></p>
-
-</section>
-
-<section>
-
-<h3>${L.skills}</h3>
-
-<p class="js-skills"></p>
-
-</section>
-
-<section>
-
-<h3>${L.qualities}</h3>
-
-<p class="js-qualities"></p>
-
-</section>
-
-<section>
-
-<h3>${L.about}</h3>
-
-<p class="js-about"></p>
-
-</section>
+</div>
 
 `,
-
   creative: () => `
 
 <div class="creative-layout">
