@@ -230,112 +230,52 @@ function isLockedTemplate() {
    RENDER
 ====================== */
 function applySectionOrder() {
-  const sectionMap = {
-    experience: ".section-experience",
-    education: ".section-education",
-    skills: ".section-skills",
-    qualities: ".section-qualities",
-    contact: ".section-contact",
-    about: ".section-about",
-  };
+  // Сейчас порядок секций управляется через renderModernV2()
+  // и drag прямо внутри CV.
+}
 
-  // Для шаблонов с двумя колонками пока сортируем отдельно
-  const leftContainer = cv.querySelector(".modern-left");
-  const rightContainer = cv.querySelector(".modern-right");
+function destroyCvSortables() {
+  cvSortables.forEach((sortable) => sortable.destroy());
+  cvSortables = [];
+}
 
-  if (leftContainer && rightContainer) {
-    const leftSections = ["skills", "qualities"];
-    const rightSections = ["experience", "education", "about"];
+function initCvDragLayout() {
+  destroyCvSortables();
 
-    sectionOrder.forEach((key) => {
-      const section = cv.querySelector(sectionMap[key]);
-      if (!section) return;
+  if (!isLayoutEditing || typeof Sortable === "undefined") return;
 
-      if (leftSections.includes(key)) {
-        leftContainer.appendChild(section);
-      }
+  const columns = cv.querySelectorAll("[data-layout-column]");
 
-      if (rightSections.includes(key)) {
-        rightContainer.appendChild(section);
-      }
+  columns.forEach((column) => {
+    const sortable = new Sortable(column, {
+      animation: 160,
+      draggable: "section",
+      ghostClass: "sortable-ghost",
+
+      onEnd: () => {
+        sectionOrder = [...cv.querySelectorAll("section[data-section]")].map(
+          (section) => section.dataset.section,
+        );
+
+        save();
+      },
     });
 
-    return;
-  }
-  function getSortableContainers() {
-    const containers = [];
-
-    const modernLeft = cv.querySelector(".modern-left");
-    const modernRight = cv.querySelector(".modern-right");
-
-    if (modernLeft) containers.push(modernLeft);
-    if (modernRight) containers.push(modernRight);
-
-    if (!containers.length) {
-      containers.push(cv);
-    }
-
-    return containers;
-  }
-
-  function destroyCvSortables() {
-    cvSortables.forEach((sortable) => sortable.destroy());
-    cvSortables = [];
-  }
-
-  function initCvDragLayout() {
-    destroyCvSortables();
-
-    if (!isLayoutEditing || typeof Sortable === "undefined") return;
-
-    const containers = getSortableContainers();
-
-    containers.forEach((container) => {
-      const sortable = new Sortable(container, {
-        animation: 160,
-        draggable: "section",
-        ghostClass: "sortable-ghost",
-
-        onEnd: () => {
-          const sections = [...cv.querySelectorAll("section[data-section]")];
-
-          sectionOrder = sections.map((section) => section.dataset.section);
-
-          update();
-          save();
-        },
-      });
-
-      cvSortables.push(sortable);
-    });
-  }
-
-  layoutEditBtn?.addEventListener("click", () => {
-    isLayoutEditing = !isLayoutEditing;
-
-    cv.classList.toggle("layout-editing", isLayoutEditing);
-
-    layoutEditBtn.textContent = isLayoutEditing
-      ? "✓ Готово"
-      : "⚙ Редактировать макет";
-
-    initCvDragLayout();
-  });
-  // Для одноколоночных шаблонов
-  const sections = sectionOrder
-    .map((key) => cv.querySelector(sectionMap[key]))
-    .filter(Boolean);
-
-  if (!sections.length) return;
-
-  const parent = sections[0].parentElement;
-  if (!parent) return;
-
-  sections.forEach((section) => {
-    parent.appendChild(section);
+    cvSortables.push(sortable);
   });
 }
 
+layoutEditBtn?.addEventListener("click", () => {
+  isLayoutEditing = !isLayoutEditing;
+
+  cv.classList.toggle("layout-editing", isLayoutEditing);
+
+  layoutEditBtn.textContent = isLayoutEditing
+    ? "✓ Готово"
+    : "⚙ Редактировать макет";
+
+  initCvDragLayout();
+});
 function renderSection(section) {
   const sections = {
     skills: `
