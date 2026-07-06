@@ -537,25 +537,25 @@ const templateLayouts = {
         <div class="designer-main" data-layout-column="main">
 
             <section class="experience section-experience" data-section="experience">
-                <span class="number">01</span>
+                <span class="number  js-section-number">01</span>
                 <h3>${L.experience}</h3>
                 <p class="js-experience"></p>
             </section>
 
             <section class="skills section-skills" data-section="skills">
-                <span class="number">02</span>
+                <span class="number  js-section-number">02</span>
                 <h3>${L.skills}</h3>
                 <p class="js-skills"></p>
             </section>
 
             <section class="education section-education" data-section="education">
-                <span class="number">03</span>
+                <span class="number  js-section-number">03</span>
                 <h3>${L.education}</h3>
                 <p class="js-education"></p>
             </section>
 
             <section class="qualities section-qualities" data-section="qualities">
-                <span class="number">04</span>
+                <span class="number  js-section-number">04</span>
                 <h3>${L.qualities}</h3>
                 <p class="js-qualities"></p>
             </section>

@@ -491,6 +491,7 @@ function collectCurrentSectionLayout() {
 
   sectionLayouts[currentTemplate] = newLayout;
   sectionOrder = Object.values(newLayout).flat();
+  updateSectionNumbers();
 }
 function destroyCvSortables() {
   cvSortables.forEach((sortable) => sortable.destroy());
@@ -515,12 +516,24 @@ function getLayoutColumns() {
 
   return [...cv.querySelectorAll("[data-layout-column]")];
 }
+function updateSectionNumbers() {
+  const numberedSections = cv.querySelectorAll(
+    ".template-designer section[data-section]",
+  );
 
+  numberedSections.forEach((section, index) => {
+    const number = section.querySelector(".js-section-number, .number");
+
+    if (number) {
+      number.textContent = String(index + 1).padStart(2, "0");
+    }
+  });
+}
 function renderResume() {
   cv.innerHTML = templateLayouts[currentTemplate]();
 
   applySavedSectionLayout();
-
+  updateSectionNumbers();
   const setText = (selector, value) => {
     const el = cv.querySelector(selector);
     if (el) el.textContent = value || "";
