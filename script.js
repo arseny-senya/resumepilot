@@ -182,6 +182,8 @@ async function loadUser() {
 const params = new URLSearchParams(window.location.search);
 const resumeId = params.get("id");
 const token = localStorage.getItem("token");
+let isLoadingResume = false;
+let saveTimer = null;
 /* ======================
    USER DROPDOWN
 ====================== */
@@ -401,32 +403,31 @@ downloadBtn?.addEventListener("click", async () => {
    SAVE / LOAD
 ====================== */
 
-let saveTimer;
-
 function getResumeData() {
   return {
     name: nameInput.value,
     surname: surnameInput.value,
-    skills: skillsInput.value,
-    about: aboutInput.value,
     contact: contactInput.value,
+    skills: skillsInput.value,
     experience: experienceInput.value,
     education: educationInput.value,
     qualities: qualitiesInput.value,
+    about: aboutInput.value,
     photoState,
   };
 }
 
 function save() {
+  if (isLoadingResume) return;
+
   clearTimeout(saveTimer);
 
   saveTimer = setTimeout(async () => {
     const resumeData = getResumeData();
 
-    // Если резюме открыто из Dashboard
     if (resumeId && token) {
       try {
-        await fetch(`${API_URL}/api/resumes/${resumeId}`, {
+        const res = await fetch(`${API_URL}/api/resumes/${resumeId}`, {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -440,31 +441,31 @@ function save() {
             data: resumeData,
           }),
         });
+
+        if (!res.ok) {
+          throw new Error("Failed to autosave resume");
+        }
       } catch (err) {
         console.error("Autosave failed:", err);
-
-        localStorage.setItem(
-          `resumeDraft_${resumeId}`,
-          JSON.stringify(resumeData),
-        );
       }
 
       return;
     }
 
-    // Для гостя без аккаунта
     localStorage.setItem("guestResumeDraft", JSON.stringify(resumeData));
-  }, 800);
+  }, 700);
 }
-function fillForm(data) {
+function fillForm(data = {}) {
+  isLoadingResume = true;
+
   nameInput.value = data.name || "";
   surnameInput.value = data.surname || "";
-  skillsInput.value = data.skills || "";
-  aboutInput.value = data.about || "";
   contactInput.value = data.contact || "";
+  skillsInput.value = data.skills || "";
   experienceInput.value = data.experience || "";
   educationInput.value = data.education || "";
   qualitiesInput.value = data.qualities || "";
+  aboutInput.value = data.about || "";
 
   if (data.photoState) {
     photoState = data.photoState;
@@ -476,12 +477,16 @@ function fillForm(data) {
 
   clampPhotoPosition();
   update();
-}
 
+  setTimeout(() => {
+    isLoadingResume = false;
+  }, 300);
+}
 async function load() {
-  // Если открыли резюме из Dashboard
   if (resumeId && token) {
     try {
+      isLoadingResume = true;
+
       const res = await fetch(`${API_URL}/api/resumes/${resumeId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -493,28 +498,23 @@ async function load() {
       }
 
       const resume = await res.json();
-      const data = resume.data || {};
 
       currentTemplate = resume.template || "modern";
 
-      fillForm(data);
+      fillForm(resume.data || {});
+
+      setTimeout(() => {
+        isLoadingResume = false;
+      }, 300);
+
       return;
     } catch (err) {
       console.error("Resume load failed:", err);
-
-      const localDraft = JSON.parse(
-        localStorage.getItem(`resumeDraft_${resumeId}`) || "null",
-      );
-
-      if (localDraft) {
-        fillForm(localDraft);
-      }
-
+      isLoadingResume = false;
       return;
     }
   }
 
-  // Если человек без аккаунта
   const guestDraft = JSON.parse(
     localStorage.getItem("guestResumeDraft") || "null",
   );
@@ -551,7 +551,7 @@ function applyTemplate(template, shouldSave = true) {
     .querySelector(`[data-template="${template}"]`)
     ?.classList.add("active");
 
-  localStorage.setItem("selectedTemplate", template);
+  /* localStorage.setItem("selectedTemplate", template); */
 
   update?.();
 
@@ -589,7 +589,7 @@ document.querySelectorAll(".template-item").forEach((card) => {
 
 if (!resumeId) {
   const savedTemplate = localStorage.getItem("selectedTemplate") || "modern";
-  applyTemplate(savedTemplate, false);
+  applyTemplate(savedTemplate);
 }
 /* ======================
    INIT
