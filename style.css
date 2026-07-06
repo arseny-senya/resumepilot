@@ -4598,3 +4598,7 @@ body {
 .form-panel textarea {
   resize: none;
 }
+.form input,
+.form textarea {
+  resize: none;
+}
