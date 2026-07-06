@@ -512,7 +512,6 @@ downloadBtn?.addEventListener("click", async () => {
       LANG === "en" ? "Generating PDF..." : "Генерация PDF...";
 
     const token = localStorage.getItem("token");
-
     const data = {
       template: currentTemplate,
 
@@ -526,6 +525,9 @@ downloadBtn?.addEventListener("click", async () => {
       about: aboutInput.value,
 
       photoState,
+
+      sectionOrder,
+      sectionLayout,
     };
 
     const res = await fetch(`${API_URL}/api/pdf/export`, {
