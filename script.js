@@ -879,7 +879,6 @@ function fillForm(data = {}) {
     // поддержка старых резюме, где был один общий layout
     sectionLayouts[currentTemplate] = data.sectionLayout;
   }
-  ы;
   clampPhotoPosition();
   update();
 
