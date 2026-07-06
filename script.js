@@ -32,6 +32,15 @@ const TEXT = {
       "If the account exists, a reset link has been sent to your email",
   },
 };
+
+let sectionOrder = [
+  "about",
+  "experience",
+  "education",
+  "skills",
+  "qualities",
+  "contact",
+];
 let currentUser = null;
 function t(text) {
   if (LANG === "ru") return text;
@@ -218,7 +227,29 @@ function isLockedTemplate() {
 /* ======================
    RENDER
 ====================== */
+function applySectionOrder() {
+  const sectionMap = {
+    about: ".section-about",
+    experience: ".section-experience",
+    education: ".section-education",
+    skills: ".section-skills",
+    qualities: ".section-qualities",
+    contact: ".section-contact",
+  };
 
+  const sections = sectionOrder
+    .map((key) => cv.querySelector(sectionMap[key]))
+    .filter(Boolean);
+
+  if (!sections.length) return;
+
+  const parent = sections[0].parentElement;
+  if (!parent) return;
+
+  sections.forEach((section) => {
+    parent.appendChild(section);
+  });
+}
 function renderResume() {
   cv.innerHTML = templateLayouts[currentTemplate]();
 
@@ -240,7 +271,7 @@ function renderResume() {
   setText(".js-education", educationInput.value);
   setText(".js-qualities", qualitiesInput.value);
   setText(".js-about", aboutInput.value);
-
+  applySectionOrder();
   const img = cv.querySelector(".js-photo");
 
   if (img && photoState.src) {
@@ -413,6 +444,7 @@ function getResumeData() {
     education: educationInput.value,
     qualities: qualitiesInput.value,
     about: aboutInput.value,
+    sectionOrder,
     photoState,
   };
 }
@@ -460,6 +492,49 @@ function save() {
     localStorage.setItem("guestResumeDraft", JSON.stringify(resumeData));
   }, 700);
 }
+function renderSectionOrderList() {
+  const list = document.getElementById("sectionOrderList");
+  if (!list) return;
+
+  const labels = {
+    about: "☰ О себе",
+    experience: "☰ Опыт",
+    education: "☰ Образование",
+    skills: "☰ Навыки",
+    qualities: "☰ Личные качества",
+    contact: "☰ Контакты",
+  };
+
+  list.innerHTML = "";
+
+  sectionOrder.forEach((section) => {
+    const item = document.createElement("div");
+    item.className = "section-order-item";
+    item.dataset.section = section;
+    item.textContent = labels[section] || section;
+
+    list.appendChild(item);
+  });
+}
+
+function initSectionSortable() {
+  const list = document.getElementById("sectionOrderList");
+  if (!list || typeof Sortable === "undefined") return;
+
+  new Sortable(list, {
+    animation: 160,
+    ghostClass: "sortable-ghost",
+
+    onEnd: () => {
+      sectionOrder = [...list.querySelectorAll(".section-order-item")].map(
+        (item) => item.dataset.section,
+      );
+
+      update();
+      save();
+    },
+  });
+}
 function fillForm(data = {}) {
   isLoadingResume = true;
 
@@ -479,7 +554,10 @@ function fillForm(data = {}) {
     posX.value = photoState.x;
     posY.value = photoState.y;
   }
-
+  if (Array.isArray(data.sectionOrder)) {
+    sectionOrder = data.sectionOrder;
+    renderSectionOrderList();
+  }
   clampPhotoPosition();
   update();
 
@@ -1064,3 +1142,5 @@ function setSaveStatus(type) {
       break;
   }
 }
+renderSectionOrderList();
+initSectionSortable();

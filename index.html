@@ -441,7 +441,31 @@
               <p>Stylish beige editorial look</p>
             </div>
           </div>
+          <div class="layout-editor">
+            <h3>Порядок секций</h3>
+            <p>Перетащи блоки, чтобы изменить порядок в резюме.</p>
 
+            <div id="sectionOrderList" class="section-order-list">
+              <div class="section-order-item" data-section="about">
+                ☰ О себе
+              </div>
+              <div class="section-order-item" data-section="experience">
+                ☰ Опыт
+              </div>
+              <div class="section-order-item" data-section="education">
+                ☰ Образование
+              </div>
+              <div class="section-order-item" data-section="skills">
+                ☰ Навыки
+              </div>
+              <div class="section-order-item" data-section="qualities">
+                ☰ Личные качества
+              </div>
+              <div class="section-order-item" data-section="contact">
+                ☰ Контакты
+              </div>
+            </div>
+          </div>
           <button class="unlock-pro" id="unlockProBtn">
             🔓 Разблокировать PRO шаблоны
           </button>
@@ -557,7 +581,8 @@
       </div>
     </div>
     <div class="toast-container" id="toastContainer"></div>
-    <!-- PDF LIB -->
+    <!-- LIB -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>

@@ -4515,3 +4515,45 @@ body {
 .save-status.error {
   color: #ef4444;
 }
+.layout-editor {
+  margin-top: 24px;
+  padding: 18px;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  background: #ffffff;
+}
+
+.layout-editor h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+}
+
+.layout-editor p {
+  margin: 0 0 14px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.section-order-list {
+  display: grid;
+  gap: 10px;
+}
+
+.section-order-item {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #f3f6fb;
+  border: 1px solid #e5e7eb;
+  cursor: grab;
+  font-weight: 600;
+  color: #111827;
+  user-select: none;
+}
+
+.section-order-item:active {
+  cursor: grabbing;
+}
+
+.sortable-ghost {
+  opacity: 0.4;
+}
