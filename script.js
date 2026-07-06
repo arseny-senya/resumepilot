@@ -248,9 +248,11 @@ function initCvDragLayout() {
 
   columns.forEach((column) => {
     const sortable = new Sortable(column, {
-      animation: 160,
-      draggable: "section",
+      animation: 180,
+      draggable: "section[data-section]",
       ghostClass: "sortable-ghost",
+      chosenClass: "sortable-chosen",
+      dragClass: "sortable-drag",
 
       onEnd: () => {
         sectionOrder = [...cv.querySelectorAll("section[data-section]")].map(
