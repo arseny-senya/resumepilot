@@ -175,63 +175,63 @@ const templateLayouts = {
 
 <div class="creative-layout">
 
-<div class="creative-header">
+  <div class="creative-header">
 
-<div class="photo-frame">
-<div class="photo-inner">
-<img class="js-photo">
-</div>
-</div>
+    <div class="photo-frame">
+      <div class="photo-inner">
+        <img class="js-photo">
+      </div>
+    </div>
 
-<h1 class="name js-name"></h1>
+    <h1 class="name js-name"></h1>
 
-<p class="creative-job">
-Resume
-</p>
+    <p class="creative-job">
+      Resume
+    </p>
 
-</div>
+  </div>
 
-<div class="creative-content">
+  <div class="creative-content">
 
-<div class="creative-left">
+    <div class="creative-left" data-layout-column="left">
 
-<section>
-<h3>${L.contact}</h3>
-<p class="js-contact"></p>
-</section>
+      <section class="section-contact" data-section="contact">
+        <h3>${L.contact}</h3>
+        <p class="js-contact"></p>
+      </section>
 
-<section>
-<h3>${L.skills}</h3>
-<p class="js-skills"></p>
-</section>
+      <section class="section-skills" data-section="skills">
+        <h3>${L.skills}</h3>
+        <p class="js-skills"></p>
+      </section>
 
-<section>
-<h3>${L.qualities}</h3>
-<p class="js-qualities"></p>
-</section>
+      <section class="section-qualities" data-section="qualities">
+        <h3>${L.qualities}</h3>
+        <p class="js-qualities"></p>
+      </section>
 
-</div>
+    </div>
 
-<div class="creative-right">
+    <div class="creative-right" data-layout-column="right">
 
-<section>
-<h3>${L.experience}</h3>
-<p class="js-experience"></p>
-</section>
+      <section class="section-experience" data-section="experience">
+        <h3>${L.experience}</h3>
+        <p class="js-experience"></p>
+      </section>
 
-<section>
-<h3>${L.education}</h3>
-<p class="js-education"></p>
-</section>
+      <section class="section-education" data-section="education">
+        <h3>${L.education}</h3>
+        <p class="js-education"></p>
+      </section>
 
-<section>
-<h3>${L.about}</h3>
-<p class="js-about"></p>
-</section>
+      <section class="section-about" data-section="about">
+        <h3>${L.about}</h3>
+        <p class="js-about"></p>
+      </section>
 
-</div>
+    </div>
 
-</div>
+  </div>
 
 </div>
 
@@ -240,68 +240,67 @@ Resume
 
 <div class="elegant-layout">
 
-<div class="elegant-header">
+  <div class="elegant-header">
 
-<div class="photo-frame">
-<div class="photo-inner">
-<img class="js-photo">
-</div>
-</div>
+    <div class="photo-frame">
+      <div class="photo-inner">
+        <img class="js-photo">
+      </div>
+    </div>
 
-<h1 class="name js-name"></h1>
+    <h1 class="name js-name"></h1>
 
-<p class="elegant-job">
-${L.resume}
-</p>
+    <p class="elegant-job">
+      ${L.resume}
+    </p>
 
-</div>
+  </div>
 
-<div class="elegant-grid">
+  <div class="elegant-grid">
 
-<div>
+    <div data-layout-column="left">
 
-<section>
-<h3>${L.contact}</h3>
-<p class="js-contact"></p>
-</section>
+      <section class="section-contact" data-section="contact">
+        <h3>${L.contact}</h3>
+        <p class="js-contact"></p>
+      </section>
 
-<section>
-<h3>${L.skills}</h3>
-<p class="js-skills"></p>
-</section>
+      <section class="section-skills" data-section="skills">
+        <h3>${L.skills}</h3>
+        <p class="js-skills"></p>
+      </section>
 
-<section>
-<h3>${L.qualities}</h3>
-<p class="js-qualities"></p>
-</section>
+      <section class="section-qualities" data-section="qualities">
+        <h3>${L.qualities}</h3>
+        <p class="js-qualities"></p>
+      </section>
 
-</div>
+    </div>
 
-<div>
+    <div data-layout-column="right">
 
-<section>
-<h3>${L.experience}</h3>
-<p class="js-experience"></p>
-</section>
+      <section class="section-experience" data-section="experience">
+        <h3>${L.experience}</h3>
+        <p class="js-experience"></p>
+      </section>
 
-<section>
-<h3>${L.education}</h3>
-<p class="js-education"></p>
-</section>
+      <section class="section-education" data-section="education">
+        <h3>${L.education}</h3>
+        <p class="js-education"></p>
+      </section>
 
-<section>
-<h3>${L.about}</h3>
-<p class="js-about"></p>
-</section>
+      <section class="section-about" data-section="about">
+        <h3>${L.about}</h3>
+        <p class="js-about"></p>
+      </section>
 
-</div>
+    </div>
 
-</div>
+  </div>
 
 </div>
 
 `,
-
   executive: () => `
 
 <div class="executive-layout">
@@ -326,33 +325,33 @@ ${L.resume}
 
     <div class="executive-grid">
 
-        <div class="executive-left">
+        <div class="executive-left" data-layout-column="left">
 
-            <section>
+            <section class="section-experience" data-section="experience">
                 <h3>${L.experience}</h3>
                 <p class="js-experience"></p>
             </section>
 
         </div>
 
-        <div class="executive-right">
+        <div class="executive-right" data-layout-column="right">
 
-            <section>
+            <section class="section-skills" data-section="skills">
                 <h3>${L.skills}</h3>
                 <p class="js-skills"></p>
             </section>
 
-            <section>
+            <section class="section-education" data-section="education">
                 <h3>${L.education}</h3>
                 <p class="js-education"></p>
             </section>
 
-            <section>
+            <section class="section-qualities" data-section="qualities">
                 <h3>${L.qualities}</h3>
                 <p class="js-qualities"></p>
             </section>
 
-            <section>
+            <section class="section-about" data-section="about">
                 <h3>${L.about}</h3>
                 <p class="js-about"></p>
             </section>
@@ -388,33 +387,33 @@ ${L.resume}
 
         <div class="tech-grid">
 
-            <div class="tech-left">
+            <div class="tech-left" data-layout-column="left">
 
-                <section>
+                <section class="section-skills" data-section="skills">
                     <h3>${L.skills}</h3>
                     <p class="js-skills"></p>
                 </section>
 
-                <section>
+                <section class="section-qualities" data-section="qualities">
                     <h3>${L.qualities}</h3>
                     <p class="js-qualities"></p>
                 </section>
 
             </div>
 
-            <div class="tech-right">
+            <div class="tech-right" data-layout-column="right">
 
-                <section>
+                <section class="section-experience" data-section="experience">
                     <h3>${L.experience}</h3>
                     <p class="js-experience"></p>
                 </section>
 
-                <section>
+                <section class="section-education" data-section="education">
                     <h3>${L.education}</h3>
                     <p class="js-education"></p>
                 </section>
 
-                <section>
+                <section class="section-about" data-section="about">
                     <h3>${L.about}</h3>
                     <p class="js-about"></p>
                 </section>
@@ -428,12 +427,13 @@ ${L.resume}
 </div>
 
 `,
+  minimal: () => `
 
-  minimal: () => `<div class="template-minimal">
+<div class="template-minimal">
 
   <div class="minimal-layout">
 
-    <!-- TOP STRIP (editorial style) -->
+    <!-- TOP STRIP -->
     <div class="minimal-header">
 
       <div class="minimal-title">
@@ -452,40 +452,40 @@ ${L.resume}
     <!-- TWO COLUMN BODY -->
     <div class="minimal-body">
 
-      <!-- LEFT (meta info column) -->
-      <div class="minimal-aside">
+      <!-- LEFT -->
+      <div class="minimal-aside" data-layout-column="left">
 
-        <section>
+        <section class="section-contact" data-section="contact">
           <h3>${L.contact}</h3>
           <p class="js-contact"></p>
         </section>
 
-        <section>
+        <section class="section-skills" data-section="skills">
           <h3>${L.skills}</h3>
           <p class="js-skills"></p>
         </section>
 
-        <section>
+        <section class="section-qualities" data-section="qualities">
           <h3>${L.qualities}</h3>
           <p class="js-qualities"></p>
         </section>
 
       </div>
 
-      <!-- RIGHT (main editorial content) -->
-      <div class="minimal-main">
+      <!-- RIGHT -->
+      <div class="minimal-main" data-layout-column="right">
 
-        <section>
+        <section class="section-experience" data-section="experience">
           <h3>${L.experience}</h3>
           <p class="js-experience"></p>
         </section>
 
-        <section>
+        <section class="section-education" data-section="education">
           <h3>${L.education}</h3>
           <p class="js-education"></p>
         </section>
 
-        <section>
+        <section class="section-about" data-section="about">
           <h3>${L.about}</h3>
           <p class="js-about"></p>
         </section>
@@ -496,7 +496,9 @@ ${L.resume}
 
   </div>
 
-</div>`,
+</div>
+
+`,
   designer: () => `
 
 <div class="template-designer">
@@ -532,33 +534,33 @@ ${L.resume}
 
         <div class="designer-divider"></div>
 
-        <div class="designer-main">
+        <div class="designer-main" data-layout-column="main">
 
-            <section class="experience">
+            <section class="experience section-experience" data-section="experience">
                 <span class="number">01</span>
                 <h3>${L.experience}</h3>
                 <p class="js-experience"></p>
             </section>
 
-            <section class="skills">
+            <section class="skills section-skills" data-section="skills">
                 <span class="number">02</span>
                 <h3>${L.skills}</h3>
                 <p class="js-skills"></p>
             </section>
 
-            <section class="education">
+            <section class="education section-education" data-section="education">
                 <span class="number">03</span>
                 <h3>${L.education}</h3>
                 <p class="js-education"></p>
             </section>
 
-            <section class="qualities">
+            <section class="qualities section-qualities" data-section="qualities">
                 <span class="number">04</span>
                 <h3>${L.qualities}</h3>
                 <p class="js-qualities"></p>
             </section>
 
-            <section class="about">
+            <section class="about section-about" data-section="about">
                 <span class="number">05</span>
                 <h3>${L.about}</h3>
                 <p class="js-about"></p>
@@ -571,7 +573,6 @@ ${L.resume}
 </div>
 
 `,
-
   dark: () => `
 
 <div class="template-dark">
@@ -593,29 +594,29 @@ ${L.resume}
     </div>
 
     <!-- CONTENT -->
-    <div class="dark-content">
+    <div class="dark-content" data-layout-column="main">
 
-      <section>
+      <section class="section-skills" data-section="skills">
         <h3>${L.skills}</h3>
         <p class="js-skills"></p>
       </section>
 
-      <section>
+      <section class="section-experience" data-section="experience">
         <h3>${L.experience}</h3>
         <p class="js-experience"></p>
       </section>
 
-      <section>
+      <section class="section-education" data-section="education">
         <h3>${L.education}</h3>
         <p class="js-education"></p>
       </section>
 
-      <section>
+      <section class="section-qualities" data-section="qualities">
         <h3>${L.qualities}</h3>
         <p class="js-qualities"></p>
       </section>
 
-      <section>
+      <section class="section-about" data-section="about">
         <h3>${L.about}</h3>
         <p class="js-about"></p>
       </section>
@@ -631,46 +632,69 @@ ${L.resume}
 <div class="template-editorial">
 
   <header class="editorial-header">
-    <div class="editorial-label">Resume</div>
+    <div class="editorial-label">${L.resume}</div>
     <h1 class="js-name"></h1>
     <p class="js-contact"></p>
   </header>
 
   <div class="editorial-divider"></div>
- <section class="editorial-section editorial-qualities">
-    <h3>${L.qualities}</h3>
-    <p class="js-qualities"></p>
-  </section>
- 
 
-  <section class="editorial-section editorial-experience">
-    <h3>${L.experience}</h3>
-    <p class="js-experience"></p>
-  </section>
+  <!-- Основной поток -->
+  <div class="editorial-layout" data-layout-column="main">
 
-  <div class="editorial-grid">
-    <section class="editorial-section">
+    <section
+      class="editorial-section editorial-qualities section-qualities"
+      data-section="qualities"
+    >
+      <h3>${L.qualities}</h3>
+      <p class="js-qualities"></p>
+    </section>
+
+    <section
+      class="editorial-section editorial-experience section-experience"
+      data-section="experience"
+    >
+      <h3>${L.experience}</h3>
+      <p class="js-experience"></p>
+    </section>
+
+    <section
+      class="editorial-section editorial-about section-about"
+      data-section="about"
+    >
+      <h3>${L.about}</h3>
+      <p class="js-about"></p>
+    </section>
+
+  </div>
+
+  <!-- Двухколоночный блок -->
+  <div class="editorial-grid" data-layout-column="grid">
+
+    <section
+      class="editorial-section section-education"
+      data-section="education"
+    >
       <h3>${L.education}</h3>
       <p class="js-education"></p>
     </section>
 
-    <section class="editorial-section">
+    <section
+      class="editorial-section section-skills"
+      data-section="skills"
+    >
       <h3>${L.skills}</h3>
       <p class="js-skills"></p>
     </section>
+
   </div>
- <section class="editorial-section editorial-about">
-    <h3>${L.about}</h3>
-    <p class="js-about"></p>
-  </section>
- 
 
 </div>
 `,
   fashion: () => `
 <div class="template-fashion">
 
-  <aside class="fashion-sidebar">
+  <aside class="fashion-sidebar" data-layout-column="left">
     <div class="fashion-photo">
       <img class="js-photo">
     </div>
@@ -679,38 +703,38 @@ ${L.resume}
       <h1 class="js-name"></h1>
     </div>
 
-    <section class="fashion-side-section">
+    <section class="fashion-side-section section-skills" data-section="skills">
       <h3>${L.skills}</h3>
       <p class="js-skills"></p>
     </section>
 
-    <section class="fashion-side-section">
+    <section class="fashion-side-section section-qualities" data-section="qualities">
       <h3>${L.qualities}</h3>
       <p class="js-qualities"></p>
     </section>
   </aside>
 
-  <main class="fashion-main">
-    <section class="fashion-contact">
+  <main class="fashion-main" data-layout-column="right">
+    <section class="fashion-contact section-contact" data-section="contact">
       <h3>${L.contact}</h3>
       <p class="js-contact"></p>
     </section>
 
-    <section class="fashion-main-section">
+    <section class="fashion-main-section section-experience" data-section="experience">
       <div class="fashion-heading">
         <h3>${L.experience}</h3>
       </div>
       <p class="js-experience"></p>
     </section>
 
-    <section class="fashion-main-section">
+    <section class="fashion-main-section section-education" data-section="education">
       <div class="fashion-heading">
         <h3>${L.education}</h3>
       </div>
       <p class="js-education"></p>
     </section>
 
-    <section class="fashion-main-section">
+    <section class="fashion-main-section section-about" data-section="about">
       <div class="fashion-heading">
         <h3>${L.about}</h3>
       </div>
@@ -728,30 +752,34 @@ ${L.resume}
     <p class="ats-contact js-contact"></p>
   </header>
 
-  <section class="ats-section">
-    <h3>${L.experience}</h3>
-    <p class="js-experience"></p>
-  </section>
+  <div class="ats-content" data-layout-column="main">
 
-  <section class="ats-section">
-    <h3>${L.education}</h3>
-    <p class="js-education"></p>
-  </section>
+    <section class="ats-section section-experience" data-section="experience">
+      <h3>${L.experience}</h3>
+      <p class="js-experience"></p>
+    </section>
 
-  <section class="ats-section">
-    <h3>${L.skills}</h3>
-    <p class="js-skills"></p>
-  </section>
+    <section class="ats-section section-education" data-section="education">
+      <h3>${L.education}</h3>
+      <p class="js-education"></p>
+    </section>
 
-  <section class="ats-section">
-    <h3>${L.qualities}</h3>
-    <p class="js-qualities"></p>
-  </section>
-  
-  <section class="ats-section">
-    <h3>${L.about}</h3>
-    <p class="js-about"></p>
-  </section>
+    <section class="ats-section section-skills" data-section="skills">
+      <h3>${L.skills}</h3>
+      <p class="js-skills"></p>
+    </section>
+
+    <section class="ats-section section-qualities" data-section="qualities">
+      <h3>${L.qualities}</h3>
+      <p class="js-qualities"></p>
+    </section>
+
+    <section class="ats-section section-about" data-section="about">
+      <h3>${L.about}</h3>
+      <p class="js-about"></p>
+    </section>
+
+  </div>
 
 </div>
 `,
@@ -772,33 +800,48 @@ ${L.resume}
 
   <div class="highlight-body">
 
-    <aside class="highlight-left">
+    <aside class="highlight-left" data-layout-column="left">
 
-      <section>
+      <section
+        class="section-skills"
+        data-section="skills"
+      >
         <h3>${L.skills}</h3>
         <p class="js-skills"></p>
       </section>
 
-      <section>
+      <section
+        class="section-education"
+        data-section="education"
+      >
         <h3>${L.education}</h3>
         <p class="js-education"></p>
       </section>
 
-      <section>
+      <section
+        class="section-qualities"
+        data-section="qualities"
+      >
         <h3>${L.qualities}</h3>
         <p class="js-qualities"></p>
       </section>
 
     </aside>
 
-    <main class="highlight-right">
+    <main class="highlight-right" data-layout-column="right">
 
-      <section>
+      <section
+        class="section-experience"
+        data-section="experience"
+      >
         <h3>${L.experience}</h3>
         <p class="js-experience"></p>
       </section>
 
-      <section class="highlight-about-section">
+      <section
+        class="highlight-about-section section-about"
+        data-section="about"
+      >
         <h3>${L.about}</h3>
         <p class="js-about"></p>
       </section>
@@ -822,32 +865,52 @@ ${L.resume}
     </div>
   </header>
 
-  <main class="grid-layout">
+  <main class="grid-layout" data-layout-column="main">
 
-    <section class="grid-panel grid-blue">
+    <section
+      class="grid-panel grid-blue section-contact"
+      data-section="contact"
+    >
       <h3>${L.contact}</h3>
       <p class="js-contact"></p>
     </section>
 
-    <section class="grid-panel">
+    <section
+      class="grid-panel section-experience"
+      data-section="experience"
+    >
       <h3>${L.experience}</h3>
       <p class="js-experience"></p>
     </section>
 
-    <section class="grid-panel">
+    <section
+      class="grid-panel section-skills"
+      data-section="skills"
+    >
       <h3>${L.skills}</h3>
       <p class="js-skills"></p>
     </section>
 
-    <section class="grid-panel">
+    <section
+      class="grid-panel section-education"
+      data-section="education"
+    >
       <h3>${L.education}</h3>
       <p class="js-education"></p>
+    </section>
 
-      <h3 class="grid-second-title">${L.qualities}</h3>
+    <section
+      class="grid-panel section-qualities"
+      data-section="qualities"
+    >
+      <h3>${L.qualities}</h3>
       <p class="js-qualities"></p>
     </section>
 
-    <section class="grid-panel grid-about">
+    <section
+      class="grid-panel grid-about section-about"
+      data-section="about"
+    >
       <h3>${L.about}</h3>
       <p class="js-about"></p>
     </section>

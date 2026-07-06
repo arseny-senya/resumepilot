@@ -243,21 +243,23 @@ function destroyCvSortables() {
   cvSortables = [];
 }
 function collectCurrentSectionLayout() {
-  const leftColumn = cv.querySelector('[data-layout-column="left"]');
-  const rightColumn = cv.querySelector('[data-layout-column="right"]');
+  const columns = cv.querySelectorAll("[data-layout-column]");
 
-  if (!leftColumn || !rightColumn) return;
+  if (!columns.length) return;
 
-  sectionLayout = {
-    left: [...leftColumn.querySelectorAll("section[data-section]")].map(
-      (section) => section.dataset.section,
-    ),
-    right: [...rightColumn.querySelectorAll("section[data-section]")].map(
-      (section) => section.dataset.section,
-    ),
-  };
+  const newLayout = {};
 
-  sectionOrder = [...sectionLayout.left, ...sectionLayout.right];
+  columns.forEach((column) => {
+    const columnName = column.dataset.layoutColumn;
+
+    newLayout[columnName] = [
+      ...column.querySelectorAll(":scope > section[data-section]"),
+    ].map((section) => section.dataset.section);
+  });
+
+  sectionLayout = newLayout;
+
+  sectionOrder = Object.values(sectionLayout).flat();
 }
 function initCvDragLayout() {
   destroyCvSortables();
@@ -364,7 +366,9 @@ function applySavedSectionLayout() {
     sections.forEach((sectionName) => {
       const section = cv.querySelector(`[data-section="${sectionName}"]`);
 
-      if (section) {
+      if (section && section.parentElement !== column) {
+        column.appendChild(section);
+      } else if (section) {
         column.appendChild(section);
       }
     });
@@ -382,7 +386,7 @@ function collectCurrentSectionLayout() {
     const columnName = column.dataset.layoutColumn;
 
     newLayout[columnName] = [
-      ...column.querySelectorAll("section[data-section]"),
+      ...column.querySelectorAll(":scope > section[data-section]"),
     ].map((section) => section.dataset.section);
   });
 
