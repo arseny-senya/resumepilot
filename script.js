@@ -242,7 +242,23 @@ function destroyCvSortables() {
   cvSortables.forEach((sortable) => sortable.destroy());
   cvSortables = [];
 }
+function collectCurrentSectionLayout() {
+  const leftColumn = cv.querySelector('[data-layout-column="left"]');
+  const rightColumn = cv.querySelector('[data-layout-column="right"]');
 
+  if (!leftColumn || !rightColumn) return;
+
+  sectionLayout = {
+    left: [...leftColumn.querySelectorAll("section[data-section]")].map(
+      (section) => section.dataset.section,
+    ),
+    right: [...rightColumn.querySelectorAll("section[data-section]")].map(
+      (section) => section.dataset.section,
+    ),
+  };
+
+  sectionOrder = [...sectionLayout.left, ...sectionLayout.right];
+}
 function initCvDragLayout() {
   destroyCvSortables();
 
@@ -260,10 +276,7 @@ function initCvDragLayout() {
       group: "cv-layout",
 
       onEnd: () => {
-        sectionOrder = [...cv.querySelectorAll("section[data-section]")].map(
-          (section) => section.dataset.section,
-        );
-
+        collectCurrentSectionLayout();
         save();
       },
     });
@@ -1282,54 +1295,36 @@ function setSaveStatus(type) {
 }
 renderSectionOrderList();
 initSectionSortable();
+
 document.addEventListener("DOMContentLoaded", () => {
   layoutEditBtn = document.getElementById("layoutEditBtn");
 
-  if (!layoutEditBtn) {
-    console.log("layoutEditBtn not found");
-    return;
-  }
+  if (!layoutEditBtn) return;
 
   layoutEditBtn.addEventListener("click", () => {
-    isLayoutEditing = !isLayoutEditing;
+    if (isLayoutEditing) {
+      collectCurrentSectionLayout();
+      save();
 
-    console.log("Layout editing:", isLayoutEditing);
-    console.log("Sortable exists:", typeof Sortable !== "undefined");
-    console.log(
-      "initCvDragLayout exists:",
-      typeof initCvDragLayout === "function",
-    );
+      isLayoutEditing = false;
+      layoutEditBtn.textContent = "⚙ Редактировать макет";
 
-    layoutEditBtn.textContent = isLayoutEditing
-      ? "✓ Готово"
-      : "⚙ Редактировать макет";
+      cv.classList.remove("layout-editing");
+      destroyCvSortables();
+
+      renderResume();
+      return;
+    }
+
+    isLayoutEditing = true;
+    layoutEditBtn.textContent = "✓ Готово";
 
     renderResume();
 
-    if (isLayoutEditing) {
-      cv.classList.add("layout-editing");
+    cv.classList.add("layout-editing");
 
-      setTimeout(() => {
-        console.log(
-          "Columns found:",
-          cv.querySelectorAll("[data-layout-column]").length,
-        );
-        console.log(
-          "Sections found:",
-          cv.querySelectorAll("section[data-section]").length,
-        );
-
-        if (typeof initCvDragLayout === "function") {
-          initCvDragLayout();
-          console.log("Drag layout initialized");
-        }
-      }, 0);
-    } else {
-      cv.classList.remove("layout-editing");
-
-      if (typeof destroyCvSortables === "function") {
-        destroyCvSortables();
-      }
-    }
+    setTimeout(() => {
+      initCvDragLayout();
+    }, 0);
   });
 });
