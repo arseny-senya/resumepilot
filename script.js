@@ -393,7 +393,10 @@ function renderResume() {
 
   if (isLayoutEditing) {
     cv.classList.add("layout-editing");
-    setTimeout(initCvDragLayout, 0);
+
+    if (typeof initCvDragLayout === "function") {
+      setTimeout(initCvDragLayout, 0);
+    }
   }
 }
 function destroyCvSortables() {
