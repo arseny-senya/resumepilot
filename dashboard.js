@@ -66,7 +66,16 @@ function renderResumes(resumes) {
     card.className = "resume-card";
 
     card.innerHTML = `
-      <div class="resume-preview"></div>
+    <div class="resume-preview mini-${escapeHTML(resume.template || "modern")}">
+  <div class="mini-header"></div>
+  <div class="mini-name">${escapeHTML(resume.data?.name || resume.title || "Resume")}</div>
+  <div class="mini-line long"></div>
+  <div class="mini-line"></div>
+  <div class="mini-line short"></div>
+  <div class="mini-section"></div>
+  <div class="mini-line long"></div>
+  <div class="mini-line"></div>
+</div>
 
       <h3>${escapeHTML(resume.title || "Untitled Resume")}</h3>
 

@@ -590,3 +590,122 @@ h1 {
     background-position: -100% 0;
   }
 }
+.resume-preview {
+  height: 180px;
+  border-radius: 16px;
+  background: #f8fafc;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  padding: 18px;
+}
+
+.resume-preview::before,
+.resume-preview::after {
+  content: none;
+}
+
+.mini-header {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #2563eb;
+  margin-bottom: 14px;
+}
+
+.mini-name {
+  height: 10px;
+  width: 60%;
+  background: #111827;
+  border-radius: 999px;
+  margin-bottom: 16px;
+  font-size: 0;
+}
+
+.mini-line {
+  height: 7px;
+  width: 72%;
+  background: #cbd5e1;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.mini-line.long {
+  width: 88%;
+}
+
+.mini-line.short {
+  width: 48%;
+}
+
+.mini-section {
+  width: 34%;
+  height: 8px;
+  background: #2563eb;
+  border-radius: 999px;
+  margin: 18px 0 10px;
+}
+
+/* Sidebar-style preview */
+.resume-preview.mini-sidebar {
+  padding-left: 58px;
+}
+
+.resume-preview.mini-sidebar::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 44px;
+  height: 100%;
+  background: #111827;
+}
+
+/* Dark template preview */
+.resume-preview.mini-dark {
+  background: #111827;
+  border-color: #1f2937;
+}
+
+.resume-preview.mini-dark .mini-name {
+  background: #ffffff;
+}
+
+.resume-preview.mini-dark .mini-line {
+  background: #475569;
+}
+
+/* Tech template preview */
+.resume-preview.mini-tech {
+  background:
+    linear-gradient(90deg, rgba(37, 99, 235, 0.1) 1px, transparent 1px),
+    linear-gradient(rgba(37, 99, 235, 0.1) 1px, transparent 1px), #f8fafc;
+  background-size: 18px 18px;
+}
+
+/* Elegant / Executive */
+.resume-preview.mini-elegant,
+.resume-preview.mini-executive {
+  background: #fbfaf7;
+}
+
+.resume-preview.mini-elegant .mini-header,
+.resume-preview.mini-executive .mini-header,
+.resume-preview.mini-elegant .mini-section,
+.resume-preview.mini-executive .mini-section {
+  background: #92400e;
+}
+
+/* Fashion / Designer */
+.resume-preview.mini-fashion,
+.resume-preview.mini-designer {
+  background: #fff7ed;
+}
+
+.resume-preview.mini-fashion .mini-header,
+.resume-preview.mini-designer .mini-header,
+.resume-preview.mini-fashion .mini-section,
+.resume-preview.mini-designer .mini-section {
+  background: #db2777;
+}
