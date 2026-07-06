@@ -31,12 +31,12 @@ const templateLayouts = {
 
   <div class="modern-left">
 
-    <section class="section-skills">
+    <section class="section-skills" data-section="skills">
       <h3>${L.skills}</h3>
       <p class="js-skills"></p>
     </section>
 
-    <section class="section-qualities">
+    <section class="section-qualities" data-section="qualities">
       <h3>${L.qualities}</h3>
       <p class="js-qualities"></p>
     </section>
@@ -45,17 +45,17 @@ const templateLayouts = {
 
   <div class="modern-right">
 
-    <section class="section-experience">
+    <section class="section-experience" data-section="experience">
       <h3>${L.experience}</h3>
       <p class="js-experience"></p>
     </section>
 
-    <section class="section-education">
+    <section class="section-education" data-section="education">
       <h3>${L.education}</h3>
       <p class="js-education"></p>
     </section>
 
-    <section class="section-about">
+    <section class="section-about" data-section="about">
       <h3>${L.about}</h3>
       <p class="js-about"></p>
     </section>

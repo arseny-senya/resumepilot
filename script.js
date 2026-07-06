@@ -72,7 +72,9 @@ const posX = document.getElementById("posX");
 const posY = document.getElementById("posY");
 const policyLabel = document.getElementById("policyLabel");
 const privacyAgree = document.getElementById("privacyAgree");
-
+const layoutEditBtn = document.getElementById("layoutEditBtn");
+let isLayoutEditing = false;
+let cvSortables = [];
 /* ======================
    STATE
 ====================== */
@@ -260,7 +262,65 @@ function applySectionOrder() {
 
     return;
   }
+  function getSortableContainers() {
+    const containers = [];
 
+    const modernLeft = cv.querySelector(".modern-left");
+    const modernRight = cv.querySelector(".modern-right");
+
+    if (modernLeft) containers.push(modernLeft);
+    if (modernRight) containers.push(modernRight);
+
+    if (!containers.length) {
+      containers.push(cv);
+    }
+
+    return containers;
+  }
+
+  function destroyCvSortables() {
+    cvSortables.forEach((sortable) => sortable.destroy());
+    cvSortables = [];
+  }
+
+  function initCvDragLayout() {
+    destroyCvSortables();
+
+    if (!isLayoutEditing || typeof Sortable === "undefined") return;
+
+    const containers = getSortableContainers();
+
+    containers.forEach((container) => {
+      const sortable = new Sortable(container, {
+        animation: 160,
+        draggable: "section",
+        ghostClass: "sortable-ghost",
+
+        onEnd: () => {
+          const sections = [...cv.querySelectorAll("section[data-section]")];
+
+          sectionOrder = sections.map((section) => section.dataset.section);
+
+          update();
+          save();
+        },
+      });
+
+      cvSortables.push(sortable);
+    });
+  }
+
+  layoutEditBtn?.addEventListener("click", () => {
+    isLayoutEditing = !isLayoutEditing;
+
+    cv.classList.toggle("layout-editing", isLayoutEditing);
+
+    layoutEditBtn.textContent = isLayoutEditing
+      ? "✓ Готово"
+      : "⚙ Редактировать макет";
+
+    initCvDragLayout();
+  });
   // Для одноколоночных шаблонов
   const sections = sectionOrder
     .map((key) => cv.querySelector(sectionMap[key]))
@@ -310,7 +370,10 @@ function renderResume() {
       translate(${photoState.x}px, ${photoState.y}px)
     `;
   }
-
+  if (isLayoutEditing) {
+    cv.classList.add("layout-editing");
+    setTimeout(initCvDragLayout, 0);
+  }
   cv.classList.toggle("watermark", isLockedTemplate());
 }
 
