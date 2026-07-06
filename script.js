@@ -422,13 +422,25 @@ function initCvDragLayout() {
 layoutEditBtn?.addEventListener("click", () => {
   isLayoutEditing = !isLayoutEditing;
 
-  cv.classList.toggle("layout-editing", isLayoutEditing);
+  console.log("Layout editing:", isLayoutEditing);
 
   layoutEditBtn.textContent = isLayoutEditing
     ? "✓ Готово"
     : "⚙ Редактировать макет";
 
-  initCvDragLayout();
+  renderResume();
+
+  if (isLayoutEditing) {
+    cv.classList.add("layout-editing");
+
+    setTimeout(() => {
+      initCvDragLayout();
+      console.log("Drag layout initialized");
+    }, 0);
+  } else {
+    cv.classList.remove("layout-editing");
+    destroyCvSortables();
+  }
 });
 /* ======================
    UPDATE
