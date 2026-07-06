@@ -352,12 +352,80 @@ function renderModernV2() {
     </div>
   `;
 }
+
+function applySavedSectionLayout() {
+  if (!sectionLayout) return;
+
+  Object.entries(sectionLayout).forEach(([columnName, sections]) => {
+    const column = cv.querySelector(`[data-layout-column="${columnName}"]`);
+
+    if (!column || !Array.isArray(sections)) return;
+
+    sections.forEach((sectionName) => {
+      const section = cv.querySelector(`[data-section="${sectionName}"]`);
+
+      if (section) {
+        column.appendChild(section);
+      }
+    });
+  });
+}
+
+function collectCurrentSectionLayout() {
+  const columns = cv.querySelectorAll("[data-layout-column]");
+
+  if (!columns.length) return;
+
+  const newLayout = {};
+
+  columns.forEach((column) => {
+    const columnName = column.dataset.layoutColumn;
+
+    newLayout[columnName] = [
+      ...column.querySelectorAll("section[data-section]"),
+    ].map((section) => section.dataset.section);
+  });
+
+  sectionLayout = newLayout;
+
+  sectionOrder = Object.values(sectionLayout).flat();
+}
+
+function destroyCvSortables() {
+  cvSortables.forEach((sortable) => sortable.destroy());
+  cvSortables = [];
+}
+
+function initCvDragLayout() {
+  destroyCvSortables();
+
+  if (!isLayoutEditing || typeof Sortable === "undefined") return;
+
+  const columns = cv.querySelectorAll("[data-layout-column]");
+
+  columns.forEach((column) => {
+    const sortable = new Sortable(column, {
+      group: "cv-layout",
+      animation: 180,
+      draggable: "section[data-section]",
+      ghostClass: "sortable-ghost",
+      chosenClass: "sortable-chosen",
+      dragClass: "sortable-drag",
+
+      onEnd: () => {
+        collectCurrentSectionLayout();
+        save();
+      },
+    });
+
+    cvSortables.push(sortable);
+  });
+}
+
 function renderResume() {
-  if (currentTemplate === "modern") {
-    renderModernV2();
-  } else {
-    cv.innerHTML = templateLayouts[currentTemplate]();
-  }
+  cv.innerHTML = templateLayouts[currentTemplate]();
+
+  applySavedSectionLayout();
 
   const setText = (selector, value) => {
     const el = cv.querySelector(selector);
@@ -398,9 +466,9 @@ function renderResume() {
   if (isLayoutEditing) {
     cv.classList.add("layout-editing");
 
-    if (typeof initCvDragLayout === "function") {
-      setTimeout(initCvDragLayout, 0);
-    }
+    setTimeout(() => {
+      initCvDragLayout();
+    }, 0);
   }
 }
 

@@ -70,7 +70,7 @@ const templateLayouts = {
 
 <div class="sidebar-layout">
 
-    <aside class="sidebar-left">
+    <aside class="sidebar-left" data-layout-column="left">
 
         <div class="photo-frame">
             <div class="photo-inner">
@@ -80,36 +80,36 @@ const templateLayouts = {
 
         <h2 class="js-name"></h2>
 
-        <section>
+        <section class="section-contact" data-section="contact">
             <h3>${L.contact}</h3>
             <div class="js-contact"></div>
         </section>
 
-        <section>
+        <section class="section-skills" data-section="skills">
             <h3>${L.skills}</h3>
             <div class="js-skills"></div>
         </section>
 
-        <section>
+        <section class="section-qualities" data-section="qualities">
             <h3>${L.qualities}</h3>
             <div class="js-qualities"></div>
         </section>
 
     </aside>
 
-    <main class="sidebar-right">
+    <main class="sidebar-right" data-layout-column="right">
 
-        <section>
+        <section class="section-experience" data-section="experience">
             <h3>${L.experience}</h3>
             <div class="js-experience"></div>
         </section>
 
-        <section>
+        <section class="section-education" data-section="education">
             <h3>${L.education}</h3>
             <div class="js-education"></div>
         </section>
 
-        <section>
+        <section class="section-about" data-section="about">
             <h3>${L.about}</h3>
             <div class="js-about"></div>
         </section>
