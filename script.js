@@ -55,7 +55,7 @@ const qualitiesInput = document.getElementById("qualities");
 const photoInput = document.getElementById("photo");
 
 const downloadBtn = document.getElementById("download");
-
+const saveStatus = document.getElementById("saveStatus");
 const cv = document.querySelector(".cv");
 
 const zoom = document.getElementById("zoom");
@@ -427,6 +427,8 @@ function save() {
 
     if (resumeId && token) {
       try {
+        setSaveStatus("saving");
+
         const res = await fetch(`${API_URL}/api/resumes/${resumeId}`, {
           method: "PUT",
           headers: {
@@ -445,8 +447,11 @@ function save() {
         if (!res.ok) {
           throw new Error("Failed to autosave resume");
         }
+
+        setSaveStatus("saved");
       } catch (err) {
         console.error("Autosave failed:", err);
+        setSaveStatus("error");
       }
 
       return;
@@ -1037,3 +1042,25 @@ forgotForm?.addEventListener("submit", async (e) => {
 document.getElementById("dashboardBtn")?.addEventListener("click", () => {
   window.location.href = "dashboard";
 });
+function setSaveStatus(type) {
+  if (!saveStatus) return;
+
+  saveStatus.className = "save-status show";
+
+  switch (type) {
+    case "saving":
+      saveStatus.classList.add("saving");
+      saveStatus.textContent = LANG === "en" ? "Saving..." : "Сохранение...";
+      break;
+
+    case "saved":
+      saveStatus.textContent = LANG === "en" ? "✓ Saved" : "✓ Сохранено";
+      break;
+
+    case "error":
+      saveStatus.classList.add("error");
+      saveStatus.textContent =
+        LANG === "en" ? "Save failed" : "Ошибка сохранения";
+      break;
+  }
+}

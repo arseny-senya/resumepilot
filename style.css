@@ -4491,3 +4491,27 @@ body {
   line-height: 1.45;
   color: #6b7280;
 }
+.save-status {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #22c55e;
+
+  opacity: 0;
+  transform: translateY(5px);
+
+  transition: 0.25s;
+}
+
+.save-status.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.save-status.saving {
+  color: #f59e0b;
+}
+
+.save-status.error {
+  color: #ef4444;
+}
