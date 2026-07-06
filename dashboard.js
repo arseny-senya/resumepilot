@@ -38,15 +38,33 @@ async function apiRequest(url, options = {}) {
 
   return data;
 }
-
-function formatDate(dateString) {
+function formatLastEdited(dateString) {
   const date = new Date(dateString);
+  const now = new Date();
 
-  return date.toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
+  const diff = Math.floor((now - date) / 1000);
+
+  if (diff < 60) {
+    return "Edited just now";
+  }
+
+  if (diff < 3600) {
+    const minutes = Math.floor(diff / 60);
+    return `Edited ${minutes} minute${minutes > 1 ? "s" : ""} ago`;
+  }
+
+  if (diff < 86400) {
+    const hours = Math.floor(diff / 3600);
+    return `Edited ${hours} hour${hours > 1 ? "s" : ""} ago`;
+  }
+
+  if (diff < 172800) {
+    return "Edited yesterday";
+  }
+
+  const days = Math.floor(diff / 86400);
+
+  return `Edited ${days} days ago`;
 }
 
 function renderResumes(resumes) {
@@ -79,9 +97,15 @@ function renderResumes(resumes) {
 
       <h3>${escapeHTML(resume.title || "Untitled Resume")}</h3>
 
-      <p class="resume-meta">
-        Template: ${escapeHTML(resume.template || "modern")} · Updated ${formatDate(resume.updatedAt)}
-      </p>
+    <div class="resume-meta">
+  <span class="template-badge">
+    ${escapeHTML(resume.template || "modern")}
+  </span>
+
+  <span class="edited-time">
+    ${formatLastEdited(resume.updatedAt)}
+  </span>
+</div>
 
       <div class="resume-actions">
         <button class="edit-btn" type="button">Edit</button>

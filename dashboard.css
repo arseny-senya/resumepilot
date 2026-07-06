@@ -709,3 +709,29 @@ h1 {
 .resume-preview.mini-designer .mini-section {
   background: #db2777;
 }
+.resume-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  margin: 14px 0 18px;
+}
+
+.template-badge {
+  background: #eef4ff;
+  color: #2563eb;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  padding: 6px 12px;
+  border-radius: 999px;
+
+  text-transform: capitalize;
+}
+
+.edited-time {
+  font-size: 13px;
+  color: #6b7280;
+}
