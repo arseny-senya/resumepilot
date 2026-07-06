@@ -253,6 +253,7 @@ function initCvDragLayout() {
       ghostClass: "sortable-ghost",
       chosenClass: "sortable-chosen",
       dragClass: "sortable-drag",
+      group: "cv-layout",
 
       onEnd: () => {
         sectionOrder = [...cv.querySelectorAll("section[data-section]")].map(
@@ -389,36 +390,6 @@ function renderResume() {
       setTimeout(initCvDragLayout, 0);
     }
   }
-}
-function destroyCvSortables() {
-  cvSortables.forEach((sortable) => sortable.destroy());
-  cvSortables = [];
-}
-
-function initCvDragLayout() {
-  destroyCvSortables();
-
-  if (!isLayoutEditing || typeof Sortable === "undefined") return;
-
-  const columns = cv.querySelectorAll("[data-layout-column]");
-
-  columns.forEach((column) => {
-    const sortable = new Sortable(column, {
-      animation: 160,
-      draggable: "section",
-      ghostClass: "sortable-ghost",
-
-      onEnd: () => {
-        sectionOrder = [...cv.querySelectorAll("section[data-section]")].map(
-          (section) => section.dataset.section,
-        );
-
-        save();
-      },
-    });
-
-    cvSortables.push(sortable);
-  });
 }
 
 layoutEditBtn?.addEventListener("click", () => {
