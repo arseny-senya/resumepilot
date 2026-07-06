@@ -229,14 +229,39 @@ function isLockedTemplate() {
 ====================== */
 function applySectionOrder() {
   const sectionMap = {
-    about: ".section-about",
     experience: ".section-experience",
     education: ".section-education",
     skills: ".section-skills",
     qualities: ".section-qualities",
     contact: ".section-contact",
+    about: ".section-about",
   };
 
+  // Для шаблонов с двумя колонками пока сортируем отдельно
+  const leftContainer = cv.querySelector(".modern-left");
+  const rightContainer = cv.querySelector(".modern-right");
+
+  if (leftContainer && rightContainer) {
+    const leftSections = ["skills", "qualities"];
+    const rightSections = ["experience", "education", "about"];
+
+    sectionOrder.forEach((key) => {
+      const section = cv.querySelector(sectionMap[key]);
+      if (!section) return;
+
+      if (leftSections.includes(key)) {
+        leftContainer.appendChild(section);
+      }
+
+      if (rightSections.includes(key)) {
+        rightContainer.appendChild(section);
+      }
+    });
+
+    return;
+  }
+
+  // Для одноколоночных шаблонов
   const sections = sectionOrder
     .map((key) => cv.querySelector(sectionMap[key]))
     .filter(Boolean);
