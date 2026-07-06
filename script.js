@@ -1391,6 +1391,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     isLayoutEditing = true;
+    document.getElementById("preview")?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
     layoutEditBtn.textContent = "✓ Готово";
 
     renderResume();
