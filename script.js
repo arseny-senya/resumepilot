@@ -34,12 +34,12 @@ const TEXT = {
 };
 
 let sectionOrder = [
-  "about",
   "experience",
   "education",
   "skills",
   "qualities",
   "contact",
+  "about",
 ];
 let currentUser = null;
 function t(text) {
@@ -335,8 +335,85 @@ function applySectionOrder() {
     parent.appendChild(section);
   });
 }
+
+function renderSection(section) {
+  const sections = {
+    skills: `
+      <section class="section-skills" data-section="skills">
+        <h3>${L.skills}</h3>
+        <p class="js-skills"></p>
+      </section>
+    `,
+
+    qualities: `
+      <section class="section-qualities" data-section="qualities">
+        <h3>${L.qualities}</h3>
+        <p class="js-qualities"></p>
+      </section>
+    `,
+
+    experience: `
+      <section class="section-experience" data-section="experience">
+        <h3>${L.experience}</h3>
+        <p class="js-experience"></p>
+      </section>
+    `,
+
+    education: `
+      <section class="section-education" data-section="education">
+        <h3>${L.education}</h3>
+        <p class="js-education"></p>
+      </section>
+    `,
+
+    about: `
+      <section class="section-about" data-section="about">
+        <h3>${L.about}</h3>
+        <p class="js-about"></p>
+      </section>
+    `,
+  };
+
+  return sections[section] || "";
+}
+
+function renderModernV2() {
+  const leftSections = ["skills", "qualities"];
+  const rightSections = sectionOrder.filter(
+    (section) => !leftSections.includes(section) && section !== "contact",
+  );
+
+  cv.innerHTML = `
+    <div class="modern-header">
+      <div class="photo-frame">
+        <div class="photo-inner">
+          <img class="js-photo">
+        </div>
+      </div>
+
+      <div class="modern-info">
+        <h1 class="name js-name"></h1>
+        <p class="js-contact"></p>
+      </div>
+    </div>
+
+    <div class="modern-grid">
+      <div class="modern-left">
+        ${leftSections.map(renderSection).join("")}
+      </div>
+
+      <div class="modern-right">
+        ${rightSections.map(renderSection).join("")}
+      </div>
+    </div>
+  `;
+}
 function renderResume() {
-  cv.innerHTML = templateLayouts[currentTemplate]();
+  if (currentTemplate === "modern") {
+    renderModernV2();
+  } else {
+    cv.innerHTML = templateLayouts[currentTemplate]();
+  }
 
   const setText = (selector, value) => {
     const el = cv.querySelector(selector);
@@ -344,6 +421,7 @@ function renderResume() {
   };
 
   setText(".js-name", `${nameInput.value} ${surnameInput.value}`.trim());
+
   const formattedContact = contactInput.value
     .split(/[,;\n]+/)
     .map((item) => item.trim())
@@ -356,7 +434,7 @@ function renderResume() {
   setText(".js-education", educationInput.value);
   setText(".js-qualities", qualitiesInput.value);
   setText(".js-about", aboutInput.value);
-  applySectionOrder();
+
   const img = cv.querySelector(".js-photo");
 
   if (img && photoState.src) {
@@ -370,13 +448,56 @@ function renderResume() {
       translate(${photoState.x}px, ${photoState.y}px)
     `;
   }
+
+  cv.classList.toggle("watermark", isLockedTemplate());
+
   if (isLayoutEditing) {
     cv.classList.add("layout-editing");
     setTimeout(initCvDragLayout, 0);
   }
-  cv.classList.toggle("watermark", isLockedTemplate());
+}
+function destroyCvSortables() {
+  cvSortables.forEach((sortable) => sortable.destroy());
+  cvSortables = [];
 }
 
+function initCvDragLayout() {
+  destroyCvSortables();
+
+  if (!isLayoutEditing || typeof Sortable === "undefined") return;
+
+  const columns = cv.querySelectorAll("[data-layout-column]");
+
+  columns.forEach((column) => {
+    const sortable = new Sortable(column, {
+      animation: 160,
+      draggable: "section",
+      ghostClass: "sortable-ghost",
+
+      onEnd: () => {
+        sectionOrder = [...cv.querySelectorAll("section[data-section]")].map(
+          (section) => section.dataset.section,
+        );
+
+        save();
+      },
+    });
+
+    cvSortables.push(sortable);
+  });
+}
+
+layoutEditBtn?.addEventListener("click", () => {
+  isLayoutEditing = !isLayoutEditing;
+
+  cv.classList.toggle("layout-editing", isLayoutEditing);
+
+  layoutEditBtn.textContent = isLayoutEditing
+    ? "✓ Готово"
+    : "⚙ Редактировать макет";
+
+  initCvDragLayout();
+});
 /* ======================
    UPDATE
 ====================== */
