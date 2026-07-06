@@ -1300,17 +1300,51 @@ initSectionSortable();
 document.addEventListener("DOMContentLoaded", () => {
   layoutEditBtn = document.getElementById("layoutEditBtn");
 
-  layoutEditBtn?.addEventListener("click", () => {
+  if (!layoutEditBtn) {
+    console.log("layoutEditBtn not found");
+    return;
+  }
+
+  layoutEditBtn.addEventListener("click", () => {
     isLayoutEditing = !isLayoutEditing;
 
     console.log("Layout editing:", isLayoutEditing);
-
-    cv.classList.toggle("layout-editing", isLayoutEditing);
+    console.log("Sortable exists:", typeof Sortable !== "undefined");
+    console.log(
+      "initCvDragLayout exists:",
+      typeof initCvDragLayout === "function",
+    );
 
     layoutEditBtn.textContent = isLayoutEditing
       ? "✓ Готово"
       : "⚙ Редактировать макет";
 
     renderResume();
+
+    if (isLayoutEditing) {
+      cv.classList.add("layout-editing");
+
+      setTimeout(() => {
+        console.log(
+          "Columns found:",
+          cv.querySelectorAll("[data-layout-column]").length,
+        );
+        console.log(
+          "Sections found:",
+          cv.querySelectorAll("section[data-section]").length,
+        );
+
+        if (typeof initCvDragLayout === "function") {
+          initCvDragLayout();
+          console.log("Drag layout initialized");
+        }
+      }, 0);
+    } else {
+      cv.classList.remove("layout-editing");
+
+      if (typeof destroyCvSortables === "function") {
+        destroyCvSortables();
+      }
+    }
   });
 });
