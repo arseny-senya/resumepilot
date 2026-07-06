@@ -351,7 +351,6 @@ function collectCurrentSectionLayout() {
   });
 
   sectionLayouts[currentTemplate] = newLayout;
-
   sectionOrder = Object.values(newLayout).flat();
 }
 function initCvDragLayout() {
@@ -361,14 +360,19 @@ function initCvDragLayout() {
 
   const columns = cv.querySelectorAll("[data-layout-column]");
 
+  if (!columns.length) {
+    console.warn("No layout columns found");
+    return;
+  }
+
   columns.forEach((column) => {
     const sortable = new Sortable(column, {
+      group: "cv-layout",
       animation: 180,
       draggable: "section[data-section]",
       ghostClass: "sortable-ghost",
       chosenClass: "sortable-chosen",
       dragClass: "sortable-drag",
-      group: "cv-layout",
 
       onEnd: () => {
         collectCurrentSectionLayout();
@@ -483,21 +487,23 @@ function collectCurrentSectionLayout() {
   });
 
   sectionLayouts[currentTemplate] = newLayout;
-
   sectionOrder = Object.values(newLayout).flat();
 }
-
 function destroyCvSortables() {
   cvSortables.forEach((sortable) => sortable.destroy());
   cvSortables = [];
 }
-
 function initCvDragLayout() {
   destroyCvSortables();
 
   if (!isLayoutEditing || typeof Sortable === "undefined") return;
 
   const columns = cv.querySelectorAll("[data-layout-column]");
+
+  if (!columns.length) {
+    console.warn("No layout columns found");
+    return;
+  }
 
   columns.forEach((column) => {
     const sortable = new Sortable(column, {
