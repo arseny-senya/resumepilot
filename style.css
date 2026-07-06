@@ -4422,7 +4422,9 @@ body {
 .grid-about {
   grid-column: auto;
 }
-
+.grid-blue h3 {
+  color: rgb(255, 255, 255);
+}
 .template-item {
   min-height: 130px;
   padding: 18px;
