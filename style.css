@@ -5176,7 +5176,7 @@ body {
   }
 
   .hero-visual {
-    min-height: 470px;
+    display: none;
   }
 }
 
