@@ -1277,17 +1277,6 @@ const startFreeBtn = document.getElementById("startFreeBtn");
 const viewTemplatesBtn = document.getElementById("viewTemplatesBtn");
 const unlockProBtn = document.getElementById("unlockProBtn");
 
-startFreeBtn?.addEventListener("click", () => {
-  document.getElementById("builder")?.scrollIntoView({
-    behavior: "smooth",
-    block: "start",
-  });
-
-  setTimeout(() => {
-    nameInput?.focus();
-  }, 700);
-});
-
 viewTemplatesBtn?.addEventListener("click", () => {
   document.getElementById("templates")?.scrollIntoView({
     behavior: "smooth",
