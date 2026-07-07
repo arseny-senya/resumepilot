@@ -4602,3 +4602,25 @@ body {
 .form textarea {
   resize: none;
 }
+@media (min-width: 1024px) {
+  .builder-layout {
+    align-items: flex-start;
+  }
+
+  .preview {
+    position: sticky;
+    top: 100px;
+    align-self: flex-start;
+    max-height: calc(100vh - 120px);
+    overflow: auto;
+  }
+  .preview {
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  .preview:hover {
+    transform: translateY(-2px);
+  }
+}
