@@ -4625,7 +4625,7 @@ body {
 .hero-dark {
   position: relative;
   min-height: calc(100vh - 80px);
-  padding: 100px 24px 140px 24px;
+  padding: 115px 24px 150px 24px;
   overflow: hidden;
   background:
     radial-gradient(
