@@ -4603,14 +4603,9 @@ body {
   resize: none;
 }
 @media (min-width: 1024px) {
-  .builder-layout {
-    align-items: flex-start;
-  }
-
-  .preview {
+  .cv {
     position: sticky;
-    top: 100px;
-    align-self: flex-start;
+    top: 24px;
   }
 
   .preview .cv {
@@ -4618,8 +4613,10 @@ body {
       transform 0.25s ease,
       box-shadow 0.25s ease;
   }
-
-  .preview.is-floating .cv {
-    box-shadow: 0 28px 70px rgba(15, 23, 42, 0.14);
+}
+@media (max-width: 900px) {
+  .cv {
+    position: static;
+    top: auto;
   }
 }
