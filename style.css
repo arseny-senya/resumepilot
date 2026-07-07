@@ -62,7 +62,7 @@ body {
   padding: 12px;
   border-radius: 10px;
   border: none;
-  background: linear-gradient(135deg, #3b82f6, #5e9bfe);
+  background: linear-gradient(216deg, #3481ff, #004fd0);
   color: white;
   font-weight: 600;
   cursor: pointer;
@@ -177,7 +177,7 @@ body {
 .header-btn {
   padding: 10px 16px;
   border: none;
-  background: #6c7bff;
+  background: #3b82f6;
   color: white;
   border-radius: 10px;
   cursor: pointer;
