@@ -62,7 +62,7 @@ body {
   padding: 12px;
   border-radius: 10px;
   border: none;
-  background: linear-gradient(135deg, #6c7bff, #9b6cff);
+  background: linear-gradient(135deg, #3b82f6, #5e9bfe);
   color: white;
   font-weight: 600;
   cursor: pointer;
@@ -390,7 +390,7 @@ body {
 }
 
 #planBadge {
-  background: #6c7bff;
+  background: #3b82f6;
 
   color: white;
 
@@ -1520,7 +1520,7 @@ body {
 }
 
 .lang-switcher .active {
-  background: #6c7bff;
+  background: #3b82f6;
   color: white;
 }
 .pro {
