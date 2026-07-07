@@ -5084,3 +5084,9 @@ body {
 
   line-height: 1.7;
 }
+.features .seo-container,
+.how-section .seo-container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
