@@ -5172,7 +5172,7 @@ body {
   }
 
   .hero-visual {
-    scale: 0.8;
+    min-height: 470px;
   }
 }
 
@@ -5191,7 +5191,7 @@ body {
   }
 
   .hero-visual {
-    min-height: 390px;
+    display: none;
   }
 
   .hero-paper,
