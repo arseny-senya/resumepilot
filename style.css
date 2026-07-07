@@ -4601,3 +4601,20 @@ body {
 .form textarea {
   resize: none;
 }
+@media (min-width: 1024px) {
+  .cv {
+    position: sticky;
+    top: 48px;
+  }
+}
+@media (max-width: 900px) {
+  .cv {
+    position: static;
+    top: auto;
+  }
+}
+@media (max-width: 768px) {
+  .preview {
+    overflow: visible;
+  }
+}
