@@ -4604,7 +4604,7 @@ body {
 @media (min-width: 1024px) {
   .cv {
     position: sticky;
-    top: 24px;
+    top: 48px;
   }
 }
 @media (max-width: 900px) {
