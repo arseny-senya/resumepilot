@@ -1453,7 +1453,37 @@ body {
 /* ===== BACK BUTTON ===== */
 
 .page-header {
-  padding: 20px;
+  padding: 110px 20px 30px;
+  text-align: center;
+}
+
+.page-header .logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+
+  color: #ffffff;
+
+  transition: 0.25s;
+}
+
+.page-header .logo:hover {
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 95px 16px 24px;
+  }
+
+  .page-header .logo {
+    font-size: 20px;
+  }
 }
 
 .back-btn {
