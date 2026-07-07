@@ -4613,3 +4613,8 @@ body {
     top: auto;
   }
 }
+@media (max-width: 768px) {
+  .preview {
+    overflow: visible;
+  }
+}
