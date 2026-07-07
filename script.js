@@ -989,16 +989,6 @@ document.querySelectorAll(".template-item").forEach((card) => {
         "info",
       );
     }
-
-    if (cv) {
-      const headerOffset = 110;
-      const cvTop = cv.getBoundingClientRect().top + window.scrollY;
-
-      window.scrollTo({
-        top: cvTop - headerOffset,
-        behavior: "smooth",
-      });
-    }
   });
 });
 
