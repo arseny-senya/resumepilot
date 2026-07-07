@@ -5174,10 +5174,6 @@ body {
 }
 
 @media (max-width: 480px) {
-  .hero-dark {
-    padding: 105px 14px 50px;
-  }
-
   .hero-dark h1 {
     font-size: 34px;
   }
