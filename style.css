@@ -5154,7 +5154,11 @@ body {
 /* ======================
    HERO RESPONSIVE FIX
 ====================== */
-
+@media (max-width: 1220px) {
+  .hero-visual {
+    scale: 0.8;
+  }
+}
 @media (max-width: 1100px) {
   .hero-dark .hero-inner {
     grid-template-columns: 1fr;
