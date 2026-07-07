@@ -4607,12 +4607,6 @@ body {
     position: sticky;
     top: 24px;
   }
-
-  .preview .cv {
-    transition:
-      transform 0.25s ease,
-      box-shadow 0.25s ease;
-  }
 }
 @media (max-width: 900px) {
   .cv {
