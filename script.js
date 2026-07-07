@@ -1513,32 +1513,45 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 0);
   });
 });
-const previewPanel = document.querySelector(".preview");
+/* ======================
+   FLOATING PREVIEW
+====================== */
 
-if (previewPanel && window.innerWidth >= 1024) {
+const previewPanel = document.querySelector(".preview");
+const builderLayout = document.querySelector(".builder-layout");
+
+if (previewPanel && builderLayout && window.innerWidth >= 1024) {
   let targetY = 0;
   let currentY = 0;
 
-  window.addEventListener("scroll", () => {
-    const builder = document.querySelector(".builder-layout");
-    if (!builder) return;
+  function updatePreviewTarget() {
+    const layoutRect = builderLayout.getBoundingClientRect();
+    const previewHeight = previewPanel.offsetHeight;
 
-    const rect = builder.getBoundingClientRect();
+    const startOffset = 110;
+    const maxMove = Math.max(
+      0,
+      builderLayout.offsetHeight - previewHeight - startOffset,
+    );
 
-    if (rect.top < 100 && rect.bottom > window.innerHeight) {
-      targetY = Math.min(Math.abs(rect.top) * 0.04, 18);
+    if (layoutRect.top < startOffset && layoutRect.bottom > previewHeight) {
+      targetY = Math.min(Math.abs(layoutRect.top - startOffset), maxMove);
+      previewPanel.classList.add("is-floating");
     } else {
       targetY = 0;
+      previewPanel.classList.remove("is-floating");
     }
-  });
-
-  function animatePreview() {
-    currentY += (targetY - currentY) * 0.08;
-
-    previewPanel.style.transform = `translateY(${currentY}px)`;
-
-    requestAnimationFrame(animatePreview);
   }
 
-  animatePreview();
+  function animateFloatingPreview() {
+    currentY += (targetY - currentY) * 0.08;
+    previewPanel.style.transform = `translateY(${currentY}px)`;
+    requestAnimationFrame(animateFloatingPreview);
+  }
+
+  window.addEventListener("scroll", updatePreviewTarget, { passive: true });
+  window.addEventListener("resize", updatePreviewTarget);
+
+  updatePreviewTarget();
+  animateFloatingPreview();
 }

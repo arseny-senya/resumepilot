@@ -4602,3 +4602,17 @@ body {
 .form textarea {
   resize: none;
 }
+@media (min-width: 1024px) {
+  .builder-layout {
+    align-items: flex-start;
+  }
+
+  .preview {
+    will-change: transform;
+    transition: filter 0.25s ease;
+  }
+
+  .preview.is-floating .cv {
+    box-shadow: 0 28px 70px rgba(15, 23, 42, 0.14);
+  }
+}
