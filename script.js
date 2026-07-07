@@ -989,6 +989,16 @@ document.querySelectorAll(".template-item").forEach((card) => {
         "info",
       );
     }
+
+    if (window.innerWidth <= 768 && cv) {
+      const headerOffset = 90;
+      const cvTop = cv.getBoundingClientRect().top + window.scrollY;
+
+      window.scrollTo({
+        top: cvTop - headerOffset,
+        behavior: "smooth",
+      });
+    }
   });
 });
 
@@ -1504,3 +1514,36 @@ document.addEventListener("DOMContentLoaded", () => {
 /* ======================
    SOFT FLOATING PREVIEW
 ====================== */
+
+const previewPanel = document.querySelector(".preview");
+
+if (previewPanel && window.innerWidth >= 1024) {
+  let currentY = 0;
+  let targetY = 0;
+
+  window.addEventListener(
+    "scroll",
+    () => {
+      const scrollY = window.scrollY;
+
+      targetY = Math.sin(scrollY * 0.01) * 8;
+
+      previewPanel.classList.add("is-floating");
+    },
+    { passive: true },
+  );
+
+  function animatePreviewFloat() {
+    currentY += (targetY - currentY) * 0.08;
+
+    const cv = previewPanel.querySelector(".cv");
+
+    if (cv) {
+      cv.style.transform = `translateY(${currentY}px)`;
+    }
+
+    requestAnimationFrame(animatePreviewFloat);
+  }
+
+  animatePreviewFloat();
+}
