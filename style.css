@@ -4608,8 +4608,15 @@ body {
   }
 
   .preview {
-    will-change: transform;
-    transition: filter 0.25s ease;
+    position: sticky;
+    top: 100px;
+    align-self: flex-start;
+  }
+
+  .preview .cv {
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
   }
 
   .preview.is-floating .cv {

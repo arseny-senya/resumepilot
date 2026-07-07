@@ -1516,42 +1516,39 @@ document.addEventListener("DOMContentLoaded", () => {
 /* ======================
    FLOATING PREVIEW
 ====================== */
+/* ======================
+   SOFT FLOATING PREVIEW
+====================== */
 
 const previewPanel = document.querySelector(".preview");
-const builderLayout = document.querySelector(".builder-layout");
 
-if (previewPanel && builderLayout && window.innerWidth >= 1024) {
-  let targetY = 0;
+if (previewPanel && window.innerWidth >= 1024) {
   let currentY = 0;
+  let targetY = 0;
 
-  function updatePreviewTarget() {
-    const layoutRect = builderLayout.getBoundingClientRect();
-    const previewHeight = previewPanel.offsetHeight;
+  window.addEventListener(
+    "scroll",
+    () => {
+      const scrollY = window.scrollY;
 
-    const startOffset = 110;
-    const maxMove = Math.max(
-      0,
-      builderLayout.offsetHeight - previewHeight - startOffset,
-    );
+      targetY = Math.sin(scrollY * 0.01) * 8;
 
-    if (layoutRect.top < startOffset && layoutRect.bottom > previewHeight) {
-      targetY = Math.min(Math.abs(layoutRect.top - startOffset), maxMove);
       previewPanel.classList.add("is-floating");
-    } else {
-      targetY = 0;
-      previewPanel.classList.remove("is-floating");
-    }
-  }
+    },
+    { passive: true },
+  );
 
-  function animateFloatingPreview() {
+  function animatePreviewFloat() {
     currentY += (targetY - currentY) * 0.08;
-    previewPanel.style.transform = `translateY(${currentY}px)`;
-    requestAnimationFrame(animateFloatingPreview);
+
+    const cv = previewPanel.querySelector(".cv");
+
+    if (cv) {
+      cv.style.transform = `translateY(${currentY}px)`;
+    }
+
+    requestAnimationFrame(animatePreviewFloat);
   }
 
-  window.addEventListener("scroll", updatePreviewTarget, { passive: true });
-  window.addEventListener("resize", updatePreviewTarget);
-
-  updatePreviewTarget();
-  animateFloatingPreview();
+  animatePreviewFloat();
 }
