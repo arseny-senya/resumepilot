@@ -305,7 +305,7 @@ body {
 }
 
 .auth-tab.active {
-  background: #6c7bff;
+  background: #3b82f6;
 }
 
 #authForm {
@@ -339,7 +339,7 @@ body {
 
   border-radius: 10px;
 
-  background: #6c7bff;
+  background: #3b82f6;
 
   color: white;
 
