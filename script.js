@@ -331,31 +331,6 @@ function applySectionOrder() {
   // и drag прямо внутри CV.
 }
 
-function destroyCvSortables() {
-  cvSortables.forEach((sortable) => sortable.destroy());
-  cvSortables = [];
-}
-
-function getLayoutColumns() {
-  let columns = [...cv.querySelectorAll("[data-layout-column]")];
-
-  if (columns.length) return columns;
-
-  const sections = [...cv.querySelectorAll("section[data-section]")];
-  const parents = [
-    ...new Set(sections.map((section) => section.parentElement)),
-  ];
-
-  parents.forEach((parent, index) => {
-    parent.setAttribute(
-      "data-layout-column",
-      index === 0 ? "main" : `column-${index}`,
-    );
-  });
-
-  return [...cv.querySelectorAll("[data-layout-column]")];
-}
-
 function initCvDragLayout() {
   destroyCvSortables();
 
@@ -579,29 +554,6 @@ function renderResume() {
   }
 }
 
-layoutEditBtn?.addEventListener("click", () => {
-  isLayoutEditing = !isLayoutEditing;
-
-  console.log("Layout editing:", isLayoutEditing);
-
-  layoutEditBtn.textContent = isLayoutEditing
-    ? "✓ Готово"
-    : "⚙ Редактировать макет";
-
-  renderResume();
-
-  if (isLayoutEditing) {
-    cv.classList.add("layout-editing");
-
-    setTimeout(() => {
-      initCvDragLayout();
-      console.log("Drag layout initialized");
-    }, 0);
-  } else {
-    cv.classList.remove("layout-editing");
-    destroyCvSortables();
-  }
-});
 /* ======================
    UPDATE
 ====================== */
@@ -1476,41 +1428,34 @@ function setSaveStatus(type) {
 }
 renderSectionOrderList();
 initSectionSortable();
-
 document.addEventListener("DOMContentLoaded", () => {
   layoutEditBtn = document.getElementById("layoutEditBtn");
 
   if (!layoutEditBtn) return;
 
   layoutEditBtn.addEventListener("click", () => {
+    isLayoutEditing = !isLayoutEditing;
+
+    layoutEditBtn.textContent = isLayoutEditing
+      ? "✓ Готово"
+      : "⚙ Редактировать макет";
+
     if (isLayoutEditing) {
-      collectCurrentSectionLayout();
-      save();
-
-      isLayoutEditing = false;
-      layoutEditBtn.textContent = "⚙ Редактировать макет";
-
-      cv.classList.remove("layout-editing");
-      destroyCvSortables();
-
       renderResume();
+      cv.classList.add("layout-editing");
+
+      setTimeout(() => {
+        initCvDragLayout();
+      }, 0);
+
       return;
     }
 
-    layoutEditBtn.textContent = "✓ Готово";
+    collectCurrentSectionLayout();
+    save();
 
+    cv.classList.remove("layout-editing");
+    destroyCvSortables();
     renderResume();
-
-    cv.classList.add("layout-editing");
-
-    setTimeout(() => {
-      initCvDragLayout();
-    }, 0);
   });
 });
-/* ======================
-   FLOATING PREVIEW
-====================== */
-/* ======================
-   SOFT FLOATING PREVIEW
-====================== */
