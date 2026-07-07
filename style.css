@@ -4607,20 +4607,20 @@ body {
     align-items: flex-start;
   }
 
-  .preview {
+  .cv {
     position: sticky;
     top: 100px;
     align-self: flex-start;
     max-height: calc(100vh - 120px);
     overflow: auto;
   }
-  .preview {
+  .cv {
     transition:
       transform 0.25s ease,
       box-shadow 0.25s ease;
   }
 
-  .preview:hover {
+  .cv:hover {
     transform: translateY(-2px);
   }
 }
