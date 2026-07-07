@@ -1513,3 +1513,32 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 0);
   });
 });
+const previewPanel = document.querySelector(".preview");
+
+if (previewPanel && window.innerWidth >= 1024) {
+  let targetY = 0;
+  let currentY = 0;
+
+  window.addEventListener("scroll", () => {
+    const builder = document.querySelector(".builder-layout");
+    if (!builder) return;
+
+    const rect = builder.getBoundingClientRect();
+
+    if (rect.top < 100 && rect.bottom > window.innerHeight) {
+      targetY = Math.min(Math.abs(rect.top) * 0.04, 18);
+    } else {
+      targetY = 0;
+    }
+  });
+
+  function animatePreview() {
+    currentY += (targetY - currentY) * 0.08;
+
+    previewPanel.style.transform = `translateY(${currentY}px)`;
+
+    requestAnimationFrame(animatePreview);
+  }
+
+  animatePreview();
+}
