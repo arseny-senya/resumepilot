@@ -2134,6 +2134,8 @@ body {
   font-size: 18px;
   letter-spacing: 2px;
   text-transform: uppercase;
+  display: block;
+  text-align: center;
 }
 
 /* CONTENT */

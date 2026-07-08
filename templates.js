@@ -185,9 +185,7 @@ const templateLayouts = {
 
     <h1 class="name js-name"></h1>
 
-    <p class="creative-job">
-      Resume
-    </p>
+    <p class="creative-job">Resume</p>
 
   </div>
 
