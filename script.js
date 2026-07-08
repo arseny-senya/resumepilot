@@ -808,6 +808,11 @@ function save() {
         });
 
         if (!res.ok) {
+          if (res.status === 404) {
+            sessionStorage.removeItem("currentResumeId");
+            resumeId = null;
+          }
+
           throw new Error("Failed to autosave resume");
         }
 
@@ -923,6 +928,12 @@ async function load() {
       });
 
       if (!res.ok) {
+        if (res.status === 404) {
+          sessionStorage.removeItem("currentResumeId");
+          resumeId = null;
+          window.history.replaceState({}, "", window.location.pathname);
+        }
+
         throw new Error("Failed to load resume");
       }
 
