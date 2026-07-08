@@ -288,7 +288,7 @@ async function loadUser() {
   }
 }
 const params = new URLSearchParams(window.location.search);
-let resumeId = params.get("id");
+let resumeId = params.get("id") || sessionStorage.getItem("currentResumeId");
 const token = localStorage.getItem("token");
 let isLoadingResume = false;
 let isCreatingResume = false;
@@ -769,7 +769,7 @@ function save() {
 
               const createdResume = await createRes.json();
               resumeId = createdResume._id;
-
+              sessionStorage.setItem("currentResumeId", resumeId);
               const newUrl = `${window.location.pathname}?id=${resumeId}#builder`;
               window.history.replaceState({}, "", newUrl);
 
