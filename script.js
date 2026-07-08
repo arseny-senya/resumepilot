@@ -292,6 +292,7 @@ let resumeId = params.get("id");
 const token = localStorage.getItem("token");
 let isLoadingResume = false;
 let isCreatingResume = false;
+let createResumePromise = null;
 let saveTimer = null;
 /* ======================
    USER DROPDOWN
@@ -726,43 +727,49 @@ function save() {
 
   saveTimer = setTimeout(async () => {
     const resumeData = getResumeData();
-    if (!resumeId && token && !isCreatingResume) {
+    if (!resumeId && token) {
       try {
-        isCreatingResume = true;
-
         setSaveStatus("saving");
 
-        const createRes = await fetch(`${API_URL}/api/resumes`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            title:
-              `${nameInput.value || ""} ${surnameInput.value || ""}`.trim() ||
-              "Untitled Resume",
-            template: currentTemplate,
-            data: resumeData,
-          }),
-        });
+        if (!createResumePromise) {
+          createResumePromise = fetch(`${API_URL}/api/resumes`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              title:
+                `${nameInput.value || ""} ${surnameInput.value || ""}`.trim() ||
+                "Untitled Resume",
+              template: currentTemplate,
+              data: resumeData,
+            }),
+          })
+            .then(async (createRes) => {
+              if (!createRes.ok) {
+                throw new Error("Failed to create resume");
+              }
 
-        if (!createRes.ok) {
-          throw new Error("Failed to create resume");
+              const createdResume = await createRes.json();
+              resumeId = createdResume._id;
+
+              const newUrl = `${window.location.pathname}?id=${resumeId}#builder`;
+              window.history.replaceState({}, "", newUrl);
+
+              return createdResume;
+            })
+            .finally(() => {
+              createResumePromise = null;
+            });
         }
 
-        const createdResume = await createRes.json();
-        resumeId = createdResume._id;
-
-        const newUrl = `${window.location.pathname}?id=${resumeId}#builder`;
-        window.history.replaceState({}, "", newUrl);
+        await createResumePromise;
       } catch (err) {
         console.error("Auto-create resume failed:", err);
         setSaveStatus("error");
         localStorage.setItem("guestResumeDraft", JSON.stringify(resumeData));
         return;
-      } finally {
-        isCreatingResume = false;
       }
     }
     if (resumeId && token) {
