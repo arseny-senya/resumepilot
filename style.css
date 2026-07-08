@@ -2111,7 +2111,7 @@ body {
 .cv .creative-header {
   text-align: center;
   padding-bottom: 35px;
-  border-bottom: 3px solid #6c63ff;
+  border-bottom: 3px solid #134cb0;
 }
 
 .cv .creative-header .photo-frame {
@@ -2130,7 +2130,7 @@ body {
 
 .cv .creative-job {
   margin-top: 12px;
-  color: #6c63ff;
+  color: #134cb0;
   font-size: 18px;
   letter-spacing: 2px;
   text-transform: uppercase;
@@ -2169,7 +2169,7 @@ body {
 
 .cv.template-creative h3 {
   margin: 0 0 12px;
-  color: #6c63ff;
+  color: #134cb0;
   font-size: 14px;
   letter-spacing: 2px;
   text-transform: uppercase;
