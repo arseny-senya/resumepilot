@@ -5569,11 +5569,17 @@ body {
   transition: all 0.3s ease;
 }
 
+.floating-blog-btn:hover {
+  justify-content: flex-start;
+}
 .blog-icon {
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
+
+  flex: 0 0 18px;
+
+  display: block;
   color: #fff;
-  flex-shrink: 0;
 }
 
 .blog-text {
