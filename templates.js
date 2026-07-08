@@ -920,10 +920,11 @@ const templateLayouts = {
 
   <aside class="premium-sidebar-left" data-layout-column="left">
 
-    <div class="premium-photo">
-      <img class="js-photo">
-    </div>
-
+   <div class="photo-frame premium-photo">
+  <div class="photo-inner">
+    <img class="js-photo">
+  </div>
+</div>
     <section class="premium-section section-contact" data-section="contact">
       <h3>${L.contact}</h3>
       <p class="js-contact"></p>

@@ -5733,3 +5733,19 @@ body {
 .cv .premium-sidebar-right section {
   margin-bottom: 34px;
 }
+.cv.template-premium-sidebar .premium-photo {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 42px;
+  border-radius: 26px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+  border: 4px solid rgba(255, 255, 255, 0.16);
+}
+
+.cv.template-premium-sidebar .premium-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
