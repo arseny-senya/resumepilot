@@ -126,6 +126,10 @@ function getDefaultSectionLayout(template) {
     grid: {
       main: oneColumn,
     },
+    "premium-sidebar": {
+      left: ["contact", "skills", "qualities"],
+      right: ["about", "experience", "education"],
+    },
   };
 
   return structuredClone(defaults[template] || { main: oneColumn });
@@ -209,6 +213,7 @@ const PRO_TEMPLATES = [
   "dark",
   "editorial",
   "fashion",
+  "premium-sidebar",
 ];
 
 /* ======================

@@ -915,4 +915,56 @@ const templateLayouts = {
 
 </div>
 `,
+  "premium-sidebar": () => `
+<div class="template-premium-sidebar-inner">
+
+  <aside class="premium-sidebar-left" data-layout-column="left">
+
+    <div class="premium-photo">
+      <img class="js-photo">
+    </div>
+
+    <section class="premium-section section-contact" data-section="contact">
+      <h3>${L.contact}</h3>
+      <p class="js-contact"></p>
+    </section>
+
+    <section class="premium-section section-skills" data-section="skills">
+      <h3>${L.skills}</h3>
+      <p class="js-skills"></p>
+    </section>
+
+    <section class="premium-section section-qualities" data-section="qualities">
+      <h3>${L.qualities}</h3>
+      <p class="js-qualities"></p>
+    </section>
+
+  </aside>
+
+  <main class="premium-sidebar-right" data-layout-column="right">
+
+    <header class="premium-sidebar-header">
+      <h1 class="js-name"></h1>
+      <p class="premium-sidebar-role">Professional Resume</p>
+    </header>
+
+    <section class="premium-section section-about" data-section="about">
+      <h3>${L.about}</h3>
+      <p class="js-about"></p>
+    </section>
+
+    <section class="premium-section section-experience" data-section="experience">
+      <h3>${L.experience}</h3>
+      <p class="js-experience"></p>
+    </section>
+
+    <section class="premium-section section-education" data-section="education">
+      <h3>${L.education}</h3>
+      <p class="js-education"></p>
+    </section>
+
+  </main>
+
+</div>
+`,
 };
