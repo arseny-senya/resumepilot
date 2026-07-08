@@ -2129,7 +2129,7 @@ body {
 }
 
 .cv .creative-job {
-  margin-top: 20px;
+  margin-top: 20px !important;
   color: #031f51;
   font-size: 18px;
   letter-spacing: 2px;
