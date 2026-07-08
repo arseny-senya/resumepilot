@@ -5508,7 +5508,15 @@ body {
   line-height: 1.7;
   margin-bottom: 0;
 }
-
+.blog-footer {
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-top: 1px solid #e5e7eb;
+  background: #ffffff;
+}
 @media (max-width: 950px) {
   .blog-grid {
     grid-template-columns: repeat(2, 1fr);
