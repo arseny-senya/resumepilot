@@ -1771,7 +1771,7 @@ body {
 }
 
 .modern-header {
-  background: linear-gradient(135deg, #2b3f54, #415d7a);
+  background: linear-gradient(135deg, #014082, #00172e);
 
   color: white;
 
@@ -1871,7 +1871,7 @@ body {
 /* ---------- LEFT ---------- */
 
 .sidebar-left {
-  background: #233547;
+  background: #113e6a;
   color: #fff;
   padding: 45px 35px;
   display: flex;
