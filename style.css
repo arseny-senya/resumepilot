@@ -819,11 +819,7 @@ body {
 .elegant-header {
   background: #5292d6;
 }
-@media (max-width: 430px) {
-  .header-btn {
-    display: none;
-  }
-}
+
 /* =========================
    HERO ADAPTIVE
 ========================= */
