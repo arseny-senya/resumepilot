@@ -127,7 +127,7 @@ function getDefaultSectionLayout(template) {
       main: oneColumn,
     },
     "premium-sidebar": {
-      left: ["contact", "skills", "qualities"],
+      left: ["skills", "qualities"],
       right: ["about", "experience", "education"],
     },
   };
