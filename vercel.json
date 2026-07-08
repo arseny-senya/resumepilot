@@ -8,6 +8,7 @@
     { "source": "/en/dashboard", "destination": "/en/dashboard.html" },
     { "source": "/en/login", "destination": "/en/login.html" },
     { "source": "/en/register", "destination": "/en/register.html" },
-    { "source": "/en/account", "destination": "/en/account.html" }
+    { "source": "/en/account", "destination": "/en/account.html" },
+    { "source": "/blog", "destination": "/blog.html" }
   ]
 }
