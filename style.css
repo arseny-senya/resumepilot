@@ -5929,3 +5929,15 @@ body {
   margin-bottom: 14px;
   list-style: none;
 }
+.article-cover {
+  width: 100%;
+  aspect-ratio: 16/9;
+
+  object-fit: cover;
+
+  border-radius: 24px;
+
+  margin: 40px 0;
+
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+}
