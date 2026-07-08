@@ -288,7 +288,7 @@ async function loadUser() {
   }
 }
 const params = new URLSearchParams(window.location.search);
-let resumeId = params.get("id") || sessionStorage.getItem("currentResumeId");
+let resumeId = params.get("id");
 const token = localStorage.getItem("token");
 let isLoadingResume = false;
 let isCreatingResume = false;
