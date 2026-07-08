@@ -5629,3 +5629,8 @@ body {
     margin-left: 0;
   }
 }
+@media (max-width: 600px) {
+  .blog-footer p {
+    font-size: 14px;
+  }
+}
