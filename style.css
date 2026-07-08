@@ -5597,7 +5597,7 @@ body {
 }
 
 .floating-blog-btn:hover {
-  width: 145px;
+  width: 125px;
   justify-content: flex-start;
   padding: 0 18px;
   background: #1d4ed8;
