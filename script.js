@@ -955,8 +955,8 @@ document.querySelectorAll(".template-item").forEach((card) => {
 });
 
 if (!resumeId) {
-  const savedTemplate = localStorage.getItem("selectedTemplate") || "modern";
-  applyTemplate(savedTemplate);
+  currentTemplate = "modern";
+  applyTemplate("modern", false);
 }
 /* ======================
    INIT
