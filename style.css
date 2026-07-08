@@ -5716,18 +5716,22 @@ body {
 
 .cv.template-premium-sidebar .premium-layout {
   display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 30px;
+  grid-template-columns: 260px 1fr;
+  gap: 0;
+  align-items: stretch;
 }
-
 .cv.template-premium-sidebar .premium-left {
-  padding: 26px;
-  border-radius: 24px;
   background: #f1f5f9;
-}
 
+  padding: 34px 28px;
+
+  height: 100%;
+  min-height: 100%;
+
+  align-self: stretch;
+}
 .cv.template-premium-sidebar .premium-right {
-  padding: 4px 0 0;
+  padding: 0 0 0 38px;
 }
 
 .cv.template-premium-sidebar .premium-section {
