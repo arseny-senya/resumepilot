@@ -946,7 +946,7 @@ load();
    TEMPLATE SYSTEM
 ====================== */
 
-function applyTemplate(template, shouldSave = true) {
+function applyTemplate(template, shouldSave = false) {
   if (!template) return;
 
   currentTemplate = template;
@@ -964,9 +964,7 @@ function applyTemplate(template, shouldSave = true) {
     .querySelector(`[data-template="${template}"]`)
     ?.classList.add("active");
 
-  /* localStorage.setItem("selectedTemplate", template); */
-
-  update?.();
+  renderResume();
 
   if (shouldSave) {
     save();
