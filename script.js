@@ -274,7 +274,7 @@ async function loadUser() {
       upgradeAccountBtn.style.cursor = "pointer";
     }
 
-    update();
+    update(false);
   } catch (err) {
     console.warn("FREE MODE");
 
@@ -559,10 +559,12 @@ function renderResume() {
 /* ======================
    UPDATE
 ====================== */
-
-function update() {
+function update(shouldSave = true) {
   renderResume();
-  save();
+
+  if (shouldSave) {
+    save();
+  }
 }
 
 /* ======================
@@ -978,7 +980,7 @@ function applyTemplate(template, shouldSave = false) {
     .querySelector(`[data-template="${template}"]`)
     ?.classList.add("active");
 
-  renderResume();
+  update(false);
 
   if (shouldSave) {
     save();
