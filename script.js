@@ -719,7 +719,18 @@ function getResumeData() {
     sectionLayouts,
   };
 }
-
+function hasResumeContent(data) {
+  return [
+    data.name,
+    data.surname,
+    data.contact,
+    data.skills,
+    data.experience,
+    data.education,
+    data.qualities,
+    data.about,
+  ].some((value) => value && value.trim() !== "");
+}
 function save() {
   if (isLoadingResume) return;
 
@@ -727,6 +738,9 @@ function save() {
 
   saveTimer = setTimeout(async () => {
     const resumeData = getResumeData();
+    if (!hasResumeContent(resumeData)) {
+      return;
+    }
     if (!resumeId && token) {
       try {
         setSaveStatus("saving");
