@@ -291,6 +291,7 @@ const params = new URLSearchParams(window.location.search);
 let resumeId = params.get("id");
 const token = localStorage.getItem("token");
 let isLoadingResume = false;
+let isCreatingResume = false;
 let saveTimer = null;
 /* ======================
    USER DROPDOWN
@@ -725,8 +726,10 @@ function save() {
 
   saveTimer = setTimeout(async () => {
     const resumeData = getResumeData();
-    if (!resumeId && token) {
+    if (!resumeId && token && !isCreatingResume) {
       try {
+        isCreatingResume = true;
+
         setSaveStatus("saving");
 
         const createRes = await fetch(`${API_URL}/api/resumes`, {
@@ -758,6 +761,8 @@ function save() {
         setSaveStatus("error");
         localStorage.setItem("guestResumeDraft", JSON.stringify(resumeData));
         return;
+      } finally {
+        isCreatingResume = false;
       }
     }
     if (resumeId && token) {
