@@ -248,9 +248,7 @@ const templateLayouts = {
 
     <h1 class="name js-name"></h1>
 
-    <p class="elegant-job">
-      ${L.resume}
-    </p>
+    <p class="elegant-job">${L.resume}</p>
 
   </div>
 
