@@ -5894,3 +5894,38 @@ body {
     font-size: 17px;
   }
 }
+.article-page a {
+  text-decoration: none;
+}
+.article-example {
+  margin: 28px 0;
+  padding: 24px;
+
+  border-radius: 20px;
+
+  border: 1px solid #e5e7eb;
+}
+
+.article-example h3 {
+  margin-top: 0;
+  margin-bottom: 14px;
+}
+
+.article-example.good {
+  background: #effdf5;
+  border-color: #b7f0d1;
+}
+
+.article-example.bad {
+  background: #fff4f4;
+  border-color: #ffd0d0;
+}
+
+.article-checklist {
+  margin-top: 24px;
+}
+
+.article-checklist li {
+  margin-bottom: 14px;
+  list-style: none;
+}
