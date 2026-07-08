@@ -5714,11 +5714,12 @@ body {
   white-space: pre-wrap;
 }
 
-.cv.template-premium-sidebar .premium-left {
-  padding: 26px;
-  border-radius: 24px;
-  background: #f1f5f9;
+.cv.template-premium-sidebar .premium-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 30px;
 }
+
 .cv.template-premium-sidebar .premium-left {
   padding: 26px;
   border-radius: 24px;
