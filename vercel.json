@@ -10,6 +10,10 @@
     { "source": "/en/register", "destination": "/en/register.html" },
     { "source": "/en/account", "destination": "/en/account.html" },
     { "source": "/blog", "destination": "/blog.html" },
-    { "source": "/en/blog", "destination": "/en/blog.html" }
+    { "source": "/en/blog", "destination": "/en/blog.html" },
+    {
+      "source": "/blog/kak-sostavit-rezyume",
+      "destination": "/blog/kak-sostavit-rezyume.html"
+    }
   ]
 }
