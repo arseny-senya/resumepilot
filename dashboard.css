@@ -11,7 +11,11 @@ body {
     BlinkMacSystemFont,
     "Segoe UI",
     sans-serif;
-  background: #f5f7fb;
+
+  background:
+    radial-gradient(circle at top, rgba(59, 130, 246, 0.08), transparent 35%),
+    linear-gradient(180deg, #f8fafc, #eef4ff);
+
   color: #111827;
 }
 
@@ -84,7 +88,7 @@ body {
 /* MAIN */
 
 .main {
-  padding: 36px;
+  padding: 50px;
 }
 
 .topbar {
@@ -201,7 +205,7 @@ h1 {
   border-radius: 22px;
   padding: 18px;
   background: #ffffff;
-  transition: 0.2s ease;
+  transition: 0.35s;
   cursor: pointer;
   position: relative;
 }
@@ -212,7 +216,7 @@ h1 {
 }
 
 .resume-preview {
-  height: 180px;
+  height: 220px;
   border-radius: 16px;
   background:
     linear-gradient(90deg, #e5e7eb 20%, transparent 20%),
@@ -734,4 +738,53 @@ h1 {
 .edited-time {
   font-size: 13px;
   color: #6b7280;
+}
+.sidebar {
+  background: rgba(255, 255, 255, 0.82);
+
+  backdrop-filter: blur(18px);
+
+  border-right: 1px solid #e5e7eb;
+
+  box-shadow: 0 0 40px rgba(15, 23, 42, 0.04);
+}
+.stat-card {
+  transition: 0.25s;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+}
+.resume-section {
+  background: rgba(255, 255, 255, 0.75);
+
+  backdrop-filter: blur(18px);
+
+  border: none;
+
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.06);
+}
+.resume-card {
+  transition: 0.3s;
+}
+
+.resume-card:hover {
+  transform: translateY(-8px) scale(1.015);
+
+  border-color: #3b82f6;
+
+  box-shadow: 0 25px 60px rgba(37, 99, 235, 0.12);
+}
+.resume-card {
+  overflow: hidden;
+}
+.resume-card:hover .resume-preview {
+  transform: scale(1.04);
+}
+.primary-btn {
+  border-radius: 18px;
+
+  padding: 15px 24px;
 }
