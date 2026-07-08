@@ -5643,6 +5643,10 @@ body {
    PREMIUM SIDEBAR
 ====================== */
 
+/* ======================
+   PREMIUM SIDEBAR
+====================== */
+
 .cv.template-premium-sidebar {
   padding: 0;
   background: #ffffff;
@@ -5650,8 +5654,12 @@ body {
 
 .cv.template-premium-sidebar .template-premium-sidebar-inner {
   min-height: 1123px;
+  height: 1123px;
   padding: 46px;
   background: #ffffff;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .cv.template-premium-sidebar .premium-top {
@@ -5672,8 +5680,11 @@ body {
 .cv.template-premium-sidebar .premium-photo {
   width: 140px;
   height: 140px;
+  margin: 0;
+
   border-radius: 26px;
   overflow: hidden;
+
   background: rgba(255, 255, 255, 0.08);
   border: 4px solid rgba(255, 255, 255, 0.14);
 }
@@ -5715,19 +5726,26 @@ body {
 }
 
 .cv.template-premium-sidebar .premium-layout {
+  flex: 1;
+
   display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 30px;
+  grid-template-columns: 260px 1fr;
+  gap: 0;
+  align-items: stretch;
 }
 
 .cv.template-premium-sidebar .premium-left {
-  padding: 26px;
-  border-radius: 24px;
+  height: 100%;
+  align-self: stretch;
+
+  padding: 34px 28px;
+
   background: #f1f5f9;
+  border-radius: 24px 0 0 24px;
 }
 
 .cv.template-premium-sidebar .premium-right {
-  padding: 4px 0 0;
+  padding: 6px 0 0 38px;
 }
 
 .cv.template-premium-sidebar .premium-section {
