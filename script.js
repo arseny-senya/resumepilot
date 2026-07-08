@@ -769,7 +769,7 @@ function save() {
 
               const createdResume = await createRes.json();
               resumeId = createdResume._id;
-              sessionStorage.setItem("currentResumeId", resumeId);
+
               const newUrl = `${window.location.pathname}?id=${resumeId}#builder`;
               window.history.replaceState({}, "", newUrl);
 
@@ -809,7 +809,6 @@ function save() {
 
         if (!res.ok) {
           if (res.status === 404) {
-            sessionStorage.removeItem("currentResumeId");
             resumeId = null;
           }
 
@@ -929,7 +928,6 @@ async function load() {
 
       if (!res.ok) {
         if (res.status === 404) {
-          sessionStorage.removeItem("currentResumeId");
           resumeId = null;
           window.history.replaceState({}, "", window.location.pathname);
         }
