@@ -5741,7 +5741,7 @@ body {
   padding: 34px 28px;
 
   background: #f1f5f9;
-  border-radius: 24px 0 0 24px;
+  border-radius: 24px;
 }
 
 .cv.template-premium-sidebar .premium-right {
