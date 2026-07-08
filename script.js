@@ -975,7 +975,7 @@ document.querySelectorAll(".template-item").forEach((card) => {
   card.addEventListener("click", () => {
     const template = card.dataset.template;
 
-    applyTemplate(template, true);
+    applyTemplate(template, false);
 
     if (PRO_TEMPLATES.includes(template) && !isProUser) {
       showToast(
