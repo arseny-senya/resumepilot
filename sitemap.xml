@@ -31,5 +31,35 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <loc>https://resumepilotonline.com/en/privacy.html</loc>
   <priority>0.5</priority>
 </url>
+<url>
+  <loc>https://resumepilotonline.com/blog</loc>
+</url>
 
+<url>
+  <loc>https://resumepilotonline.com/blog/kak-sostavit-rezyume</loc>
+</url>
+
+<url>
+  <loc>https://resumepilotonline.com/blog/rezyume-bez-opyta</loc>
+</url>
+
+<url>
+  <loc>https://resumepilotonline.com/blog/navyki-v-rezyume</loc>
+  
+</url>
+<url>
+  <loc>https://resumepilotonline.com/en/blog</loc>
+</url>
+
+<url>
+  <loc>https://resumepilotonline.com/en/blog/how-to-write-a-resume</loc>
+</url>
+
+<url>
+  <loc>https://resumepilotonline.com/en/blog/resume-with-no-experience</loc>
+</url>
+
+<url>
+  <loc>https://resumepilotonline.com/en/blog/resume-skills</loc>
+</url>
 </urlset>
