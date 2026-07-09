@@ -35,6 +35,14 @@
     {
       "source": "/en/blog/resume-skills",
       "destination": "/en/blog/resume-skills.html"
+    },
+    {
+      "source": "/blog/ats-rezyume",
+      "destination": "/blog/ats-rezyume.html"
+    },
+    {
+      "source": "/en/blog/ats-resume",
+      "destination": "/en/blog/ats-resume.html"
     }
   ]
 }
