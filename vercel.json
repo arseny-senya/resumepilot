@@ -27,6 +27,14 @@
     {
       "source": "/en/blog/resume-with-no-experience",
       "destination": "/en/blog/resume-with-no-experience.html"
+    },
+    {
+      "source": "/blog/navyki-v-rezyume",
+      "destination": "/blog/navyki-v-rezyume.html"
+    },
+    {
+      "source": "/en/blog/resume-skills",
+      "destination": "/en/blog/resume-skills.html"
     }
   ]
 }
