@@ -19,6 +19,14 @@
     {
       "source": "/en/blog/kak-sostavit-rezyume",
       "destination": "/en/blog/kak-sostavit-rezyume.html"
+    },
+    {
+      "source": "/blog/rezyume-bez-opyta",
+      "destination": "/blog/rezyume-bez-opyta.html"
+    },
+    {
+      "source": "/en/blog/resume-with-no-experience",
+      "destination": "/en/blog/resume-with-no-experience.html"
     }
   ]
 }
