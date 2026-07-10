@@ -43,6 +43,14 @@
     {
       "source": "/en/blog/ats-resume",
       "destination": "/en/blog/ats-resume.html"
+    },
+    {
+      "source": "/blog/foto-v-rezyume",
+      "destination": "/blog/foto-v-rezyume.html"
+    },
+    {
+      "source": "/en/blog/resume-photo",
+      "destination": "/en/blog/resume-photo.html"
     }
   ]
 }
