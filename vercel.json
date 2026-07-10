@@ -51,6 +51,14 @@
     {
       "source": "/en/blog/resume-photo",
       "destination": "/en/blog/resume-photo.html"
+    },
+    {
+      "source": "/blog/soprovoditelnoe-pismo",
+      "destination": "/blog/soprovoditelnoe-pismo.html"
+    },
+    {
+      "source": "/en/blog/cover-letter",
+      "destination": "/en/blog/cover-letter.html"
     }
   ]
 }
