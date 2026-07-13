@@ -162,7 +162,7 @@ async function createResume() {
       }),
     });
 
-    window.location.href = `/?id=${resume._id}#builder`;
+    window.location.href = `/?id=${resume._id}`;
   } catch (err) {
     console.error(err);
     alert("Failed to create resume");
@@ -187,7 +187,7 @@ async function deleteResume(id) {
 }
 
 function openResume(id) {
-  window.location.href = `/?id=${id}#builder`;
+  window.location.href = `/?id=${id}`;
 }
 function escapeHTML(value) {
   return String(value)

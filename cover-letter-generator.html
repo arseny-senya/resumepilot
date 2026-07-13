@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-N41DTXBZQ4"
+    ></script>
+
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag("js", new Date());
+      gtag("config", "G-N41DTXBZQ4");
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>
+      Генератор сопроводительного письма онлайн бесплатно | Resume Pilot
+    </title>
+
+    <meta
+      name="description"
+      content="Создайте профессиональное сопроводительное письмо онлайн бесплатно. Укажите вакансию, компанию, опыт и навыки — Resume Pilot подготовит готовый текст."
+    />
+
+    <meta
+      name="keywords"
+      content="генератор сопроводительного письма, создать сопроводительное письмо, сопроводительное письмо онлайн, пример сопроводительного письма, письмо работодателю"
+    />
+
+    <meta name="author" content="Resume Pilot" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#0f172a" />
+
+    <link
+      rel="canonical"
+      href="https://resumepilotonline.com/cover-letter-generator"
+    />
+
+    <link
+      rel="alternate"
+      hreflang="ru"
+      href="https://resumepilotonline.com/cover-letter-generator"
+    />
+
+    <link
+      rel="alternate"
+      hreflang="en"
+      href="https://resumepilotonline.com/en/cover-letter-generator"
+    />
+
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href="https://resumepilotonline.com/cover-letter-generator"
+    />
+
+    <link rel="icon" href="/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:site_name" content="Resume Pilot" />
+
+    <meta
+      property="og:title"
+      content="Бесплатный генератор сопроводительного письма"
+    />
+
+    <meta
+      property="og:description"
+      content="Создайте персональное сопроводительное письмо для отклика на вакансию за несколько минут."
+    />
+
+    <meta
+      property="og:url"
+      content="https://resumepilotonline.com/cover-letter-generator"
+    />
+
+    <meta
+      property="og:image"
+      content="https://resumepilotonline.com/img/cover-letter-generator.png"
+    />
+
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="twitter:title" content="Генератор сопроводительного письма" />
+
+    <meta
+      name="twitter:description"
+      content="Создайте профессиональное сопроводительное письмо онлайн бесплатно."
+    />
+
+    <meta
+      name="twitter:image"
+      content="https://resumepilotonline.com/img/cover-letter-generator.png"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Генератор сопроводительного письма Resume Pilot",
+        "description": "Онлайн-инструмент для создания профессиональных сопроводительных писем.",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Any",
+        "url": "https://resumepilotonline.com/cover-letter-generator",
+        "inLanguage": "ru",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
+
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+
+  <body class="letter-generator-page">
+    <header class="header">
+      <a href="/" class="logo">Resume Pilot</a>
+
+      <div class="header-right">
+        <div class="lang-switcher">
+          <a href="/cover-letter-generator" class="active">RU</a>
+          <a href="/en/cover-letter-generator">EN</a>
+        </div>
+
+        <a href="/#builder" class="header-btn">Создать резюме</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="letter-generator-hero">
+        <div class="letter-generator-hero-inner">
+          <span class="hero-badge">БЕСПЛАТНЫЙ ИНСТРУМЕНТ</span>
+
+          <h1>Генератор сопроводительного письма</h1>
+
+          <p>
+            Заполните несколько полей, и Resume Pilot подготовит персональное
+            сопроводительное письмо для отклика на вакансию.
+          </p>
+        </div>
+      </section>
+
+      <section class="letter-generator-section">
+        <div class="letter-generator-layout">
+          <!-- FORM -->
+          <div class="letter-generator-form">
+            <div class="letter-generator-heading">
+              <span>01</span>
+
+              <div>
+                <h2>Расскажите о себе</h2>
+                <p>Эти данные будут использованы для создания письма.</p>
+              </div>
+            </div>
+
+            <form id="coverLetterForm">
+              <div class="letter-field-grid">
+                <div class="letter-field">
+                  <label for="applicantName">Ваше имя</label>
+
+                  <input
+                    id="applicantName"
+                    type="text"
+                    placeholder="Например, Иван Иванов"
+                    maxlength="80"
+                    required
+                  />
+                </div>
+
+                <div class="letter-field">
+                  <label for="jobTitle">Желаемая должность</label>
+
+                  <input
+                    id="jobTitle"
+                    type="text"
+                    placeholder="Например, Frontend Developer"
+                    maxlength="100"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div class="letter-field">
+                <label for="companyName">Название компании</label>
+
+                <input
+                  id="companyName"
+                  type="text"
+                  placeholder="Например, Digital Studio"
+                  maxlength="100"
+                  required
+                />
+              </div>
+
+              <div class="letter-field">
+                <label for="experienceLevel">Ваш уровень опыта</label>
+
+                <select id="experienceLevel" required>
+                  <option value="beginner">Нет опыта или начинающий</option>
+                  <option value="middle">Есть небольшой опыт</option>
+                  <option value="experienced">Опытный специалист</option>
+                  <option value="career-change">Меняю профессию</option>
+                </select>
+              </div>
+
+              <div class="letter-field">
+                <label for="experience"> Кратко опишите свой опыт </label>
+
+                <textarea
+                  id="experience"
+                  rows="5"
+                  maxlength="800"
+                  placeholder="Например: два года создаю сайты, работаю с JavaScript, React и адаптивной версткой..."
+                  required
+                ></textarea>
+
+                <div class="field-counter">
+                  <span id="experienceCounter">0</span>/800
+                </div>
+              </div>
+
+              <div class="letter-field">
+                <label for="skills">Ключевые навыки</label>
+
+                <input
+                  id="skills"
+                  type="text"
+                  placeholder="JavaScript, React, Git, Figma"
+                  maxlength="250"
+                  required
+                />
+
+                <small>Перечислите навыки через запятую.</small>
+              </div>
+
+              <div class="letter-field">
+                <label for="companyReason">
+                  Почему вас заинтересовала компания или вакансия?
+                </label>
+
+                <textarea
+                  id="companyReason"
+                  rows="4"
+                  maxlength="500"
+                  placeholder="Например: мне близок ваш подход к разработке удобных цифровых продуктов..."
+                  required
+                ></textarea>
+              </div>
+
+              <div class="letter-field">
+                <label for="achievement">
+                  Главное достижение или сильная сторона
+                </label>
+
+                <textarea
+                  id="achievement"
+                  rows="3"
+                  maxlength="400"
+                  placeholder="Например: разработал новый сайт компании и увеличил число заявок на 30%..."
+                ></textarea>
+              </div>
+
+              <div class="letter-field">
+                <label for="letterTone">Тон письма</label>
+
+                <select id="letterTone">
+                  <option value="professional">Профессиональный</option>
+                  <option value="confident">Уверенный</option>
+                  <option value="friendly">Дружелюбный</option>
+                  <option value="concise">Краткий</option>
+                </select>
+              </div>
+
+              <button class="letter-generate-btn" type="submit">
+                <span>Создать письмо</span>
+
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14" />
+                  <path d="m13 6 6 6-6 6" />
+                </svg>
+              </button>
+
+              <p class="letter-form-note">
+                Проверьте и адаптируйте готовый текст перед отправкой
+                работодателю.
+              </p>
+            </form>
+          </div>
+
+          <!-- RESULT -->
+          <div class="letter-result-panel">
+            <div class="letter-generator-heading">
+              <span>02</span>
+
+              <div>
+                <h2>Готовое письмо</h2>
+                <p>Результат появится здесь после заполнения формы.</p>
+              </div>
+            </div>
+
+            <div class="letter-result-empty" id="letterEmptyState">
+              <div class="letter-empty-icon">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M4 4h16v16H4z" />
+                  <path d="m4 7 8 6 8-6" />
+                </svg>
+              </div>
+
+              <h3>Заполните форму</h3>
+
+              <p>
+                Укажите информацию о себе и вакансии, чтобы получить готовое
+                сопроводительное письмо.
+              </p>
+            </div>
+
+            <div class="letter-result-content" id="letterResult" hidden>
+              <div class="letter-result-toolbar">
+                <span id="letterWordCount">0 слов</span>
+
+                <div class="letter-result-actions">
+                  <button
+                    type="button"
+                    class="letter-action-btn"
+                    id="copyLetterBtn"
+                  >
+                    Копировать
+                  </button>
+
+                  <button
+                    type="button"
+                    class="letter-action-btn"
+                    id="downloadLetterBtn"
+                  >
+                    Скачать TXT
+                  </button>
+                </div>
+              </div>
+
+              <div class="letter-output" id="letterOutput" tabindex="0"></div>
+
+              <button
+                type="button"
+                class="letter-regenerate-btn"
+                id="regenerateLetterBtn"
+              >
+                Создать другой вариант
+              </button>
+
+              <div
+                class="letter-copy-status"
+                id="letterCopyStatus"
+                aria-live="polite"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="letter-generator-info">
+        <div class="seo-container">
+          <div class="section-title">
+            <span>КАК ЭТО РАБОТАЕТ</span>
+
+            <h2>Персональное письмо за несколько минут</h2>
+
+            <p>
+              Генератор использует информацию о вакансии, вашем опыте и навыках,
+              чтобы собрать логичное и профессиональное письмо.
+            </p>
+          </div>
+
+          <div class="steps-grid">
+            <article class="step-card">
+              <div class="step-number">01</div>
+              <h3>Заполните форму</h3>
+              <p>Расскажите о своём опыте, навыках и желаемой должности.</p>
+            </article>
+
+            <article class="step-card">
+              <div class="step-number">02</div>
+              <h3>Получите письмо</h3>
+              <p>Сервис сформирует персонализированный текст для отклика.</p>
+            </article>
+
+            <article class="step-card">
+              <div class="step-number">03</div>
+              <h3>Проверьте и отправьте</h3>
+              <p>
+                Скопируйте письмо, адаптируйте детали и отправьте работодателю.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="blog-footer">
+      <p>© 2026 Resume Pilot. All rights reserved.</p>
+    </footer>
+
+    <script src="/cover-letter-generator.js"></script>
+  </body>
+</html>
