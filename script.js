@@ -946,6 +946,15 @@ async function load() {
 
       fillForm(resume.data || {});
 
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          document.getElementById("builder")?.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        });
+      });
+
       setTimeout(() => {
         isLoadingResume = false;
       }, 300);
@@ -966,6 +975,7 @@ async function load() {
     fillForm(guestDraft);
   }
 }
+
 load();
 
 /* ======================
